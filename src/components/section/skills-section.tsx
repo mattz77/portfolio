@@ -22,15 +22,23 @@ export default function SkillsSection() {
           >
             <div className="flex items-center gap-3 rounded-xl border bg-card/60 px-4 py-3 shadow-sm">
               {icons.length > 0 ? (
-                <div className="flex shrink-0 items-center gap-1.5">
+                <div className="flex h-8 shrink-0 items-center gap-1.5 [&_svg]:block">
                   {icons.map((SkillMultiIcon, iconIndex) => (
-                    <SkillMultiIcon key={`${skill.name}-${iconIndex}`} className="size-6 shrink-0" aria-hidden />
+                    <SkillMultiIcon
+                      key={`${skill.name}-${iconIndex}`}
+                      className="size-8 shrink-0"
+                      aria-hidden
+                    />
                   ))}
                 </div>
               ) : Icon ? (
-                <Icon className="size-8 shrink-0" aria-hidden />
+                <div className="flex h-8 shrink-0 items-center [&_svg]:block">
+                  <Icon className="size-8 shrink-0" aria-hidden />
+                </div>
               ) : null}
-              <span className="font-medium text-sm leading-snug">{skill.name}</span>
+              <span className="whitespace-nowrap font-medium text-sm leading-snug">
+                {skill.name}
+              </span>
             </div>
           </BlurFade>
         );

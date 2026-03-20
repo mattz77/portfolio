@@ -76,7 +76,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           <LanguageProvider>
             <TooltipProvider delayDuration={0}>
-            <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
+            <div className="pointer-events-none absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
               <FlickeringGrid
                 className="h-full w-full"
                 squareSize={2}
@@ -84,6 +84,18 @@ export default function RootLayout({
                 style={{
                   maskImage: "linear-gradient(to bottom, black, transparent)",
                   WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+                }}
+              />
+            </div>
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[140px] overflow-hidden z-0">
+              <FlickeringGrid
+                className="h-full w-full"
+                squareSize={2}
+                gridGap={2}
+                maxOpacity={0.45}
+                style={{
+                  maskImage: "linear-gradient(to top, black, transparent)",
+                  WebkitMaskImage: "linear-gradient(to top, black, transparent)",
                 }}
               />
             </div>

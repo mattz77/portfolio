@@ -12,6 +12,8 @@ import { N8n } from "@/components/ui/svgs/n8n";
 import { ClaudeCode } from "@/components/ui/svgs/claude-code";
 import { CursorIde } from "@/components/ui/svgs/cursor-ide";
 import { GithubCopilot } from "@/components/ui/svgs/github-copilot";
+import { MicrosoftExcel } from "@/components/ui/svgs/microsoft-excel";
+import { MicrosoftLogoMark } from "@/components/ui/svgs/microsoft-logo-mark";
 
 type SkillIcon = ComponentType<SVGProps<SVGSVGElement>>;
 type SkillItem = { name: string } & ({ icon: SkillIcon; icons?: never } | { icons: SkillIcon[]; icon?: never });
@@ -37,6 +39,7 @@ export const DATA = {
     { name: "Supabase/Postgres", icon: Postgresql },
     { name: "TypeScript", icon: Typescript },
     { name: "Docker", icon: Docker },
+    { name: "VBA / Microsoft 365", icons: [MicrosoftExcel, MicrosoftLogoMark] },
     { name: "IA em Desenvolvimento", icons: [ClaudeCode, CursorIde, GithubCopilot] },
   ] as SkillItem[],
   navbar: [
