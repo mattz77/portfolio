@@ -27,6 +27,32 @@ Thumbs.db
 # Rascunhos / notas locais (não necessários para build)
 /mystack.md
 
+# Ferramentas e docs só locais (não publicar no remoto)
+/CLAUDE.md
+/.dockerignore
+/Dockerfile
+/deploy.sh
+/docker-compose.yml
+/docker-compose.dev.yml
+/docker-compose.prod.yml
+/nginx/
+/README.deploy.md
+/README.dev.md
+/.eslintrc.json
+/skills/
+
+# Imagens do template em public/ (só local; o site usa as do resume)
+/public/atomic.png
+/public/buildspace.jpg
+/public/ib.png
+/public/laurier.png
+/public/lime.svg
+/public/mitremedia.png
+/public/nvidia.png
+/public/shopify.svg
+/public/splunk.svg
+/public/waterloo.png
+
 # debug
 npm-debug.log*
 yarn-debug.log*
