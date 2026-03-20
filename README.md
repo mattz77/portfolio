@@ -31,7 +31,9 @@ Variáveis de ambiente: copie `.env.example` para `.env.local` se precisar sobre
 | `pnpm start`   | Servir build (produção) |
 | `pnpm lint`    | ESLint                 |
 
-Deploy em produção: use a plataforma de sua escolha (ex.: [Vercel](https://vercel.com), Node em VPS) com `pnpm build` e `pnpm start`, ou adapte um `Dockerfile` localmente sem versionar, se preferir.
+Deploy em produção: use a plataforma de sua escolha (ex.: [Vercel](https://vercel.com), Node em VPS) com `pnpm build` e `pnpm start`, ou use um `Dockerfile` só na sua máquina.
+
+**Arquivos só locais (não vão no Git):** Docker (`Dockerfile`, compose, `nginx/`, `deploy.sh`), `README.deploy.md`, `README.dev.md`, `CLAUDE.md`, `skills/`, `.eslintrc.json` legado e imagens extras do template em `public/` — listados no [`.gitignore`](./.gitignore). Outro clone do repositório não os traz; recrie ou recupere de um commit antigo do histórico se precisar.
 
 ## Créditos
 
