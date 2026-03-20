@@ -28,7 +28,7 @@ export default function MainContent() {
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
                 yOffset={8}
-                text={`${t("hero.greeting")} ${DATA.name}`}
+                text={`${t("hero.greeting")} ${DATA.firstName}`}
               />
               <BlurFadeText
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"

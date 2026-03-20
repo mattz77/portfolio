@@ -20,6 +20,7 @@ type SkillItem = { name: string } & ({ icon: SkillIcon; icons?: never } | { icon
 
 export const DATA = {
   name: "Mateus Oliveira",
+  firstName: "Mateus",
   initials: "MO",
   url: "https://github.com/mattz77",
   location: "São Paulo, SP",
