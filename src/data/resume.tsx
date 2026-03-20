@@ -1,11 +1,14 @@
 import { Icons } from "@/components/icons";
 import type { ComponentType, SVGProps } from "react";
-import { HomeIcon, Cloud, Workflow } from "lucide-react";
+import { HomeIcon, Webhook } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Docker } from "@/components/ui/svgs/docker";
 import { Csharp } from "@/components/ui/svgs/csharp";
+import { DotNet } from "@/components/ui/svgs/dotnet";
+import { Azure } from "@/components/ui/svgs/azure";
+import { N8n } from "@/components/ui/svgs/n8n";
 import { ClaudeCode } from "@/components/ui/svgs/claude-code";
 import { CursorIde } from "@/components/ui/svgs/cursor-ide";
 import { GithubCopilot } from "@/components/ui/svgs/github-copilot";
@@ -26,10 +29,10 @@ export const DATA = {
   avatarUrl: "/me.png",
   skills: [
     { name: "C#", icon: Csharp },
-    { name: ".NET", icon: Csharp },
-    { name: "n8n", icon: Workflow },
-    { name: "Azure Cloud", icon: Cloud },
-    { name: "Integração de APIs", icon: Workflow },
+    { name: ".NET", icon: DotNet },
+    { name: "n8n", icon: N8n },
+    { name: "Azure Cloud", icon: Azure },
+    { name: "Integração de APIs", icon: Webhook },
     { name: "React", icon: ReactLight },
     { name: "Supabase/Postgres", icon: Postgresql },
     { name: "TypeScript", icon: Typescript },
