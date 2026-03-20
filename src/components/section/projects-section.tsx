@@ -34,7 +34,9 @@ export default function ProjectsSection() {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr">
-                    {DATA.projects.map((project, id) => (
+                    {DATA.projects.map((project, id) => {
+                        const titleKey = project.title as string;
+                        return (
                         <BlurFade
                             key={project.title}
                             delay={BLUR_FADE_DELAY * 12 + id * 0.05}
@@ -43,16 +45,17 @@ export default function ProjectsSection() {
                             <ProjectCard
                                 href={project.href}
                                 key={project.title}
-                                title={project.title === "CordenaAI" ? t("projects.coordenaai.title") : project.title === "Luma" ? t("projects.luma.title") : project.title}
-                                description={project.title === "CordenaAI" ? t("projects.coordenaai.description") : project.title === "Luma" ? t("projects.luma.description") : project.description}
-                                dates={project.title === "CordenaAI" ? t("projects.coordenaai.dates") : project.title === "Luma" ? t("projects.luma.dates") : project.dates}
+                                title={titleKey === "CordenaAI" ? t("projects.coordenaai.title") : titleKey === "Luma" ? t("projects.luma.title") : titleKey}
+                                description={titleKey === "CordenaAI" ? t("projects.coordenaai.description") : titleKey === "Luma" ? t("projects.luma.description") : project.description}
+                                dates={titleKey === "CordenaAI" ? t("projects.coordenaai.dates") : titleKey === "Luma" ? t("projects.luma.dates") : project.dates}
                                 tags={project.technologies}
                                 image={project.image}
                                 video={project.video}
                                 links={project.links}
                             />
                         </BlurFade>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

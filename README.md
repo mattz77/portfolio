@@ -31,10 +31,7 @@ Variáveis de ambiente: copie `.env.example` para `.env.local` se precisar sobre
 | `pnpm start`   | Servir build (produção) |
 | `pnpm lint`    | ESLint                 |
 
-## Docker e deploy
-
-- Desenvolvimento com containers: veja [`README.dev.md`](./README.dev.md).
-- Deploy em produção (Docker / nginx): veja [`README.deploy.md`](./README.deploy.md).
+Deploy em produção: use a plataforma de sua escolha (ex.: [Vercel](https://vercel.com), Node em VPS) com `pnpm build` e `pnpm start`, ou adapte um `Dockerfile` localmente sem versionar, se preferir.
 
 ## Créditos
 

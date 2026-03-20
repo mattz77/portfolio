@@ -35,7 +35,9 @@ export default function WorkSection() {
   const { t } = useLanguage();
   return (
     <Accordion type="single" collapsible defaultValue={DATA.work[0]?.company} className="w-full grid gap-6">
-      {DATA.work.map((work) => (
+      {DATA.work.map((work) => {
+        const companyKey = work.company as string;
+        return (
         <AccordionItem
           key={work.company}
           value={work.company}
@@ -79,10 +81,11 @@ export default function WorkSection() {
             </div>
           </AccordionTrigger>
           <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
-            {work.company === "CordenaAI" ? t("work.coordenaai.description") : work.company === "TECNUN (Cliente: Banco Bradesco)" ? t("work.tecnun.description") : work.description}
+            {companyKey === "CordenaAI" ? t("work.coordenaai.description") : companyKey === "TECNUN (Cliente: Banco Bradesco)" ? t("work.tecnun.description") : work.description}
           </AccordionContent>
         </AccordionItem>
-      ))}
+        );
+      })}
     </Accordion>
   );
 }

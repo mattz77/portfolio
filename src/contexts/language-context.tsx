@@ -157,8 +157,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("pt-BR");
 
   const t = (key: string): string => {
-    const translation = translations[language]?.[key];
-    return translation || key;
+    const table = translations[language] as Record<string, string>;
+    return table[key] ?? key;
   };
 
   return (
