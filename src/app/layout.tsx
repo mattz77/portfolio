@@ -1,9 +1,12 @@
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
+import { LanguageProvider } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
     description: DATA.description,
     url: DATA.url,
     siteName: `${DATA.name}`,
-    locale: "en_US",
+    locale: "pt_BR",
     type: "website",
   },
   robots: {
@@ -62,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",
@@ -71,7 +74,8 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
-          <TooltipProvider delayDuration={0}>
+          <LanguageProvider>
+            <TooltipProvider delayDuration={0}>
             <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
               <FlickeringGrid
                 className="h-full w-full"
@@ -87,7 +91,17 @@ export default function RootLayout({
               {children}
             </div>
             <Navbar />
+            <Link
+              href={`https://wa.me/${DATA.contact.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#20bd5a] transition-colors"
+              aria-label="Contato via WhatsApp"
+            >
+              <Icons.whatsapp className="size-8" />
+            </Link>
           </TooltipProvider>
+        </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

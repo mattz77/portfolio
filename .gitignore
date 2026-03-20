@@ -19,6 +19,13 @@
 # misc
 .DS_Store
 *.pem
+Thumbs.db
+
+# Visual Studio / IDE local
+.vs/
+
+# Rascunhos / notas locais (não necessários para build)
+/mystack.md
 
 # debug
 npm-debug.log*

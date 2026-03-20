@@ -1,47 +1,45 @@
-<div align="center">
-<img alt="Portfolio" src="https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455" width="90%">
-</div>
+# Portfólio
 
-# Portfolio [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdillionverma%2Fportfolio)
+Site pessoal construído com [Next.js](https://nextjs.org/) (App Router), TypeScript, [Tailwind CSS](https://tailwindcss.com/) e componentes no estilo [shadcn/ui](https://ui.shadcn.com/). Conteúdo e currículo ficam centralizados em `src/data/resume.tsx`, com suporte a múltiplos idiomas.
 
-Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://magicui.design/), deployed on Vercel.
+**Repositório:** [github.com/mattz77/portfolio](https://github.com/mattz77/portfolio)
 
-# Features
+## Pré-requisitos
 
-- Setup only takes a few minutes by editing the [single config file](./src/data/resume.tsx)
-- Built using Next.js 14, React, Typescript, Shadcn/UI, TailwindCSS, Framer Motion, Magic UI
-- Includes a blog
-- Responsive for different devices
-- Optimized for Next.js and Vercel
+- Node.js 18+
+- [pnpm](https://pnpm.io/) 9.x (`packageManager` definido no `package.json`)
 
-# Getting Started Locally
+## Desenvolvimento local
 
-1. Clone this repository to your local machine:
+```bash
+git clone https://github.com/mattz77/portfolio.git
+cd portfolio
+pnpm install
+pnpm dev
+```
 
-   ```bash
-   git clone https://github.com/dillionverma/portfolio
-   ```
+Abra [http://localhost:3000](http://localhost:3000). Ajuste textos, projetos e experiências em [`src/data/resume.tsx`](./src/data/resume.tsx).
 
-2. Move to the cloned directory
+Variáveis de ambiente: copie `.env.example` para `.env.local` se precisar sobrescrever algo (não commite arquivos `.env*` com segredos).
 
-   ```bash
-   cd portfolio
-   ```
+## Scripts
 
-3. Install dependencies:
+| Comando        | Descrição              |
+| -------------- | ---------------------- |
+| `pnpm dev`     | Servidor de desenvolvimento |
+| `pnpm build`   | Build de produção      |
+| `pnpm start`   | Servir build (produção) |
+| `pnpm lint`    | ESLint                 |
 
-   ```bash
-   pnpm install
-   ```
+## Docker e deploy
 
-4. Start the local Server:
+- Desenvolvimento com containers: veja [`README.dev.md`](./README.dev.md).
+- Deploy em produção (Docker / nginx): veja [`README.deploy.md`](./README.deploy.md).
 
-   ```bash
-   pnpm dev
-   ```
+## Créditos
 
-5. Open the [Config file](./src/data/resume.tsx) and make changes
+Baseado no template [magicuidesign/portfolio](https://github.com/magicuidesign/portfolio) (evolução do projeto original por [Dillion Verma](https://github.com/dillionverma/portfolio)).
 
-# License
+## Licença
 
-Licensed under the [MIT license](https://github.com/dillionverma/portfolio/blob/main/LICENSE.md).
+MIT — ver [LICENSE](./LICENSE) (copyright original do template permanece no arquivo de licença).
