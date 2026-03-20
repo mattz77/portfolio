@@ -60,6 +60,9 @@ const translations = {
 
     // Skills
     "skills.title": "Habilidades",
+    "skills.subtitle": "Stack técnico",
+    "skills.description":
+      "Ferramentas e tecnologias que utilizo em backend, integrações e aplicações mobile.",
 
     // About
     "about.title": "Sobre",
@@ -129,6 +132,9 @@ const translations = {
 
     // Skills
     "skills.title": "Skills",
+    "skills.subtitle": "Tech stack",
+    "skills.description":
+      "Tools and technologies I use for backend work, integrations, and mobile apps.",
 
     // About
     "about.title": "About",

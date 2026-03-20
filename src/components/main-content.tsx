@@ -10,8 +10,8 @@ import Markdown from "react-markdown";
 import { useLanguage } from "@/contexts/language-context";
 import ContactWrapper from "@/components/section/contact-wrapper";
 import ProjectsWrapper from "@/components/section/projects-wrapper";
+import SkillsWrapper from "@/components/section/skills-wrapper";
 import WorkWrapper from "@/components/section/work-wrapper";
-import AboutSection from "@/components/section/about-section";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -66,6 +66,7 @@ export default function MainContent() {
       </section>
 
       <WorkWrapper />
+      <SkillsWrapper />
       <ProjectsWrapper />
       <ContactWrapper />
     </main>
