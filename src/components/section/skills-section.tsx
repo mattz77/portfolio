@@ -12,7 +12,8 @@ export default function SkillsSection() {
   return (
     <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
       {DATA.skills.map((skill, id) => {
-        const Icon = skill.icon as SkillIcon;
+        const icons = "icons" in skill && skill.icons ? skill.icons : [];
+        const Icon = "icon" in skill ? (skill.icon as SkillIcon) : null;
         return (
           <BlurFade
             key={skill.name}
@@ -20,7 +21,15 @@ export default function SkillsSection() {
             className="h-full"
           >
             <div className="flex items-center gap-3 rounded-xl border bg-card/60 px-4 py-3 shadow-sm">
-              <Icon className="size-8 shrink-0" aria-hidden />
+              {icons.length > 0 ? (
+                <div className="flex shrink-0 items-center gap-1.5">
+                  {icons.map((SkillMultiIcon, iconIndex) => (
+                    <SkillMultiIcon key={`${skill.name}-${iconIndex}`} className="size-6 shrink-0" aria-hidden />
+                  ))}
+                </div>
+              ) : Icon ? (
+                <Icon className="size-8 shrink-0" aria-hidden />
+              ) : null}
               <span className="font-medium text-sm leading-snug">{skill.name}</span>
             </div>
           </BlurFade>

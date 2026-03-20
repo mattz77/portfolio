@@ -1,10 +1,17 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, Cloud, Workflow, Brain } from "lucide-react";
+import type { ComponentType, SVGProps } from "react";
+import { HomeIcon, Cloud, Workflow } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Docker } from "@/components/ui/svgs/docker";
 import { Csharp } from "@/components/ui/svgs/csharp";
+import { ClaudeCode } from "@/components/ui/svgs/claude-code";
+import { CursorIde } from "@/components/ui/svgs/cursor-ide";
+import { GithubCopilot } from "@/components/ui/svgs/github-copilot";
+
+type SkillIcon = ComponentType<SVGProps<SVGSVGElement>>;
+type SkillItem = { name: string } & ({ icon: SkillIcon; icons?: never } | { icons: SkillIcon[]; icon?: never });
 
 export const DATA = {
   name: "Mateus Oliveira",
@@ -27,8 +34,8 @@ export const DATA = {
     { name: "Supabase/Postgres", icon: Postgresql },
     { name: "TypeScript", icon: Typescript },
     { name: "Docker", icon: Docker },
-    { name: "IA em Desenvolvimento", icon: Brain },
-  ],
+    { name: "IA em Desenvolvimento", icons: [ClaudeCode, CursorIde, GithubCopilot] },
+  ] as SkillItem[],
   navbar: [
     { href: "/", icon: HomeIcon, label: "navbar.home" },
     // Blog removido do dock temporariamente; rota /blog mantida
