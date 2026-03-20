@@ -12,7 +12,14 @@ export default function ProjectsSection() {
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr">
       {DATA.projects.map((project, id) => {
-        const titleKey = project.title as string;
+        const slug = "slug" in project ? project.slug : undefined;
+        const title = slug
+          ? t(`projects.${slug}.title`)
+          : project.title;
+        const description = slug
+          ? t(`projects.${slug}.description`)
+          : project.description;
+        const dates = slug ? t(`projects.${slug}.dates`) : project.dates;
         return (
           <BlurFade
             key={project.title}
@@ -21,27 +28,9 @@ export default function ProjectsSection() {
           >
             <ProjectCard
               href={project.href}
-              title={
-                titleKey === "CordenaAI"
-                  ? t("projects.coordenaai.title")
-                  : titleKey === "Luma"
-                    ? t("projects.luma.title")
-                    : titleKey
-              }
-              description={
-                titleKey === "CordenaAI"
-                  ? t("projects.coordenaai.description")
-                  : titleKey === "Luma"
-                    ? t("projects.luma.description")
-                    : project.description
-              }
-              dates={
-                titleKey === "CordenaAI"
-                  ? t("projects.coordenaai.dates")
-                  : titleKey === "Luma"
-                    ? t("projects.luma.dates")
-                    : project.dates
-              }
+              title={title}
+              description={description}
+              dates={dates}
               tags={project.technologies}
               image={project.image}
               video={project.video}

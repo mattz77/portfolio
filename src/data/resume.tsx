@@ -103,6 +103,7 @@ export const DATA = {
 
   projects: [
     {
+      slug: "coordenaai",
       title: "CordenaAI",
       href: "#",
       dates: "Out 2024 - Out 2025",
@@ -123,6 +124,7 @@ export const DATA = {
       video: "",
     },
     {
+      slug: "luma",
       title: "Luma",
       href: "https://github.com/mattz77/Luma-APP",
       dates: "Em desenvolvimento",

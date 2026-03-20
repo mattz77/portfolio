@@ -1,0 +1,80 @@
+---
+description: Como adicionar projetos ao portfólio (dados, i18n, assets)
+globs: src/data/resume.tsx,src/contexts/language-context.tsx,src/components/section/projects-section.tsx,src/components/project-card.tsx
+alwaysApply: false
+---
+
+# Novos projetos no portfólio
+
+Siga sempre os **três arquivos** abaixo. O `projects-section.tsx` resolve textos via `slug` — **não** é preciso encadear `if` por título.
+
+## 1. `src/data/resume.tsx` — entrada em `DATA.projects`
+
+Adicione um objeto com a mesma forma dos existentes:
+
+| Campo | Uso |
+|--------|-----|
+| `slug` | Identificador **estável**, minúsculas, ASCII (`coordenaai`, `luma`, `meu-app`). Usado nas chaves i18n `projects.{slug}.*`. |
+| `title` | Nome curto exibido (pode coincidir com a tradução PT). |
+| `href` | URL do card / link principal (`#` se ainda não houver site público). |
+| `dates` | Período em PT (ex.: `Jan 2024 - Mar 2025`); na UI entra a tradução se houver `slug`. |
+| `active` | `true` para projeto em destaque na lista atual. |
+| `description` | Texto em **português** no dado; com `slug`, a UI usa traduções — mantenha alinhado ao `pt-BR` como fallback/documentação. |
+| `technologies` | Lista readonly de tags (stack visível no card). |
+| `links` | `[]` ou itens `{ type, href, icon }` (ex.: GitHub com `<Icons.github className="size-3" />`). |
+| `image` | Caminho sob `public/` (ex.: `/screenshot.png`). |
+| `video` | String vazia `""` ou URL de vídeo para preview no card. |
+
+**Imagens:** coloque o ficheiro em `public/` e referencie com barra inicial (`/nome.png`).
+
+## 2. `src/contexts/language-context.tsx` — traduções
+
+Para **cada** `slug`, adicione **as mesmas três chaves** em `pt-BR` e em `en-US`:
+
+- `projects.{slug}.title`
+- `projects.{slug}.description`
+- `projects.{slug}.dates`
+
+Tom alinhado ao restante do site: PT profissional direto; EN equivalente (não tradução literal forçada de nomes próprios de produto).
+
+Se faltar uma chave, `t()` devolve a própria chave na UI.
+
+## 3. `projects-section.tsx`
+
+Só altere se mudar o **contrato** do card ou a lógica de i18n. Novos projetos **não** exigem mudança aqui desde que tenham `slug` e as chaves acima.
+
+## Princípios
+
+- **Um `slug` por projeto**, imutável depois de publicado (evita quebrar chaves de tradução).
+- **Paridade pt-BR / en-US** para todo projeto com `slug`.
+- **Tags (`technologies`)**: nomes conhecidos da indústria; ordem do mais relevante ao complementar.
+- **Links externos:** `target`/`rel` já vêm do `ProjectCard` via `Link` — mantenha `href` absolutos com `https://`.
+- **Consistência visual:** mesma estrutura de card (imagem 48 altura tailwind no componente); não alterar `ProjectCard` só para um projeto salvo necessidade transversal.
+
+## Exemplo de novo projeto
+
+```tsx
+// resume.tsx (trecho)
+{
+  slug: "acme-api",
+  title: "ACME API",
+  href: "https://github.com/usuario/acme-api",
+  dates: "2025",
+  active: true,
+  description: "API REST para...",
+  technologies: [".NET 8", "PostgreSQL", "Docker"],
+  links: [
+    {
+      type: "Source",
+      href: "https://github.com/usuario/acme-api",
+      icon: <Icons.github className="size-3" />,
+    },
+  ],
+  image: "/acme.png",
+  video: "",
+},
+```
+
+Chaves em `translations`:
+
+- `projects.acme-api.title` / `.description` / `.dates` (PT e EN).
