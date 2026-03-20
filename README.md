@@ -37,7 +37,7 @@ Deploy em produção: use a plataforma de sua escolha (ex.: [Vercel](https://ver
 
 ## Créditos
 
-Baseado no template [magicuidesign/portfolio](https://github.com/magicuidesign/portfolio) (evolução do projeto original por [Dillion Verma](https://github.com/dillionverma/portfolio)).
+Baseado no template [magicuidesign/portfolio](https://github.com/magicuidesign/portfolio).
 
 ## Licença
 
