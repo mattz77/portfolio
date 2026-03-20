@@ -14,6 +14,7 @@ import { CursorIde } from "@/components/ui/svgs/cursor-ide";
 import { GithubCopilot } from "@/components/ui/svgs/github-copilot";
 import { MicrosoftExcel } from "@/components/ui/svgs/microsoft-excel";
 import { MicrosoftLogoMark } from "@/components/ui/svgs/microsoft-logo-mark";
+import type { PortfolioProject } from "@/data/project";
 
 type SkillIcon = ComponentType<SVGProps<SVGSVGElement>>;
 type SkillItem = { name: string } & ({ icon: SkillIcon; icons?: never } | { icons: SkillIcon[]; icon?: never });
@@ -149,5 +150,5 @@ export const DATA = {
       image: "/luma.png",
       video: "",
     },
-  ],
+  ] satisfies readonly PortfolioProject[],
 } as const;

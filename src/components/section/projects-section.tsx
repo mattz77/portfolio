@@ -12,7 +12,7 @@ export default function ProjectsSection() {
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr">
       {DATA.projects.map((project, id) => {
-        const slug = "slug" in project ? project.slug : undefined;
+        const slug = project.slug;
         const title = slug
           ? t(`projects.${slug}.title`)
           : project.title;

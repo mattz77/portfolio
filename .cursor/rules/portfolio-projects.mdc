@@ -1,6 +1,6 @@
 ---
 description: Como adicionar projetos ao portfólio (dados, i18n, assets)
-globs: src/data/resume.tsx,src/contexts/language-context.tsx,src/components/section/projects-section.tsx,src/components/project-card.tsx
+globs: src/data/resume.tsx,src/data/project.ts,src/contexts/language-context.tsx,src/components/section/projects-section.tsx,src/components/project-card.tsx
 alwaysApply: false
 ---
 
@@ -8,9 +8,13 @@ alwaysApply: false
 
 Siga sempre os **três arquivos** abaixo. O `projects-section.tsx` resolve textos via `slug` — **não** é preciso encadear `if` por título.
 
+## 0. `src/data/project.ts` — contrato TypeScript
+
+Tipos `PortfolioProject` e `PortfolioProjectLink`: use-os como referência; o array `DATA.projects` deve satisfazer `readonly PortfolioProject[]` (já validado em `resume.tsx` com `satisfies`).
+
 ## 1. `src/data/resume.tsx` — entrada em `DATA.projects`
 
-Adicione um objeto com a mesma forma dos existentes:
+Adicione um objeto que cumpra `PortfolioProject`:
 
 | Campo | Uso |
 |--------|-----|
