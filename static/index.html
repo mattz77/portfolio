@@ -268,6 +268,9 @@
       letter-spacing: -.01em;
     }
     .role-mark { color: var(--brand-accent); }
+    .role-cursor { animation: roleBlink 1.05s steps(1) infinite; }
+    @media (prefers-reduced-motion: reduce) { .role-cursor { animation: none; } }
+    @keyframes roleBlink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
     .hero-tagline {
       margin: 26px 0 0; font-family: var(--font-serif); font-size: clamp(19px, 2.3vw, 25px);
       line-height: 1.4; color: var(--foreground); max-width: 540px; text-wrap: pretty;
@@ -619,13 +622,13 @@
   <script src="_ds/commit-briefing-design-system-27542e02-bc10-4856-8af8-d619b4d641b4/_ds_bundle.js"></script>
 
   <!-- Data (plain JS) -->
-  <script src="portfolio-data.js?v=29"></script>
+  <script src="portfolio-data.js?v=30"></script>
 
   <!-- Babel-transpiled app -->
-  <script type="text/babel" src="portfolio-icons.jsx?v=29"></script>
-  <script type="text/babel" src="tweaks-panel.jsx?v=29"></script>
-  <script type="text/babel" src="portfolio-sections.jsx?v=29"></script>
-  <script type="text/babel" src="portfolio-app.jsx?v=29" data-presets="react"></script>
+  <script type="text/babel" src="portfolio-icons.jsx?v=30"></script>
+  <script type="text/babel" src="tweaks-panel.jsx?v=30"></script>
+  <script type="text/babel" src="portfolio-sections.jsx?v=30"></script>
+  <script type="text/babel" src="portfolio-app.jsx?v=30" data-presets="react"></script>
   <script>
     window.addEventListener("load", () => setTimeout(() => { const b = document.getElementById("boot"); if (b) { b.classList.add("gone"); setTimeout(() => b.remove(), 500); } }, 350));
   </script>
