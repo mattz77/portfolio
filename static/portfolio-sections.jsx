@@ -121,7 +121,7 @@ function Hero() {
               <span className="hn-line">Mateus</span>
               <span className="hn-line hn-accent">Oliveira</span>
             </h1>
-            <p className="hero-role"><span className="role-mark">{"// "}</span>{t("hero.role")}</p>
+            <p className="hero-role"><span className="role-mark">{">_ "}</span>{t("hero.role")}</p>
             <p className="hero-tagline">{t("hero.tagline")}</p>
             <p className="hero-intro">{t("hero.intro")}</p>
             <div className="hero-cta">
