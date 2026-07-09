@@ -215,22 +215,13 @@
       justify-content: center;
       padding: 120px 0 60px; /* Compensate for sticky nav and center content */
       color: var(--foreground);
+      background: #000000;
     }
-    
-    .hero-video-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-    }
-    
+
     .hero-scrim {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(9, 9, 11, 0.5) 0%, rgba(9, 9, 11, 0.85) 100%);
+      background: radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0) 55%);
       z-index: 1;
       pointer-events: none;
     }
@@ -628,13 +619,13 @@
   <script src="_ds/commit-briefing-design-system-27542e02-bc10-4856-8af8-d619b4d641b4/_ds_bundle.js"></script>
 
   <!-- Data (plain JS) -->
-  <script src="portfolio-data.js?v=26"></script>
+  <script src="portfolio-data.js?v=27"></script>
 
   <!-- Babel-transpiled app -->
-  <script type="text/babel" src="portfolio-icons.jsx?v=26"></script>
-  <script type="text/babel" src="tweaks-panel.jsx?v=26"></script>
-  <script type="text/babel" src="portfolio-sections.jsx?v=26"></script>
-  <script type="text/babel" src="portfolio-app.jsx?v=26" data-presets="react"></script>
+  <script type="text/babel" src="portfolio-icons.jsx?v=27"></script>
+  <script type="text/babel" src="tweaks-panel.jsx?v=27"></script>
+  <script type="text/babel" src="portfolio-sections.jsx?v=27"></script>
+  <script type="text/babel" src="portfolio-app.jsx?v=27" data-presets="react"></script>
   <script>
     window.addEventListener("load", () => setTimeout(() => { const b = document.getElementById("boot"); if (b) { b.classList.add("gone"); setTimeout(() => b.remove(), 500); } }, 350));
   </script>

@@ -112,18 +112,8 @@ function Hero() {
         '--border': 'rgba(255,255,255,0.1)'
       }}
     >
-      <video 
-        className="hero-video-bg" 
-        autoPlay 
-        loop 
-        muted 
-        playsInline 
-        poster="assets/hero-poster.jpg"
-      >
-        <source src="assets/hero-bg.mp4" type="video/mp4" />
-      </video>
       <div className="hero-scrim"></div>
-      
+
       <div className="hero-content-wrapper">
         <div className="hero-grid">
           <div className="hero-main">
