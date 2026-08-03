@@ -355,8 +355,8 @@ window.PORTFOLIO = {
       date: "2026-08-03",
       read: 14,
       tagPt: "IA & Automação", tagEn: "AI & Automation",
-      titlePt: "Eu montei uma equipe de IAs que trabalha enquanto eu durmo",
-      titleEn: "I built a team of AIs that works while I sleep",
+      titlePt: "Eu montei uma equipe de IAs que cuida dos meus projetos 24/7",
+      titleEn: "I built a team of AIs that runs my projects 24/7",
       summaryPt: "Dois modelos de IA dividindo a mesma memória, cinco agentes revisando e corrigindo código sozinhos, e um painel que coloca qualquer projeto no ar em um clique. A história de como um protocolo improvisado virou uma pequena fábrica de software autônoma — incluindo as vezes em que o sistema mentiu pra mim e o que fiz a respeito.",
       summaryEn: "Two AI models sharing one memory, five agents reviewing and fixing code on their own, and a panel that ships any project with one click. How an improvised protocol became a small autonomous software factory — including the times the system lied to me, and what I did about it.",
       bodyPt: [
@@ -387,7 +387,7 @@ window.PORTFOLIO = {
         { t: "img", v: "assets/posts/llm-brain/telegram.svg", alt: "Celular com pergunta em linguagem natural, agente decidindo a ação e resposta com dados ao vivo", cap: "Pergunta em português, resposta com dados ao vivo — de qualquer lugar." },
         { t: "h2", v: "O que eu aprendi construindo isso" },
         { t: "p", v: "Três lições ficaram. Primeira: autonomia sem verificação é só velocidade — um agente rápido que inventa problemas ou esconde falhas atrapalha mais do que ajuda, então cada agente ganhou outro agente cético olhando por cima do ombro. Segunda: os melhores recursos nasceram de bugs que doeram — o botão que abriu 14 propostas duplicadas me ensinou sobre concorrência, o status verde mentiroso me ensinou sobre evidência. Terceira: confiança em automação não se declara, se constrói — com prova, com log visível e com um humano no único ponto que importa: a decisão final de aprovar." },
-        { t: "p", v: "O sistema segue crescendo: os próximos passos são métricas de qualidade ao longo do tempo, pra saber se cada projeto está melhorando ou apodrecendo, e mais projetos entrando no ciclo. Mas a mudança de fundo já aconteceu: eu deixei de ser o operador de cada tarefa e virei o editor-chefe de uma pequena redação de agentes — que trabalha, revisa e publica enquanto eu durmo." }
+        { t: "p", v: "O sistema segue crescendo: os próximos passos são métricas de qualidade ao longo do tempo, pra saber se cada projeto está melhorando ou apodrecendo, e mais projetos entrando no ciclo. Mas a mudança de fundo já aconteceu: eu deixei de ser o operador de cada tarefa e virei o editor-chefe de uma pequena redação de agentes. O trabalho não para quando eu saio do teclado — e o meu tempo passou a ir para o que só um humano faz: decidir." }
       ],
       bodyEn: [
         { t: "p", v: "Anyone who has used AI for real work knows the frustration: you spend hours building something together, the conversation gets too long, the session ends — and the AI forgets everything. It's like having a brilliant employee who loses their memory mid-shift, every single day. That problem is what started this project: instead of accepting the amnesia, I built an external memory no session can erase." },
@@ -417,7 +417,7 @@ window.PORTFOLIO = {
         { t: "img", v: "assets/posts/llm-brain/telegram.svg", alt: "Phone with a natural-language question, an agent choosing the action, and an answer with live data", cap: "A question in plain language, an answer with live data — from anywhere." },
         { t: "h2", v: "What building this taught me" },
         { t: "p", v: "Three lessons stuck. First: autonomy without verification is just speed — a fast agent that invents problems or hides failures does more harm than good, so every agent got another skeptical agent looking over its shoulder. Second: the best features were born from bugs that hurt — the button that opened 14 duplicate proposals taught me about concurrency, the lying green status taught me about evidence. Third: trust in automation isn't declared, it's built — with proof, with visible logs, and with a human at the only point that matters: the final approval." },
-        { t: "p", v: "The system keeps growing: next up are quality metrics over time, to know whether each project is improving or rotting, and more projects joining the cycle. But the deeper shift has already happened: I stopped being the operator of every task and became the editor-in-chief of a small newsroom of agents — one that works, reviews and publishes while I sleep." }
+        { t: "p", v: "The system keeps growing: next up are quality metrics over time, to know whether each project is improving or rotting, and more projects joining the cycle. But the deeper shift has already happened: I stopped being the operator of every task and became the editor-in-chief of a small newsroom of agents. The work no longer stops when I step away from the keyboard — and my time now goes to the one thing only a human can do: decide." }
       ]
     },
     {
