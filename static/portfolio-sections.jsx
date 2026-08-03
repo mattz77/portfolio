@@ -504,6 +504,12 @@ function PostView({ slug }) {
         {body.map((b, i) => {
           if (b.t === "h2") return <h2 key={i}>{b.v}</h2>;
           if (b.t === "quote") return <blockquote key={i}>{b.v}</blockquote>;
+          if (b.t === "img") return (
+            <figure key={i} className="post-figure">
+              <img src={b.v} alt={b.alt || ""} loading="lazy" />
+              {b.cap ? <figcaption>{b.cap}</figcaption> : null}
+            </figure>
+          );
           return <p key={i}>{b.v}</p>;
         })}
       </div>
