@@ -34,10 +34,13 @@ const translations = {
     "work.tecnun.description": "Prestação de serviços especializados para o setor financeiro. Otimização de performance de banco de dados e relatórios gerenciais. Automações com VBA (Excel, Access, Outlook) e integrações com Mainframe/PCOMM para sistemas legados. Documentação de sistemas legados e análise de requisitos com especificações técnicas.",
 
     // Project Descriptions
+    "projects.llm-brain.description": "Ecossistema de engenharia de agentes: memória compartilhada com handoff por checkpoint entre modelos (Claude e opencode), arquitetura hot/cold com busca exata e semântica (~12x mais barato iniciar sessão) e pipeline de cinco agentes (review, auditor cético, fix, verifier, CI-fix) com regra de evidência — achado sem prova é descartado. Auditoria de falha silenciosa com heartbeat, daemon 24/7 com self-deploy e agente no Telegram com tool-use.",
     "projects.coordenaai.description": "Plataforma de gerenciamento esportivo completa. Backend em .NET 8 com SignalR para tempo real, gestão de atletas, professores, turmas e horários. Integrações Stripe, WhatsApp (Evolution API), Microsoft Teams. Azure Cloud (Blob Storage, Database for MySQL, App Service). Repository Pattern, testes xUnit e de integração.",
     "projects.luma.description": "Smart Assist para gestão doméstica com suporte futuro a IoT. App mobile React Native + TypeScript + Expo SDK 54. Backend Supabase com PostgreSQL e RLS. Orquestração de IA via n8n com webhooks e integração com APIs de LLMs. Desenvolvimento com MCP Supabase e n8n-tools.",
 
     // Project Names and Dates
+    "projects.llm-brain.title": "LLM-Brain",
+    "projects.llm-brain.dates": "2026 - presente",
     "projects.coordenaai.title": "CordenaAI",
     "projects.coordenaai.dates": "Out 2024 - Out 2025",
     "projects.luma.title": "Luma",
@@ -106,10 +109,13 @@ const translations = {
     "work.tecnun.description": "Specialized services for the financial sector. Database performance optimization and management reports. Automations with VBA (Excel, Access, Outlook) and integrations with Mainframe/PCOMM for legacy systems. Legacy systems documentation and requirements analysis with technical specifications.",
 
     // Project Descriptions
+    "projects.llm-brain.description": "Agent-engineering ecosystem: shared memory with checkpoint handoff across models (Claude and opencode), hot/cold architecture with exact and semantic search (~12x cheaper session start) and a five-agent pipeline (review, skeptical auditor, fix, verifier, CI-fix) enforcing an evidence rule — findings without proof are dropped. Silent-failure audit with heartbeat, 24/7 self-deploying daemon and a Telegram agent with tool use.",
     "projects.coordenaai.description": "Complete sports management platform. Backend in .NET 8 with SignalR for real-time, management of athletes, teachers, classes and schedules. Integrations Stripe, WhatsApp (Evolution API), Microsoft Teams. Azure Cloud (Blob Storage, Database for MySQL, App Service). Repository Pattern, xUnit and integration tests.",
     "projects.luma.description": "Smart Assist for home management with future IoT support. Mobile app React Native + TypeScript + Expo SDK 54. Supabase backend with PostgreSQL and RLS. AI orchestration via n8n with webhooks and integration with LLM APIs. Development with MCP Supabase and n8n-tools.",
 
     // Project Names and Dates
+    "projects.llm-brain.title": "LLM-Brain",
+    "projects.llm-brain.dates": "2026 - present",
     "projects.coordenaai.title": "CordenaAI",
     "projects.coordenaai.dates": "Oct 2024 - Oct 2025",
     "projects.luma.title": "Luma",
