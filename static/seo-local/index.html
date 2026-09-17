@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SEO Local para atrair mais clientes pelo Google | NiceByte</title>
+  <meta name="description" content="Diagnóstico de SEO Local para negócios que querem transformar buscas no Google Maps em contatos reais, com evidência, landing page e handoff humano.">
+  <link rel="canonical" href="https://nicebyte.ia.br/seo-local/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nicebyte.ia.br/seo-local/">
+  <meta property="og:title" content="SEO Local com evidência, não promessa | NiceByte">
+  <meta property="og:description" content="Descubra o que impede seu negócio de transformar buscas locais em contatos. Diagnóstico, página mobile e próximos passos claros.">
+  <meta property="og:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SEO Local com evidência, não promessa | NiceByte">
+  <meta name="twitter:description" content="Diagnóstico de presença local, página mobile e próximos passos claros.">
+  <meta name="twitter:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Diagnóstico de SEO Local NiceByte",
+    "serviceType": "SEO Local e conversão de contatos",
+    "description": "Diagnóstico baseado em evidências públicas da presença de um negócio no Google Maps e no site, com recomendações de próxima ação.",
+    "provider": {
+      "@type": "Organization",
+      "name": "NiceByte Digital",
+      "url": "https://nicebyte.ia.br/",
+      "email": "contato@nicebyte.ia.br"
+    },
+    "areaServed": "BR"
+  }
+  </script>
+  <style>
+    :root {
+      --navy: #14243a;
+      --navy-deep: #0b1728;
+      --ink: #17202d;
+      --muted: #5c6877;
+      --paper: #f7f8fa;
+      --surface: #ffffff;
+      --line: #dbe1e8;
+      --silver: #aeb9c7;
+      --blue: #2f6f9f;
+      --blue-dark: #22577e;
+      --bronze: #a98657;
+      --focus: #145da0;
+      --max: 1120px;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .skip { position: absolute; left: -9999px; top: 8px; z-index: 10; padding: 10px 14px; background: #fff; color: var(--navy); }
+    .skip:focus { left: 8px; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .topbar { background: var(--navy-deep); color: #e8edf4; border-bottom: 1px solid rgba(174,185,199,.28); }
+    .topbar-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; text-decoration: none; min-height: 48px; }
+    .brand img { display: block; width: 132px; height: auto; border: 1px solid rgba(174,185,199,.45); }
+    nav { display: flex; align-items: center; gap: 22px; font-size: .91rem; }
+    nav a { display: inline-flex; align-items: center; min-height: 44px; color: #d7e0eb; text-decoration: none; }
+    nav a:hover { color: #fff; }
+    .nav-cta { display: inline-flex; align-items: center; min-height: 44px; color: #fff; border: 1px solid var(--bronze); padding: 9px 14px; border-radius: 8px; }
+    .hero { background: linear-gradient(135deg, var(--navy-deep), var(--navy)); color: #fff; padding: 92px 0 84px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; }
+    .eyebrow { color: #c6d1df; font-size: .76rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -.035em; }
+    /* Teto baixado para a manchete caber em 2 linhas a 1280px (anti-ai-tells, regra do hero). */
+    h1 { max-width: 860px; margin-top: 18px; font-size: clamp(2.45rem, 3.8vw, 3.55rem); font-weight: 720; }
+    .hero-copy { max-width: 650px; margin: 24px 0 0; color: #d3dce7; font-size: clamp(1.05rem, 2vw, 1.23rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 12px 17px; border-radius: 9px; border: 1px solid transparent; font-weight: 700; text-decoration: none; }
+    .button-primary { background: #fff; color: var(--navy-deep); }
+    .button-primary:hover { background: #edf2f7; }
+    .button-secondary { border-color: #8294a9; color: #fff; }
+    .button-secondary:hover { border-color: #fff; }
+    .hero-note { margin-top: 17px; color: #aebdce; font-size: .83rem; }
+    .signal-card { background: rgba(255,255,255,.07); border: 1px solid rgba(174,185,199,.42); border-radius: var(--radius); padding: 24px; box-shadow: 0 18px 50px rgba(0,0,0,.18); }
+    .signal-label { color: #c5d0dd; font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    /* Cor explícita: o h2 global usa var(--navy), que sobre este card escuro dá 1,04:1. */
+    .signal-card h2 { margin-top: 14px; font-size: 1.55rem; color: #fff; }
+    .signal-list { display: grid; gap: 0; margin: 22px 0 0; padding: 0; list-style: none; }
+    .signal-list li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 14px 0; border-top: 1px solid rgba(174,185,199,.25); color: #d8e0e9; }
+    .signal-list b { color: #fff; }
+    .number { color: #d8b985; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    section { padding: 88px 0; }
+    .section-head { max-width: 700px; }
+    .section-kicker { color: var(--blue-dark); font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin-top: 13px; font-size: clamp(2rem, 4vw, 3.15rem); color: var(--navy); }
+    .lead { margin: 18px 0 0; color: var(--muted); font-size: 1.06rem; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 38px; }
+    .cards .card:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 24px; align-items: start; min-height: 0; }
+    .card { min-height: 170px; padding: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+    .card h3 { margin-top: 20px; color: var(--navy); font-size: 1.28rem; }
+    .card p { margin: 12px 0 0; color: var(--muted); }
+    .process { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .process-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: start; }
+    .steps { display: grid; gap: 0; margin-top: 8px; }
+    .step { display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .step:first-child { padding-top: 8px; }
+    .step-num { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: var(--navy); color: #fff; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 700; }
+    .step h3 { color: var(--navy); font-size: 1.05rem; }
+    .step p { margin: 5px 0 0; color: var(--muted); }
+    .proof { background: #eef2f6; }
+    .proof-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 36px; max-width: 760px; }
+    .proof-card { display: grid; grid-template-columns: minmax(0, 210px) minmax(0, 1fr); gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .proof-card:last-child { border-bottom: 0; }
+    .proof-card strong { display: block; color: var(--navy); }
+    .proof-card span { display: block; color: var(--muted); font-size: .94rem; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 34px; }
+    details { padding: 19px 20px; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+    summary { cursor: pointer; color: var(--navy); font-weight: 750; }
+    details p { margin: 12px 0 0; color: var(--muted); }
+    .contact { padding: 72px 0; background: var(--navy-deep); color: #fff; }
+    .contact-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+    .contact h2 { color: #fff; max-width: 650px; }
+    .contact p { max-width: 660px; margin: 16px 0 0; color: #c8d3df; }
+    .contact .actions { margin-top: 22px; }
+    .contact .button-primary { background: #d8b985; color: #17202d; }
+    .contact .button-secondary { border-color: #8294a9; }
+    footer { padding: 28px 0 38px; background: var(--navy-deep); color: #aebdce; border-top: 1px solid rgba(174,185,199,.2); font-size: .86rem; }
+    footer a { display: inline-flex; align-items: center; min-height: 44px; color: #e2e9f1; }
+    .footer-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    @media (max-width: 840px) {
+      .hero-grid, .process-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .cards, .proof-grid { grid-template-columns: 1fr; }
+      .cards .card:first-child, .proof-card { grid-template-columns: 1fr; gap: 8px; }
+      .hero { padding-top: 64px; }
+      section { padding: 68px 0; }
+      .contact-grid { align-items: start; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      .topbar-inner { min-height: 64px; }
+      nav { gap: 10px; font-size: .82rem; }
+      nav a:not(.nav-cta) { display: none; }
+      .brand img { width: 118px; }
+      .hero { padding: 48px 0 52px; }
+      h1 { font-size: clamp(2.1rem, 9.6vw, 3.35rem); }
+      .hero-copy { margin-top: 18px; font-size: 1rem; }
+      .actions { align-items: stretch; flex-direction: column; margin-top: 22px; }
+      .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="/" aria-label="NiceByte, voltar ao início">
+        <img src="/assets/nicebyte-official-exact.jpg" alt="NiceByte Digital">
+      </a>
+      <nav aria-label="Navegação da página">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#entrega">O que recebe</a>
+        <a class="nav-cta" href="#solicitar">Solicitar diagnóstico</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">SEO LOCAL • GOOGLE MAPS</div>
+          <h1>Seu próximo cliente já está procurando.</h1>
+          <p class="hero-copy">O perfil precisa estar pronto para receber. A NiceByte transforma uma busca local em um caminho claro até o contato: evidência pública, diagnóstico objetivo, página mobile e próximo passo sem promessa inventada.</p>
+          <div class="actions">
+            <a class="button button-primary" href="mailto:contato@nicebyte.ia.br?subject=Quero%20solicitar%20um%20diagn%C3%B3stico%20de%20SEO%20Local">Solicitar meu diagnóstico</a>
+            <a class="button button-secondary" href="#como-funciona">Ver o método</a>
+          </div>
+        </div>
+        <aside class="signal-card" aria-label="Resumo do diagnóstico">
+          <h2>O que analisamos antes de recomendar qualquer ação</h2>
+          <ul class="signal-list">
+            <li><span class="number">01</span><span><b>Encontrabilidade:</b> como o negócio aparece para buscas relevantes na região.</span></li>
+            <li><span class="number">02</span><span><b>Confiança:</b> informações, avaliações e sinais públicos que ajudam a pessoa a escolher.</span></li>
+            <li><span class="number">03</span><span><b>Conversão:</b> se existe um caminho simples para sair do Google e falar com o negócio.</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="entrega">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="hero-note">Entrada voluntária. Não fazemos disparo frio pelo WhatsApp.</p>
+          <h2>Um pacote pequeno o bastante para usar e completo o bastante para decidir.</h2>
+          <p class="lead">Cada recomendação nasce de uma evidência conferida. Quando a informação não está disponível, isso aparece como limite, não como certeza.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><h3>Diagnóstico local</h3><p>Leitura do perfil, site e caminho de contato, com prioridades organizadas por impacto e esforço.</p></article>
+          <article class="card"><h3>Página mobile</h3><p>Modelo de página rápido, claro e conectado ao canal escolhido pelo negócio, sem esconder que é uma demonstração.</p></article>
+          <article class="card"><h3>Próximo passo</h3><p>Resumo para a equipe entender o que fazer, o que medir e quando chamar uma pessoa para fechar.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="process">
+      <div class="wrap process-grid">
+        <div class="section-head">
+          <div class="section-kicker">Como funciona</div>
+          <h2>Do primeiro clique à conversa certa.</h2>
+          <p class="lead">O fluxo foi desenhado para não confundir interesse com autorização e não confundir uma hipótese com resultado garantido.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h3>Você solicita</h3><p>Entra pelo site, indicação ou QR Code e informa o contexto básico do negócio.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h3>A gente confere</h3><p>Comparamos sinais públicos da presença local e registramos as fontes usadas.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h3>Você recebe</h3><p>O resumo mostra prioridades, ressalvas e o que precisa ser validado pela equipe.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div><h3>Você decide</h3><p>Se houver interesse, o contexto segue para conversa humana de proposta e ativação.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>O canal respeita o cliente antes de tentar convertê-lo.</h2>
+        </div>
+        <div class="proof-grid">
+          <div class="proof-card"><strong>Consentimento explícito</strong><span>O bot só avança depois de autorização clara para continuar a conversa.</span></div>
+          <div class="proof-card"><strong>Opt-out imediato</strong><span>“Sair”, “parar” e equivalentes encerram novas mensagens por aquele número.</span></div>
+          <div class="proof-card"><strong>Handoff humano</strong><span>Negociação, cobrança, reclamação e decisão comercial não ficam nas mãos do modelo.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Sem letra miúda.</h2>
+        </div>
+        <div class="faq-grid">
+          <details><summary>Preciso fornecer uma senha ou acesso ao Google?</summary><p>Não para a leitura inicial. O diagnóstico usa evidências públicas. Acesso administrativo só seria discutido depois, com escopo e autorização próprios.</p></details>
+          <details><summary>O diagnóstico promete uma posição no Google?</summary><p>Não. Ele mostra o estado observado, oportunidades e próximos testes. Ranking depende de contexto, concorrência, execução e tempo.</p></details>
+          <details><summary>O WhatsApp já está automatizado?</summary><p>A infraestrutura inbound está preparada. O número dedicado só entra em operação depois do pareamento do chip e dos testes locais.</p></details>
+          <details><summary>Como paro de receber mensagens?</summary><p>Responda SAIR, PARAR, CANCELAR ou NÃO QUERO. O contato é bloqueado para novas saídas automáticas.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="solicitar" class="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <h2>Quer saber o que a sua presença local está deixando de transformar em conversa?</h2>
+          <p>Envie o nome da empresa, cidade, segmento e objetivo. A primeira leitura será organizada com as evidências disponíveis.</p>
+          <div class="actions">
+            <a class="button button-primary" href="mailto:contato@nicebyte.ia.br?subject=Quero%20meu%20diagn%C3%B3stico%20de%20SEO%20Local">Falar por e-mail</a>
+            <a class="button button-secondary" href="https://wa.me/5511913284876?text=Quero%20solicitar%20um%20diagn%C3%B3stico%20de%20SEO%20Local%20da%20NiceByte." target="_blank" rel="noopener noreferrer">Abrir conversa no WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-line">
+      <span>NiceByte Digital • São Paulo, SP</span>
+      <span><a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a> • <a href="/">nicebyte.ia.br</a></span>
+    </div>
+  </footer>
+</body>
+</html>
