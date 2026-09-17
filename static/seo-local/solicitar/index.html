@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+  <title>Solicitar diagnóstico de presença local | NiceByte</title>
+  <meta name="description" content="Formulário de solicitação do diagnóstico de SEO Local da NiceByte. Entrada voluntária, com consentimento explícito e sem pedir senha de nenhuma conta.">
+  <link rel="canonical" href="https://nicebyte.ia.br/seo-local/solicitar/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nicebyte.ia.br/seo-local/solicitar/">
+  <meta property="og:title" content="Solicitar diagnóstico de presença local | NiceByte">
+  <meta property="og:description" content="Informe o negócio, a cidade e o canal de contato. O diagnóstico usa apenas evidências públicas.">
+  <meta property="og:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Solicitar diagnóstico de presença local | NiceByte">
+  <meta name="twitter:description" content="Entrada voluntária, com consentimento explícito e sem pedir senha de nenhuma conta.">
+  <meta name="twitter:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
+  <style>
+    :root {
+      --navy: #14243a; --navy-deep: #0b1728; --ink: #17202d; --muted: #5c6877;
+      --paper: #f7f8fa; --surface: #fff; --line: #dbe1e8;
+      --blue-dark: #22577e; --bronze-lt: #d8b985; --crit: #b8412f; --ok: #1c6b45;
+      --focus: #145da0; --max: 1060px; --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .skip { position: absolute; left: -9999px; top: 8px; z-index: 10; padding: 10px 14px; background: #fff; color: var(--navy); }
+    .skip:focus { left: 8px; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .topbar { background: var(--navy-deep); color: #e8edf4; border-bottom: 1px solid rgba(174,185,199,.28); }
+    .topbar-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand img { display: block; width: 132px; border: 1px solid rgba(174,185,199,.45); }
+    .back { display: inline-flex; align-items: center; min-height: 44px; color: #d7e0eb; text-decoration: none; font-size: .9rem; }
+    .back:hover { color: #fff; }
+
+    main { padding: 56px 0 84px; }
+    h1, h2, h3 { margin: 0; line-height: 1.14; letter-spacing: -.03em; color: var(--navy); }
+    h1 { max-width: 700px; font-size: clamp(2.05rem, 4.2vw, 2.9rem); }
+    .intro { max-width: 640px; margin: 18px 0 0; color: var(--muted); font-size: 1.04rem; }
+    .cols { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 34px; margin-top: 38px; align-items: start; }
+
+    form { padding: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+    fieldset { margin: 0 0 8px; padding: 0; border: 0; }
+    legend { padding: 0; color: var(--navy); font-size: .76rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .field { display: grid; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: .88rem; font-weight: 650; color: var(--navy); }
+    label .opt { font-weight: 500; color: var(--muted); }
+    .hint { font-size: .79rem; color: var(--muted); }
+    input, select, textarea { width: 100%; min-height: 46px; padding: 11px 13px; font: inherit; font-size: .95rem; color: var(--ink); background: #fff; border: 1px solid #c8d1db; border-radius: 9px; }
+    textarea { min-height: 86px; resize: vertical; }
+    input:invalid:not(:placeholder-shown), select:invalid { border-color: #dca99f; }
+    .sep { margin: 26px 0 0; padding-top: 22px; border-top: 1px solid var(--line); }
+    .consent { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; margin-top: 18px; padding: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
+    .consent input { width: 20px; min-height: 20px; height: 20px; margin-top: 3px; padding: 0; accent-color: var(--navy); }
+    .consent span { font-size: .89rem; color: var(--muted); }
+    .consent b { color: var(--navy); }
+    .send { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 17px; font: inherit; font-weight: 700; border-radius: 9px; border: 1px solid transparent; text-decoration: none; cursor: pointer; transition: background .18s ease, border-color .18s ease, transform .18s ease; }
+    .button:active { transform: translateY(1px); }
+    .button-primary { background: var(--navy); color: #fff; }
+    .button-primary:hover { background: #1d3252; }
+    .button-ghost { border-color: #b9c4d0; color: var(--navy); background: #fff; }
+    .button-ghost:hover { border-color: var(--navy); }
+    .status { margin: 14px 0 0; font-size: .87rem; min-height: 1.4em; }
+    .status.err { color: var(--crit); font-weight: 650; }
+    .status.ok { color: var(--ok); font-weight: 650; }
+
+    aside { display: grid; gap: 16px; position: sticky; top: 20px; }
+    .panel { padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+    .panel h2 { font-size: 1.08rem; }
+    .panel ol { margin: 14px 0 0; padding-left: 18px; color: var(--muted); font-size: .9rem; }
+    .panel ol li { margin-bottom: 7px; }
+    .panel .note { margin: 14px 0 0; font-size: .84rem; color: var(--muted); }
+    .safe { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; padding: 16px 18px; background: #eaf3ee; border: 1px solid #cae0d3; border-radius: 12px; }
+    .safe .ico { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 8px; background: #d7ebdf; color: var(--ok); }
+    .safe strong { display: block; color: #14432c; font-size: .92rem; }
+    .safe span { display: block; margin-top: 3px; color: #2f5f47; font-size: .85rem; }
+    .resumo { padding: 18px; background: var(--navy-deep); border-radius: 12px; }
+    .resumo h3 { color: #fff; font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .resumo pre { margin: 12px 0 0; max-height: 260px; overflow: auto; color: #cbd7e5; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .74rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+    footer { padding: 26px 0 38px; background: var(--navy-deep); color: #aebdce; font-size: .86rem; }
+    footer a { display: inline-flex; align-items: center; min-height: 44px; color: #e2e9f1; }
+    .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+    @media (max-width: 860px) {
+      .cols { grid-template-columns: 1fr; gap: 24px; }
+      aside { position: static; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      main { padding: 36px 0 64px; }
+      .fields { grid-template-columns: 1fr; }
+      form { padding: 20px; }
+      .send { flex-direction: column; }
+      .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#form">Pular para o formulário</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="/" aria-label="NiceByte, voltar ao início"><img src="/assets/nicebyte-official-exact.jpg" alt="NiceByte Digital"></a>
+      <a class="back" href="/seo-local/">Voltar para SEO Local</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <h1>Conte o básico do negócio. O resto a gente lê nas fontes públicas.</h1>
+      <p class="intro">São os dados mínimos para localizar o estabelecimento sem ambiguidade e devolver o diagnóstico no canal que você escolher. Nada é enviado sozinho: você revisa o resumo e decide como mandar.</p>
+
+      <div class="cols">
+        <form id="form" novalidate>
+          <fieldset>
+            <legend>O estabelecimento</legend>
+            <div class="fields">
+              <div class="field full">
+                <label for="negocio">Nome do negócio</label>
+                <input id="negocio" name="negocio" type="text" required autocomplete="organization" placeholder="Como aparece no Google">
+                <span class="hint">Escreva exatamente como está no perfil, inclusive a unidade.</span>
+              </div>
+              <div class="field">
+                <label for="cidade">Cidade e bairro</label>
+                <input id="cidade" name="cidade" type="text" required autocomplete="address-level2" placeholder="São Paulo, Vila Mariana">
+              </div>
+              <div class="field">
+                <label for="segmento">Segmento</label>
+                <input id="segmento" name="segmento" type="text" required placeholder="Barbearia, clínica, restaurante">
+                <span class="hint">É com esse termo que a busca local é reproduzida.</span>
+              </div>
+              <div class="field full">
+                <label for="maps">Link do perfil no Google Maps <span class="opt">(opcional, mas encurta tudo)</span></label>
+                <input id="maps" name="maps" type="url" inputmode="url" placeholder="https://maps.app.goo.gl/...">
+                <span class="hint">Sem o link, o perfil é procurado pelo nome mais a cidade. Com ele, não há chance de trocar de negócio.</span>
+              </div>
+              <div class="field full">
+                <label for="site">Site atual <span class="opt">(opcional)</span></label>
+                <input id="site" name="site" type="url" inputmode="url" placeholder="https://">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="sep">
+            <legend>Onde devolvemos</legend>
+            <div class="fields">
+              <div class="field">
+                <label for="nome">Seu nome</label>
+                <input id="nome" name="nome" type="text" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="whatsapp">WhatsApp com DDD</label>
+                <input id="whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000">
+              </div>
+              <div class="field full">
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" required autocomplete="email" placeholder="voce@empresa.com.br">
+              </div>
+              <div class="field full">
+                <label for="objetivo">O que você quer que melhore</label>
+                <select id="objetivo" name="objetivo" required>
+                  <option value="">Escolha uma opção</option>
+                  <option>Aparecer no Top 3 do “perto de mim”</option>
+                  <option>Receber mais ligações</option>
+                  <option>Receber mais agendamentos</option>
+                  <option>Levar mais gente até a loja</option>
+                  <option>Entender por que os concorrentes aparecem antes</option>
+                  <option>Outro, explico abaixo</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="contexto">Alguma coisa que a gente precisa saber <span class="opt">(opcional)</span></label>
+                <textarea id="contexto" name="contexto" placeholder="Mudou de endereço, tem duas unidades, o perfil está sem acesso, e por aí vai."></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <label class="consent" for="consent">
+            <input id="consent" name="consent" type="checkbox" required>
+            <span><b>Autorizo a NiceByte a ler as fontes públicas deste negócio e a me responder</b> no WhatsApp e no e-mail informados. Posso encerrar a qualquer momento respondendo SAIR. Nenhuma senha ou acesso administrativo é solicitado.</span>
+          </label>
+
+          <div class="send">
+            <button class="button button-primary" type="button" id="via-whatsapp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12.3a8.2 8.2 0 01-11.9 7.3L4 21l1.5-4.4A8.2 8.2 0 1120.5 12.3z"/></svg>
+              Enviar pelo WhatsApp
+            </button>
+            <button class="button button-ghost" type="button" id="via-email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>
+              Enviar por e-mail
+            </button>
+            <button class="button button-ghost" type="button" id="copiar">Copiar resumo</button>
+          </div>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside>
+          <div class="safe">
+            <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 7.9-7.5 9.5-4.4-1.6-7.5-5.1-7.5-9.5V6z"/><path d="M9 12.2l2.2 2.2 4-4.4"/></svg></span>
+            <div>
+              <strong>Nada sai daqui sozinho</strong>
+              <span>O formulário não envia nada por conta própria. Ele monta o resumo e abre o seu WhatsApp ou o seu e-mail, com você no controle do envio.</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>O que acontece depois</h2>
+            <ol>
+              <li>Localizamos o perfil pelas fontes públicas, com data e link registrados.</li>
+              <li>Comparamos com quem aparece no Top 3 da mesma busca.</li>
+              <li>Você recebe as notas, as prioridades e o que não foi possível verificar.</li>
+              <li>Se fizer sentido, a conversa segue com uma pessoa, não com o robô.</li>
+            </ol>
+            <p class="note">Nenhum acesso administrativo ao Google é pedido em momento algum desta etapa.</p>
+          </div>
+
+          <div class="resumo">
+            <h3>Resumo que será enviado</h3>
+            <pre id="preview">Preencha o formulário para ver o resumo.</pre>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>NiceByte Digital • São Paulo, SP</span>
+      <span><a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a> • <a href="/">nicebyte.ia.br</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var WHATS = '5511913284876';
+      var MAIL = 'contato@nicebyte.ia.br';
+      var form = document.getElementById('form');
+      var status = document.getElementById('status');
+      var preview = document.getElementById('preview');
+
+      // Origem só para saber por onde a pessoa chegou (qr, demo, indicação). Sem dado pessoal na URL.
+      var origem = (new URLSearchParams(location.search).get('o') || 'site').slice(0, 24);
+
+      var CAMPOS = [
+        ['negocio', 'Negócio'],
+        ['cidade', 'Cidade e bairro'],
+        ['segmento', 'Segmento'],
+        ['maps', 'Perfil no Google Maps'],
+        ['site', 'Site atual'],
+        ['nome', 'Contato'],
+        ['whatsapp', 'WhatsApp'],
+        ['email', 'E-mail'],
+        ['objetivo', 'Objetivo'],
+        ['contexto', 'Observações']
+      ];
+
+      function valor(id) {
+        var el = document.getElementById(id);
+        return el ? String(el.value || '').trim() : '';
+      }
+
+      function montarResumo() {
+        var linhas = ['Solicitação de diagnóstico de presença local', ''];
+        CAMPOS.forEach(function (c) {
+          var v = valor(c[0]);
+          if (v) { linhas.push(c[1] + ': ' + v); }
+        });
+        linhas.push('Origem: ' + origem);
+        linhas.push('Consentimento: ' + (document.getElementById('consent').checked ? 'autorizado pelo solicitante' : 'pendente'));
+        return linhas.join('\n');
+      }
+
+      function atualizar() {
+        var texto = montarResumo();
+        preview.textContent = valor('negocio') ? texto : 'Preencha o formulário para ver o resumo.';
+      }
+
+      function faltando() {
+        var falta = [];
+        ['negocio', 'cidade', 'segmento', 'nome', 'whatsapp', 'email', 'objetivo'].forEach(function (id) {
+          if (!valor(id)) {
+            var lab = document.querySelector('label[for="' + id + '"]');
+            falta.push(lab ? lab.textContent.replace(/\(opcional.*/, '').trim() : id);
+          }
+        });
+        if (!document.getElementById('consent').checked) { falta.push('a autorização'); }
+        return falta;
+      }
+
+      function validar() {
+        var falta = faltando();
+        if (falta.length) {
+          status.className = 'status err';
+          status.textContent = 'Falta preencher: ' + falta.join(', ') + '.';
+          var primeiro = form.querySelector('[required]:invalid, #consent:not(:checked)');
+          if (primeiro) { primeiro.focus(); }
+          return false;
+        }
+        var email = valor('email');
+        if (email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+          status.className = 'status err';
+          status.textContent = 'O e-mail não parece válido.';
+          document.getElementById('email').focus();
+          return false;
+        }
+        status.className = 'status';
+        status.textContent = '';
+        return true;
+      }
+
+      form.addEventListener('input', atualizar);
+      form.addEventListener('change', atualizar);
+
+      document.getElementById('via-whatsapp').addEventListener('click', function () {
+        if (!validar()) { return; }
+        status.className = 'status ok';
+        status.textContent = 'Abrindo o WhatsApp com o resumo pronto. Confira e toque em enviar.';
+        window.open('https://wa.me/' + WHATS + '?text=' + encodeURIComponent(montarResumo()), '_blank', 'noopener');
+      });
+
+      document.getElementById('via-email').addEventListener('click', function () {
+        if (!validar()) { return; }
+        status.className = 'status ok';
+        status.textContent = 'Abrindo o seu programa de e-mail com o resumo pronto.';
+        location.href = 'mailto:' + MAIL
+          + '?subject=' + encodeURIComponent('Diagnóstico de presença local: ' + valor('negocio'))
+          + '&body=' + encodeURIComponent(montarResumo());
+      });
+
+      document.getElementById('copiar').addEventListener('click', function () {
+        var texto = montarResumo();
+        function avisar(ok) {
+          status.className = 'status ' + (ok ? 'ok' : 'err');
+          status.textContent = ok ? 'Resumo copiado.' : 'Não foi possível copiar. Selecione o texto do resumo ao lado.';
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(texto).then(function () { avisar(true); }, function () { avisar(false); });
+        } else {
+          avisar(false);
+        }
+      });
+
+      atualizar();
+    })();
+  </script>
+</body>
+</html>

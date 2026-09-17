@@ -36,14 +36,16 @@
       --paper: #f8f5f0;
       --surface: #fffdf9;
       --line: #e4dbd0;
-      --bronze: #8b6b45;
+      --bronze: #7a5c38;
       --bronze-soft: #d7bd99;
       --forest: #1b2824;
       --focus: #205f8e;
       --max: 1120px;
+      --display: Georgia, "Iowan Old Style", "Times New Roman", serif;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
     a { color: inherit; }
     a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
     .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
@@ -55,56 +57,119 @@
     .head-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
     .brand img { display: block; width: 132px; border: 1px solid var(--line); }
     .head-note { color: var(--muted); font-size: .78rem; text-align: right; }
-    .hero { padding: 40px 0 36px; background: linear-gradient(140deg, #fffdf9 10%, #f2e9de 100%); }
-    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+
+    /* ---------- hero editorial com o produto na mão ---------- */
+    .hero { padding: 56px 0 60px; background: linear-gradient(140deg, #fffdf9 8%, #f0e6d9 100%); overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 56px; align-items: center; }
     .kicker { color: var(--bronze); font-size: .74rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
     h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -.035em; }
-    h1 { max-width: 700px; margin-top: 16px; font-size: clamp(2.5rem, 5.4vw, 5.2rem); font-weight: 720; }
-    .hero p { max-width: 620px; margin: 22px 0 0; color: var(--muted); font-size: 1.1rem; }
-    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 12px 17px; border-radius: 8px; font-weight: 750; text-decoration: none; }
+    h1 { max-width: 620px; margin-top: 16px; font-family: var(--display); font-weight: 700; font-size: clamp(2.6rem, 4.6vw, 4.1rem); line-height: 1.04; letter-spacing: -.025em; }
+    h1 em { font-style: italic; color: var(--bronze); }
+    .hero p { max-width: 520px; margin: 22px 0 0; color: var(--muted); font-size: 1.06rem; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 12px 17px; border-radius: 8px; font-weight: 750; text-decoration: none; border: 1px solid transparent; transition: background .18s ease, border-color .18s ease, transform .18s ease; }
+    .button:active { transform: translateY(1px); }
     .button-dark { background: var(--forest); color: #fff; }
     .button-dark:hover { background: #263a33; }
-    .button-outline { border: 1px solid var(--bronze); color: var(--bronze); }
+    .button-outline { border-color: var(--bronze); color: var(--bronze); }
     .button-outline:hover { background: #f1e6d7; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .demo-screen { background: var(--forest); color: #fff; padding: 18px; border-radius: 22px; box-shadow: 0 24px 60px rgba(27,40,36,.2); transform: rotate(1.2deg); }
-    .screen-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.14); }
-    .screen-brand { color: var(--bronze-soft); font-family: Georgia, serif; font-size: 1.05rem; }
-    .screen-pill { color: #dbe6df; font-size: .68rem; border: 1px solid rgba(215,189,153,.45); padding: 4px 8px; border-radius: 999px; }
-    .screen-body { min-height: 300px; display: grid; align-content: center; gap: 16px; padding: 36px 18px; text-align: center; }
-    .screen-body h2 { color: #fff; font-family: Georgia, serif; font-size: 2.1rem; }
-    .screen-body p { margin: 0; color: #cbd9d1; font-size: .9rem; }
-    .screen-cta { display: inline-flex; justify-content: center; align-items: center; min-height: 46px; background: var(--bronze-soft); color: var(--forest); border-radius: 7px; font-weight: 800; text-decoration: none; }
+
+    .stage { display: grid; place-items: center; position: relative; }
+    .stage::before { content: ""; position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(215,189,153,.55), rgba(215,189,153,0) 70%); }
+    .phone { position: relative; width: 272px; padding: 10px; border-radius: 36px; background: #1b1917; box-shadow: 0 30px 64px rgba(27,25,23,.3); transform: rotate(1deg); }
+    .screen { display: flex; flex-direction: column; aspect-ratio: 9 / 18.6; border-radius: 27px; overflow: hidden; background: #fff; }
+    .ph-top { padding: 14px 16px 12px; background: var(--forest); color: #efe8db; }
+    .ph-top b { font-family: var(--display); font-size: .82rem; letter-spacing: .06em; }
+    .ph-hero { padding: 18px 16px 18px; background: linear-gradient(160deg, #2b3a30, var(--forest)); color: #fff; }
+    .ph-hero h2 { font-family: var(--display); font-weight: 500; font-size: 1.28rem; line-height: 1.16; color: #fff; }
+    .ph-hero p { margin: 9px 0 0; font-size: .72rem; color: #c6d3c7; }
+    .ph-cta { display: block; margin-top: 14px; padding: 10px; border-radius: 8px; background: var(--bronze-soft); color: var(--forest); text-align: center; font-size: .74rem; font-weight: 800; text-decoration: none; }
+    .ph-rows { display: grid; gap: 10px; padding: 15px 16px; }
+    .ph-row { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: center; }
+    .ph-row i { display: block; height: 28px; border-radius: 7px; background: linear-gradient(135deg, #e7e3da, #d6d0c4); }
+    .ph-row b { display: block; color: var(--forest); font-size: .76rem; }
+    .ph-row span { display: block; font-size: .68rem; color: #6f685f; }
+    .ph-bar { margin-top: auto; display: flex; gap: 6px; padding: 11px 14px; background: #f4f2ed; border-top: 1px solid #e7e2d8; }
+    .ph-bar span { flex: 1; padding: 7px 0; border-radius: 7px; background: #fff; text-align: center; font-size: .64rem; color: #6f685f; }
+    .ph-bar span.on { background: var(--forest); color: #fff; font-weight: 700; }
+    .stage-note { position: relative; margin: 20px 0 0; text-align: center; font-size: .78rem; color: var(--muted); }
+
+    /* ---------- estrutura ---------- */
     section { padding: 78px 0; }
     .section-head { max-width: 720px; }
     h2 { margin-top: 12px; color: var(--forest); font-size: clamp(2rem, 4vw, 3.25rem); }
     .lead { margin: 16px 0 0; color: var(--muted); font-size: 1.03rem; }
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
-    .feature { padding: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 15px; }
-    .feature-no { color: var(--bronze); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; font-weight: 800; }
-    .feature h3 { margin-top: 22px; color: var(--forest); font-size: 1.2rem; }
+    .feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 34px; }
+    .feature { padding: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 15px; transition: border-color .2s ease, box-shadow .2s ease; }
+    .feature:hover { border-color: #d3c6b5; box-shadow: 0 10px 26px rgba(27,40,36,.07); }
+    .feature:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 24px; align-items: start; }
+    .feature-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 11px; background: #efe6d9; color: var(--bronze); }
+    .feature h3 { margin-top: 18px; color: var(--forest); font-size: 1.2rem; }
     .feature p { margin: 10px 0 0; color: var(--muted); }
+
+    /* ---------- o que entra na página ---------- */
     .preview { background: #efe7dc; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .preview-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 52px; align-items: center; }
-    .service-list { display: grid; gap: 10px; margin-top: 26px; padding: 0; list-style: none; }
-    .service-list li { display: flex; align-items: flex-start; gap: 10px; padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+    .preview h2 { font-family: var(--display); font-weight: 700; letter-spacing: -.025em; }
+    .service-list { display: grid; margin: 26px 0 0; padding: 0; list-style: none; }
+    .service-list li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; padding: 15px 0; border-bottom: 1px solid var(--line); color: var(--muted); align-items: start; }
+    .service-list li:last-child { border-bottom: 0; }
     .service-list strong { color: var(--forest); }
-    .check { color: var(--bronze); font-weight: 900; }
+    .service-list .ico { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 8px; background: #e5dbcc; color: var(--bronze); }
     .booking-card { padding: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; }
-    .booking-card h3 { color: var(--forest); font-size: 1.55rem; }
+    .booking-card h3 { color: var(--forest); font-family: var(--display); font-weight: 700; font-size: 1.62rem; }
     .booking-card p { color: var(--muted); }
     .booking-card .button { width: 100%; margin-top: 12px; }
     .demo-disclaimer { margin-top: 18px; color: var(--muted); font-size: .79rem; }
+    .qr-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .qr-tile { display: grid; justify-items: center; gap: 7px; padding: 10px 10px 8px; background: #fff; border: 1px solid var(--line); border-radius: 11px; }
+    .qr-tile img { display: block; width: 92px; height: 92px; }
+    .qr-tile span { color: var(--forest); font-size: .64rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+    .qr-row p { margin: 0; color: var(--muted); font-size: .85rem; }
+    .qr-row b { color: var(--forest); }
+
     .final { background: var(--forest); color: #fff; }
-    .final h2 { color: #fff; max-width: 730px; }
+    .final h2 { max-width: 760px; color: #fff; font-family: var(--display); font-weight: 700; letter-spacing: -.025em; }
     .final p { max-width: 680px; color: #ccd8d1; }
     .final .button-outline { color: var(--bronze-soft); border-color: var(--bronze-soft); }
     footer { padding: 28px 0 36px; background: var(--forest); color: #b8c8bf; border-top: 1px solid rgba(215,189,153,.28); font-size: .83rem; }
     .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
     footer a { display: inline-flex; align-items: center; min-height: 44px; color: #fff; }
-    @media (max-width: 840px) { .hero-grid, .preview-grid { grid-template-columns: 1fr; gap: 36px; } .feature-grid { grid-template-columns: 1fr; } .hero { padding-top: 54px; } section { padding: 62px 0; } }
-    @media (max-width: 560px) { .wrap { width: min(var(--max), calc(100% - 28px)); } .ribbon-note { display: none; } .ribbon-inner { justify-content: space-between; } .head-note { max-width: 150px; } .brand img { width: 115px; } .hero { padding: 28px 0 30px; } h1 { font-size: clamp(2.1rem, 9.7vw, 3.6rem); line-height: 1.06; } .hero p { margin-top: 14px; font-size: .95rem; line-height: 1.45; } .actions { flex-direction: column; margin-top: 16px; } .button { width: 100%; } .demo-screen { transform: none; } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+
+    /* ---------- entrada em cena ---------- */
+    .js .rise { opacity: 0; transform: translateY(16px); }
+    .js .rise.in { opacity: 1; transform: none; transition: opacity .6s cubic-bezier(.22,.8,.3,1), transform .6s cubic-bezier(.22,.8,.3,1); }
+    .js .hero .rise { animation: rise .7s cubic-bezier(.22,.8,.3,1) forwards; }
+    .js .hero .rise:nth-child(2) { animation-delay: .07s; }
+    .js .hero .rise:nth-child(3) { animation-delay: .14s; }
+    .js .hero .rise:nth-child(4) { animation-delay: .21s; }
+    .js .hero .stage { opacity: 0; animation: rise .8s .18s cubic-bezier(.22,.8,.3,1) forwards; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 900px) {
+      .hero-grid, .preview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature:first-child { grid-template-columns: 1fr; gap: 10px; }
+      .hero { padding-top: 48px; }
+      section { padding: 62px 0; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      .ribbon-note { display: none; }
+      .head-note { max-width: 150px; }
+      .brand img { width: 115px; }
+      .hero { padding: 32px 0 36px; }
+      h1 { font-size: clamp(2.15rem, 9.4vw, 3.4rem); }
+      .hero p { margin-top: 14px; font-size: .97rem; }
+      .actions { flex-direction: column; margin-top: 20px; }
+      .button { width: 100%; }
+      .phone { transform: none; width: 248px; }
+      .stage::before { width: 240px; height: 240px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      .js .rise, .js .hero .stage { opacity: 1 !important; transform: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -126,41 +191,136 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="kicker">Modelo para estética e bem-estar</div>
-          <h1>Uma página que transforma interesse em próximo passo.</h1>
-          <p>Este modelo organiza serviços, diferenciais e contato em uma experiência pensada primeiro para o celular, sem substituir as informações reais da sua clínica.</p>
-          <div class="actions"><a class="button button-dark" href="/seo-local/?origem=demo-estetica#solicitar">Solicitar uma página para meu negócio</a><a class="button button-outline" href="#estrutura">Ver estrutura</a></div>
+          <div class="kicker rise">Modelo para estética e bem-estar</div>
+          <h1 class="rise">A página que seu cliente abre <em>no celular</em>, pronta antes da proposta.</h1>
+          <p class="rise">Serviços, confiança e contato em uma tela só, pensada primeiro para o polegar. As informações reais da sua clínica entram depois da conferência.</p>
+          <div class="actions rise">
+            <a class="button button-dark" href="/seo-local/?origem=demo-estetica#solicitar">Solicitar uma página para meu negócio</a>
+            <a class="button button-outline" href="#estrutura">Ver estrutura</a>
+          </div>
         </div>
-        <div class="demo-screen" aria-label="Prévia de uma página fictícia de clínica">
-          <div class="screen-top"><span class="screen-brand">Clínica Aurora</span><span class="screen-pill">modelo demonstrativo</span></div>
-          <div class="screen-body"><h2>Tempo para cuidar de você.</h2><p>Uma apresentação clara, elegante e fácil de navegar.</p><a class="screen-cta" href="/seo-local/?origem=demo-estetica#solicitar">Conhecer o atendimento</a></div>
+
+        <div class="stage">
+          <div class="phone">
+            <div class="screen" role="img" aria-label="Prévia de uma página fictícia: Clínica Aurora, com chamada, três serviços e barra de ações">
+              <div class="ph-top"><b>CLÍNICA AURORA</b></div>
+              <div class="ph-hero">
+                <h2>Tempo para cuidar de você.</h2>
+                <p>Vila Mariana • atendimento com hora marcada</p>
+                <span class="ph-cta">Agendar pelo WhatsApp</span>
+              </div>
+              <div class="ph-rows">
+                <div class="ph-row"><i></i><div><b>Limpeza de pele</b><span>50 min</span></div></div>
+                <div class="ph-row"><i></i><div><b>Massagem relaxante</b><span>60 min</span></div></div>
+                <div class="ph-row"><i></i><div><b>Design de sobrancelha</b><span>30 min</span></div></div>
+              </div>
+              <div class="ph-bar"><span class="on">Agendar</span><span>Serviços</span><span>Rota</span></div>
+            </div>
+          </div>
+          <p class="stage-note">Conteúdo fictício. Nenhuma clínica real é representada aqui.</p>
         </div>
       </div>
     </section>
 
     <section id="estrutura">
       <div class="wrap">
-        <div class="section-head"><div class="kicker">Estrutura do modelo</div><h2>Menos distração. Mais clareza para quem está escolhendo.</h2><p class="lead">A demonstração mostra a estrutura visual. Nome, endereço, serviços, imagens, avaliações e links reais entram somente depois da conferência com o cliente.</p></div>
-        <div class="feature-grid">
-          <article class="feature"><div class="feature-no">01 / CONTEXTO</div><h3>Posicionamento local</h3><p>Mensagem curta sobre quem atende, em qual região e qual problema resolve.</p></article>
-          <article class="feature"><div class="feature-no">02 / PROVA</div><h3>Serviços organizados</h3><p>Informação hierarquizada para a pessoa encontrar o que procura sem percorrer um catálogo confuso.</p></article>
-          <article class="feature"><div class="feature-no">03 / CONTATO</div><h3>Próximo passo visível</h3><p>Botões e caminhos de contato com texto claro, sem obrigar o visitante a adivinhar o que fazer.</p></article>
+        <div class="section-head">
+          <div class="kicker">Estrutura do modelo</div>
+          <h2>Menos distração. Mais clareza para quem está escolhendo.</h2>
+          <p class="lead">A demonstração mostra a estrutura visual. Nome, endereço, serviços, imagens, avaliações e links reais entram somente depois da conferência com o cliente.</p>
+        </div>
+        <div class="feature-grid rise">
+          <article class="feature">
+            <div>
+              <span class="feature-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <h3>Posicionamento local</h3>
+            </div>
+            <p>Mensagem curta sobre quem atende, em qual região e qual problema resolve. É a primeira coisa que a pessoa lê e a que decide se ela continua.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h9"/></svg></span>
+            <h3>Serviços organizados</h3>
+            <p>Hierarquia clara para encontrar o que procura sem percorrer um catálogo confuso.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12.3a8.2 8.2 0 01-11.9 7.3L4 21l1.5-4.4A8.2 8.2 0 1120.5 12.3z"/></svg></span>
+            <h3>Próximo passo visível</h3>
+            <p>Botões e caminhos de contato com texto claro, sem obrigar o visitante a adivinhar.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="preview">
       <div class="wrap preview-grid">
-        <div><h2>Do mapa à recepção, sem perder a identidade do negócio.</h2><ul class="service-list"><li><span class="check">01</span><span><strong>Perfil local:</strong> links e informações públicas conferidos.</span></li><li><span class="check">02</span><span><strong>Serviços:</strong> páginas e chamadas organizadas por intenção.</span></li><li><span class="check">03</span><span><strong>Contato:</strong> WhatsApp, telefone ou formulário definido pelo negócio.</span></li><li><span class="check">04</span><span><strong>Medição:</strong> eventos importantes documentados antes de publicar.</span></li></ul></div>
-        <aside class="booking-card"><h3>Quer adaptar este modelo?</h3><p>Envie o nome do negócio, cidade, segmento e objetivo. A NiceByte começa pelo diagnóstico da presença local e apresenta o próximo passo com evidências.</p><a class="button button-dark" href="mailto:contato@nicebyte.ia.br?subject=Quero%20adaptar%20o%20modelo%20NiceByte">Falar com a NiceByte</a><a class="button button-outline" href="https://wa.me/5511913284876?text=Quero%20adaptar%20o%20modelo%20de%20landing%20da%20NiceByte." target="_blank" rel="noopener noreferrer">Abrir conversa no WhatsApp</a><p class="demo-disclaimer">Demonstração NiceByte. A página não representa uma clínica real e não contém depoimentos ou dados de atendimento reais.</p></aside>
+        <div>
+          <h2>Do mapa à recepção, sem perder a identidade do negócio.</h2>
+          <ul class="service-list rise">
+            <li>
+              <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>
+              <span><strong>Perfil local:</strong> links e informações públicas conferidos.</span>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h9"/></svg></span>
+              <span><strong>Serviços:</strong> páginas e chamadas organizadas por intenção.</span>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12.3a8.2 8.2 0 01-11.9 7.3L4 21l1.5-4.4A8.2 8.2 0 1120.5 12.3z"/></svg></span>
+              <span><strong>Contato:</strong> WhatsApp, telefone ou formulário definido pelo negócio.</span>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8.5 16v-4"/><path d="M13 16V8.5"/><path d="M17.5 16v-6"/></svg></span>
+              <span><strong>Medição:</strong> eventos importantes documentados antes de publicar.</span>
+            </li>
+          </ul>
+        </div>
+        <aside class="booking-card">
+          <h3>Quer adaptar este modelo?</h3>
+          <p>Envie o nome do negócio, cidade, segmento e objetivo. A NiceByte começa pelo diagnóstico da presença local e apresenta o próximo passo com evidências.</p>
+          <a class="button button-dark" href="mailto:contato@nicebyte.ia.br?subject=Quero%20adaptar%20o%20modelo%20NiceByte">Falar com a NiceByte</a>
+          <a class="button button-outline" href="https://wa.me/5511913284876?text=Quero%20adaptar%20o%20modelo%20de%20landing%20da%20NiceByte." target="_blank" rel="noopener noreferrer">Abrir conversa no WhatsApp</a>
+          <div class="qr-row">
+            <span class="qr-tile">
+              <img src="/assets/qr-demo.svg" width="92" height="92" alt="QR Code que abre o formulário de solicitação do diagnóstico">
+              <span>Aponte a câmera</span>
+            </span>
+            <p><b>Prefere pelo celular?</b> O código abre o formulário já marcado como vindo desta demonstração.</p>
+          </div>
+          <p class="demo-disclaimer">Demonstração NiceByte. A página não representa uma clínica real e não contém depoimentos ou dados de atendimento reais.</p>
+        </aside>
       </div>
     </section>
 
     <section class="final">
-      <div class="wrap"><h2>Uma boa página começa com uma leitura honesta do que já existe.</h2><p>Conheça o método completo de SEO Local e solicite uma análise para o seu negócio.</p><div class="actions"><a class="button button-dark" style="background:#d7bd99;color:#1b2824" href="/seo-local/?origem=demo-estetica#solicitar">Solicitar diagnóstico</a><a class="button button-outline" href="/seo-local/">Conhecer SEO Local</a></div></div>
+      <div class="wrap">
+        <h2>Uma boa página começa com uma leitura honesta do que já existe.</h2>
+        <p>Conheça o método completo de SEO Local e solicite uma análise para o seu negócio.</p>
+        <div class="actions">
+          <a class="button button-dark" style="background:#d7bd99;color:#1b2824" href="/seo-local/solicitar/?o=demo-final">Solicitar diagnóstico</a>
+          <a class="button button-outline" href="/seo-local/">Conhecer SEO Local</a>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer><div class="wrap foot"><span>Ambiente de Demonstração NiceByte Solutions</span><span><a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a> • <a href="/">nicebyte.ia.br</a></span></div></footer>
+
+  <script>
+    // Sem JS a página fica inteira e visível: a classe .js é o que liga a entrada em cena.
+    document.documentElement.classList.add('js');
+    (function () {
+      var alvos = document.querySelectorAll('section:not(.hero) .rise');
+      if (!('IntersectionObserver' in window)) {
+        Array.prototype.forEach.call(alvos, function (el) { el.classList.add('in'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -12% 0px' });
+      Array.prototype.forEach.call(alvos, function (el) { obs.observe(el); });
+    })();
+  </script>
 </body>
 </html>
