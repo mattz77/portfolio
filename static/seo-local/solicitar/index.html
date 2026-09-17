@@ -11,14 +11,14 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nicebyte.ia.br/seo-local/solicitar/">
   <meta property="og:title" content="Solicitar diagnóstico de presença local | NiceByte">
-  <meta property="og:description" content="Informe o negócio, a cidade e o canal de contato. O diagnóstico usa apenas evidências públicas.">
+  <meta property="og:description" content="Informe o CNPJ e o resto se preenche sozinho. O diagnóstico usa apenas evidências públicas.">
   <meta property="og:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Solicitar diagnóstico de presença local | NiceByte">
-  <meta name="twitter:description" content="Entrada voluntária, com consentimento explícito e sem pedir senha de nenhuma conta.">
+  <meta name="twitter:description" content="Informe o CNPJ e o resto se preenche sozinho.">
   <meta name="twitter:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
   <style>
     :root {
@@ -40,30 +40,51 @@
     .back { display: inline-flex; align-items: center; min-height: 44px; color: #d7e0eb; text-decoration: none; font-size: .9rem; }
     .back:hover { color: #fff; }
 
-    main { padding: 56px 0 84px; }
+    main { padding: 52px 0 84px; }
     h1, h2, h3 { margin: 0; line-height: 1.14; letter-spacing: -.03em; color: var(--navy); }
     h1 { max-width: 700px; font-size: clamp(2.05rem, 4.2vw, 2.9rem); }
     .intro { max-width: 640px; margin: 18px 0 0; color: var(--muted); font-size: 1.04rem; }
-    .cols { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 34px; margin-top: 38px; align-items: start; }
+    .cols { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 34px; margin-top: 36px; align-items: start; }
 
     form { padding: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
-    fieldset { margin: 0 0 8px; padding: 0; border: 0; }
+    fieldset { margin: 0; padding: 0; border: 0; }
     legend { padding: 0; color: var(--navy); font-size: .76rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
     .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-    .field { display: grid; gap: 6px; }
+    .field { display: grid; gap: 6px; align-content: start; }
     .field.full { grid-column: 1 / -1; }
     label { font-size: .88rem; font-weight: 650; color: var(--navy); }
     label .opt { font-weight: 500; color: var(--muted); }
     .hint { font-size: .79rem; color: var(--muted); }
     input, select, textarea { width: 100%; min-height: 46px; padding: 11px 13px; font: inherit; font-size: .95rem; color: var(--ink); background: #fff; border: 1px solid #c8d1db; border-radius: 9px; }
     textarea { min-height: 86px; resize: vertical; }
-    input:invalid:not(:placeholder-shown), select:invalid { border-color: #dca99f; }
-    .sep { margin: 26px 0 0; padding-top: 22px; border-top: 1px solid var(--line); }
-    .consent { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; margin-top: 18px; padding: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
+    input[aria-invalid="true"], select[aria-invalid="true"] { border-color: #c2705f; background: #fffaf9; }
+    .erro { min-height: 0; font-size: .79rem; color: var(--crit); font-weight: 600; }
+    .preenchido { display: inline-flex; align-items: center; gap: 5px; font-size: .74rem; font-weight: 700; color: var(--ok); }
+
+    /* atalho do CNPJ */
+    .atalho { padding: 20px; background: var(--paper); border: 1px solid var(--line); border-radius: 13px; }
+    .atalho .linha { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: start; margin-top: 12px; }
+    .atalho p.pitch { margin: 8px 0 0; font-size: .87rem; color: var(--muted); }
+    .busca { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 16px; font: inherit; font-weight: 700; font-size: .9rem; color: #fff; background: var(--navy); border: 1px solid var(--navy); border-radius: 9px; cursor: pointer; transition: background .18s ease; }
+    .busca:hover { background: #1d3252; }
+    .busca[disabled] { opacity: .6; cursor: progress; }
+    .busca-status { margin: 10px 0 0; font-size: .84rem; min-height: 1.3em; }
+    .busca-status.err { color: var(--crit); font-weight: 650; }
+    .busca-status.ok { color: var(--ok); font-weight: 650; }
+    .busca-status.aviso { color: #8a5a10; font-weight: 650; }
+
+    .sep { margin: 24px 0 0; padding-top: 22px; border-top: 1px solid var(--line); }
+    .consent { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; margin-top: 18px; padding: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; cursor: pointer; }
     .consent input { width: 20px; min-height: 20px; height: 20px; margin-top: 3px; padding: 0; accent-color: var(--navy); }
     .consent span { font-size: .89rem; color: var(--muted); }
     .consent b { color: var(--navy); }
-    .send { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+    .progresso { display: grid; gap: 8px; margin-top: 22px; }
+    .barra { height: 6px; border-radius: 99px; background: #e4e9ef; overflow: hidden; }
+    .barra i { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--ok); transition: width .3s ease; }
+    .progresso span { font-size: .82rem; color: var(--muted); }
+
+    .send { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
     .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 17px; font: inherit; font-weight: 700; border-radius: 9px; border: 1px solid transparent; text-decoration: none; cursor: pointer; transition: background .18s ease, border-color .18s ease, transform .18s ease; }
     .button:active { transform: translateY(1px); }
     .button-primary { background: var(--navy); color: #fff; }
@@ -73,6 +94,9 @@
     .status { margin: 14px 0 0; font-size: .87rem; min-height: 1.4em; }
     .status.err { color: var(--crit); font-weight: 650; }
     .status.ok { color: var(--ok); font-weight: 650; }
+    .rascunho { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; font-size: .8rem; color: var(--muted); }
+    .rascunho button { min-height: 44px; padding: 8px 13px; font: inherit; font-size: .8rem; color: var(--navy); background: #fff; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+    .rascunho button:hover { border-color: var(--navy); }
 
     aside { display: grid; gap: 16px; position: sticky; top: 20px; }
     .panel { padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
@@ -97,11 +121,14 @@
     }
     @media (max-width: 620px) {
       .wrap { width: min(var(--max), calc(100% - 28px)); }
-      main { padding: 36px 0 64px; }
+      main { padding: 34px 0 64px; }
       .fields { grid-template-columns: 1fr; }
       form { padding: 20px; }
+      .atalho { padding: 16px; }
+      .atalho .linha { grid-template-columns: 1fr; }
+      .busca { width: 100%; }
       .send { flex-direction: column; }
-      .button { width: 100%; }
+      .send .button { width: 100%; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
@@ -119,36 +146,66 @@
 
   <main>
     <div class="wrap">
-      <h1>Conte o básico do negócio. O resto a gente lê nas fontes públicas.</h1>
+      <h1>Informe o CNPJ e o resto se preenche sozinho.</h1>
       <p class="intro">São os dados mínimos para localizar o estabelecimento sem ambiguidade e devolver o diagnóstico no canal que você escolher. Nada é enviado sozinho: você revisa o resumo e decide como mandar.</p>
 
       <div class="cols">
-        <form id="form" novalidate>
-          <fieldset>
+        <form id="form" novalidate autocomplete="on">
+          <fieldset class="atalho">
+            <legend>Atalho</legend>
+            <p class="pitch">Com o CNPJ a gente busca nome, ramo de atividade e endereço na base pública da Receita Federal e preenche o formulário. Você confere e corrige o que quiser.</p>
+            <div class="linha">
+              <div class="field">
+                <label for="cnpj">CNPJ <span class="opt">(opcional)</span></label>
+                <input id="cnpj" name="cnpj" type="text" inputmode="numeric" autocomplete="off" placeholder="00.000.000/0000-00" maxlength="18" aria-describedby="cnpj-erro">
+                <p class="erro" id="cnpj-erro"></p>
+              </div>
+              <button class="busca" type="button" id="buscar-cnpj">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+                Buscar
+              </button>
+            </div>
+            <p class="busca-status" id="cnpj-status" role="status" aria-live="polite"></p>
+          </fieldset>
+
+          <fieldset class="sep">
             <legend>O estabelecimento</legend>
             <div class="fields">
               <div class="field full">
                 <label for="negocio">Nome do negócio</label>
-                <input id="negocio" name="negocio" type="text" required autocomplete="organization" placeholder="Como aparece no Google">
+                <input id="negocio" name="negocio" type="text" required autocomplete="organization" placeholder="Como aparece no Google" aria-describedby="negocio-erro">
                 <span class="hint">Escreva exatamente como está no perfil, inclusive a unidade.</span>
+                <p class="erro" id="negocio-erro"></p>
               </div>
               <div class="field">
                 <label for="cidade">Cidade e bairro</label>
-                <input id="cidade" name="cidade" type="text" required autocomplete="address-level2" placeholder="São Paulo, Vila Mariana">
+                <input id="cidade" name="cidade" type="text" required autocomplete="address-level2" placeholder="São Paulo, Vila Mariana" aria-describedby="cidade-erro">
+                <p class="erro" id="cidade-erro"></p>
               </div>
               <div class="field">
+                <label for="cep">CEP <span class="opt">(preenche a cidade)</span></label>
+                <div class="linha" style="margin-top:0">
+                  <input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9">
+                  <button class="busca" type="button" id="buscar-cep" aria-label="Buscar endereço pelo CEP">Buscar</button>
+                </div>
+                <p class="busca-status" id="cep-status" role="status" aria-live="polite"></p>
+              </div>
+              <div class="field full">
                 <label for="segmento">Segmento</label>
-                <input id="segmento" name="segmento" type="text" required placeholder="Barbearia, clínica, restaurante">
+                <input id="segmento" name="segmento" type="text" required placeholder="Barbearia, clínica, restaurante" aria-describedby="segmento-erro">
                 <span class="hint">É com esse termo que a busca local é reproduzida.</span>
+                <p class="erro" id="segmento-erro"></p>
               </div>
               <div class="field full">
                 <label for="maps">Link do perfil no Google Maps <span class="opt">(opcional, mas encurta tudo)</span></label>
-                <input id="maps" name="maps" type="url" inputmode="url" placeholder="https://maps.app.goo.gl/...">
+                <input id="maps" name="maps" type="url" inputmode="url" placeholder="https://maps.app.goo.gl/..." aria-describedby="maps-erro">
                 <span class="hint">Sem o link, o perfil é procurado pelo nome mais a cidade. Com ele, não há chance de trocar de negócio.</span>
+                <p class="erro" id="maps-erro"></p>
               </div>
               <div class="field full">
                 <label for="site">Site atual <span class="opt">(opcional)</span></label>
-                <input id="site" name="site" type="url" inputmode="url" placeholder="https://">
+                <input id="site" name="site" type="url" inputmode="url" placeholder="https://" aria-describedby="site-erro">
+                <p class="erro" id="site-erro"></p>
               </div>
             </div>
           </fieldset>
@@ -158,19 +215,22 @@
             <div class="fields">
               <div class="field">
                 <label for="nome">Seu nome</label>
-                <input id="nome" name="nome" type="text" required autocomplete="name">
+                <input id="nome" name="nome" type="text" required autocomplete="name" aria-describedby="nome-erro">
+                <p class="erro" id="nome-erro"></p>
               </div>
               <div class="field">
                 <label for="whatsapp">WhatsApp com DDD</label>
-                <input id="whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000">
+                <input id="whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" maxlength="16" aria-describedby="whatsapp-erro">
+                <p class="erro" id="whatsapp-erro"></p>
               </div>
               <div class="field full">
                 <label for="email">E-mail</label>
-                <input id="email" name="email" type="email" required autocomplete="email" placeholder="voce@empresa.com.br">
+                <input id="email" name="email" type="email" required autocomplete="email" placeholder="voce@empresa.com.br" aria-describedby="email-erro">
+                <p class="erro" id="email-erro"></p>
               </div>
               <div class="field full">
                 <label for="objetivo">O que você quer que melhore</label>
-                <select id="objetivo" name="objetivo" required>
+                <select id="objetivo" name="objetivo" required aria-describedby="objetivo-erro">
                   <option value="">Escolha uma opção</option>
                   <option>Aparecer no Top 3 do “perto de mim”</option>
                   <option>Receber mais ligações</option>
@@ -179,6 +239,7 @@
                   <option>Entender por que os concorrentes aparecem antes</option>
                   <option>Outro, explico abaixo</option>
                 </select>
+                <p class="erro" id="objetivo-erro"></p>
               </div>
               <div class="field full">
                 <label for="contexto">Alguma coisa que a gente precisa saber <span class="opt">(opcional)</span></label>
@@ -192,6 +253,11 @@
             <span><b>Autorizo a NiceByte a ler as fontes públicas deste negócio e a me responder</b> no WhatsApp e no e-mail informados. Posso encerrar a qualquer momento respondendo SAIR. Nenhuma senha ou acesso administrativo é solicitado.</span>
           </label>
 
+          <div class="progresso">
+            <div class="barra" role="progressbar" aria-labelledby="progresso-txt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barra"><i id="barra-fill"></i></div>
+            <span id="progresso-txt">Faltam 8 itens para enviar.</span>
+          </div>
+
           <div class="send">
             <button class="button button-primary" type="button" id="via-whatsapp">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12.3a8.2 8.2 0 01-11.9 7.3L4 21l1.5-4.4A8.2 8.2 0 1120.5 12.3z"/></svg>
@@ -204,6 +270,10 @@
             <button class="button button-ghost" type="button" id="copiar">Copiar resumo</button>
           </div>
           <p class="status" id="status" role="status" aria-live="polite"></p>
+          <p class="rascunho" id="rascunho" hidden>
+            <span id="rascunho-txt">Rascunho guardado neste navegador.</span>
+            <button type="button" id="limpar-rascunho">Limpar rascunho</button>
+          </p>
         </form>
 
         <aside>
@@ -226,6 +296,12 @@
             <p class="note">Nenhum acesso administrativo ao Google é pedido em momento algum desta etapa.</p>
           </div>
 
+          <div class="panel">
+            <h2>Sobre as consultas de CNPJ e CEP</h2>
+            <p class="note">As buscas só acontecem quando você clica em Buscar. Elas vão para a BrasilAPI, que lê a base pública da Receita Federal e a dos Correios. <b>Sai apenas o número consultado.</b> Seu nome, telefone e e-mail nunca saem desta página.</p>
+            <p class="note">Enquanto você digita, um rascunho fica guardado só no seu navegador, para você não perder o preenchimento. Ele some ao enviar ou ao clicar em limpar.</p>
+          </div>
+
           <div class="resumo">
             <h3>Resumo que será enviado</h3>
             <pre id="preview">Preencha o formulário para ver o resumo.</pre>
@@ -246,73 +322,333 @@
     (function () {
       var WHATS = '5511913284876';
       var MAIL = 'contato@nicebyte.ia.br';
+      var CHAVE = 'nicebyte:solicitar:rascunho';
+
       var form = document.getElementById('form');
       var status = document.getElementById('status');
       var preview = document.getElementById('preview');
 
-      // Origem só para saber por onde a pessoa chegou (qr, demo, indicação). Sem dado pessoal na URL.
+      // Origem só para saber por onde a pessoa chegou. Sem dado pessoal na URL.
       var origem = (new URLSearchParams(location.search).get('o') || 'site').slice(0, 24);
 
       var CAMPOS = [
-        ['negocio', 'Negócio'],
-        ['cidade', 'Cidade e bairro'],
-        ['segmento', 'Segmento'],
-        ['maps', 'Perfil no Google Maps'],
-        ['site', 'Site atual'],
-        ['nome', 'Contato'],
-        ['whatsapp', 'WhatsApp'],
-        ['email', 'E-mail'],
-        ['objetivo', 'Objetivo'],
-        ['contexto', 'Observações']
+        ['negocio', 'Negócio'], ['cnpj', 'CNPJ'], ['cidade', 'Cidade e bairro'],
+        ['segmento', 'Segmento'], ['maps', 'Perfil no Google Maps'], ['site', 'Site atual'],
+        ['nome', 'Contato'], ['whatsapp', 'WhatsApp'], ['email', 'E-mail'],
+        ['objetivo', 'Objetivo'], ['contexto', 'Observações']
       ];
+      var OBRIGATORIOS = ['negocio', 'cidade', 'segmento', 'nome', 'whatsapp', 'email', 'objetivo'];
 
-      function valor(id) {
-        var el = document.getElementById(id);
-        return el ? String(el.value || '').trim() : '';
+      function el(id) { return document.getElementById(id); }
+      function val(id) { var e = el(id); return e ? String(e.value || '').trim() : ''; }
+      function digitos(s) { return String(s || '').replace(/\D+/g, ''); }
+
+      /* ---------- mascaras ---------- */
+      function mascaraCnpj(v) {
+        var d = digitos(v).slice(0, 14);
+        if (d.length > 12) return d.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2}).*/, '$1.$2.$3/$4-$5');
+        if (d.length > 8) return d.replace(/^(\d{2})(\d{3})(\d{3})(\d{0,4})/, '$1.$2.$3/$4');
+        if (d.length > 5) return d.replace(/^(\d{2})(\d{3})(\d{0,3})/, '$1.$2.$3');
+        if (d.length > 2) return d.replace(/^(\d{2})(\d{0,3})/, '$1.$2');
+        return d;
+      }
+      function mascaraCep(v) {
+        var d = digitos(v).slice(0, 8);
+        return d.length > 5 ? d.slice(0, 5) + '-' + d.slice(5) : d;
+      }
+      function mascaraTel(v) {
+        var d = digitos(v).slice(0, 11);
+        if (d.length > 10) return d.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+        if (d.length > 6) return d.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+        if (d.length > 2) return d.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+        if (d.length > 0) return '(' + d;
+        return d;
+      }
+      function ligarMascara(id, fn) {
+        var e = el(id);
+        e.addEventListener('input', function () {
+          var antes = e.value;
+          var depois = fn(antes);
+          if (antes !== depois) {
+            var fim = e.selectionStart === antes.length;
+            e.value = depois;
+            if (fim) { try { e.setSelectionRange(depois.length, depois.length); } catch (_) {} }
+          }
+          salvar();
+          atualizar();
+        });
       }
 
+      /* ---------- validacao ---------- */
+      function cnpjValido(v) {
+        var d = digitos(v);
+        if (d.length !== 14 || /^(\d)\1{13}$/.test(d)) return false;
+        function dv(base) {
+          var peso = base.length === 12 ? 5 : 6, soma = 0;
+          for (var i = 0; i < base.length; i++) {
+            soma += parseInt(base[i], 10) * peso;
+            peso = peso === 2 ? 9 : peso - 1;
+          }
+          var r = soma % 11;
+          return r < 2 ? 0 : 11 - r;
+        }
+        return dv(d.slice(0, 12)) === +d[12] && dv(d.slice(0, 13)) === +d[13];
+      }
+      function emailValido(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      function telValido(v) { var d = digitos(v); return d.length === 10 || d.length === 11; }
+      function urlValida(v) {
+        try { var u = new URL(v); return u.protocol === 'http:' || u.protocol === 'https:'; }
+        catch (_) { return false; }
+      }
+
+      var REGRAS = {
+        negocio: function (v) { return v ? '' : 'Informe o nome do negócio.'; },
+        cidade: function (v) { return v ? '' : 'Informe ao menos a cidade.'; },
+        segmento: function (v) { return v ? '' : 'Informe o segmento.'; },
+        nome: function (v) { return v ? '' : 'Informe o seu nome.'; },
+        objetivo: function (v) { return v ? '' : 'Escolha uma opção.'; },
+        whatsapp: function (v) {
+          if (!v) return 'Informe o WhatsApp com DDD.';
+          return telValido(v) ? '' : 'O número precisa de DDD e 8 ou 9 dígitos.';
+        },
+        email: function (v) {
+          if (!v) return 'Informe o e-mail.';
+          return emailValido(v) ? '' : 'Esse e-mail não parece válido.';
+        },
+        cnpj: function (v) {
+          if (!v) return '';
+          return cnpjValido(v) ? '' : 'CNPJ inválido. Confira os números.';
+        },
+        maps: function (v) { return !v || urlValida(v) ? '' : 'Cole o endereço completo, começando com https://'; },
+        site: function (v) { return !v || urlValida(v) ? '' : 'Cole o endereço completo, começando com https://'; }
+      };
+
+      function marcar(id, msg) {
+        var campo = el(id), alvo = el(id + '-erro');
+        if (alvo) alvo.textContent = msg || '';
+        if (campo) {
+          if (msg) campo.setAttribute('aria-invalid', 'true');
+          else campo.removeAttribute('aria-invalid');
+        }
+      }
+      function checar(id) {
+        var regra = REGRAS[id];
+        if (!regra) return '';
+        var msg = regra(val(id));
+        marcar(id, msg);
+        return msg;
+      }
+
+      /* ---------- consulta CNPJ e CEP ---------- */
+      function titulo(s) {
+        var pequenas = ['de', 'da', 'do', 'das', 'dos', 'e'];
+        return String(s || '').toLowerCase().split(/\s+/).map(function (p, i) {
+          if (i && pequenas.indexOf(p) >= 0) return p;
+          return p.charAt(0).toUpperCase() + p.slice(1);
+        }).join(' ').trim();
+      }
+      // Só escreve onde a pessoa ainda não escreveu nada: consulta não sobrescreve digitação.
+      function preencherSeVazio(id, valor) {
+        if (!valor) return false;
+        var e = el(id);
+        if (!e || String(e.value || '').trim()) return false;
+        e.value = valor;
+        return true;
+      }
+      function aviso(alvo, classe, texto) {
+        var p = el(alvo);
+        p.className = 'busca-status' + (classe ? ' ' + classe : '');
+        p.textContent = texto;
+      }
+      function comTempo(url, ms) {
+        var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+        var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, ms || 9000);
+        return fetch(url, ctrl ? { signal: ctrl.signal } : undefined)
+          .then(function (r) { clearTimeout(t); return r; }, function (e) { clearTimeout(t); throw e; });
+      }
+
+      function buscarCep(cep, alvoStatus) {
+        return comTempo('https://brasilapi.com.br/api/cep/v2/' + digitos(cep))
+          .then(function (r) {
+            if (r.status === 404) throw new Error('nao-achou');
+            if (!r.ok) throw new Error('falhou');
+            return r.json();
+          })
+          .then(function (d) {
+            var partes = [];
+            if (d.city) partes.push(d.city);
+            if (d.neighborhood) partes.push(d.neighborhood);
+            var texto = partes.join(', ');
+            var mudou = preencherSeVazio('cidade', texto);
+            checar('cidade');
+            salvar(); atualizar();
+            if (alvoStatus) {
+              aviso(alvoStatus, 'ok', mudou ? 'Cidade e bairro preenchidos.' : 'CEP encontrado: ' + texto + '. Mantive o que você já tinha escrito.');
+            }
+            return { mudou: mudou, texto: texto };
+          });
+      }
+
+      el('buscar-cep').addEventListener('click', function () {
+        var cep = val('cep');
+        if (digitos(cep).length !== 8) { aviso('cep-status', 'err', 'O CEP precisa ter 8 dígitos.'); el('cep').focus(); return; }
+        aviso('cep-status', '', 'Consultando…');
+        buscarCep(cep, 'cep-status').catch(function (e) {
+          aviso('cep-status', 'err', e && e.message === 'nao-achou' ? 'CEP não encontrado.' : 'Não deu para consultar agora. Preencha à mão.');
+        });
+      });
+
+      el('buscar-cnpj').addEventListener('click', function () {
+        var cnpj = val('cnpj');
+        if (!cnpj) { aviso('cnpj-status', 'err', 'Digite o CNPJ para buscar.'); el('cnpj').focus(); return; }
+        if (!cnpjValido(cnpj)) { checar('cnpj'); aviso('cnpj-status', 'err', 'CNPJ inválido. Confira os números.'); el('cnpj').focus(); return; }
+        marcar('cnpj', '');
+        var botao = el('buscar-cnpj');
+        botao.disabled = true;
+        aviso('cnpj-status', '', 'Consultando a base pública…');
+
+        comTempo('https://brasilapi.com.br/api/cnpj/v1/' + digitos(cnpj))
+          .then(function (r) {
+            if (r.status === 404) throw new Error('nao-achou');
+            if (r.status === 429) throw new Error('muitas');
+            if (!r.ok) throw new Error('falhou');
+            return r.json();
+          })
+          .then(function (d) {
+            var postos = [];
+            if (preencherSeVazio('negocio', titulo(d.nome_fantasia || d.razao_social))) postos.push('nome');
+            if (preencherSeVazio('segmento', titulo(d.cnae_fiscal_descricao))) postos.push('segmento');
+            var tel = digitos(d.ddd_telefone_1 || '');
+            if (tel.length >= 10 && preencherSeVazio('whatsapp', mascaraTel(tel))) postos.push('telefone');
+            if (d.cep && !val('cep')) el('cep').value = mascaraCep(d.cep);
+
+            OBRIGATORIOS.forEach(checar);
+            salvar(); atualizar();
+
+            // O CEP traz cidade e bairro acentuados, que o cadastro da Receita não tem.
+            var depois = d.cep
+              ? buscarCep(d.cep, null).then(function (r) { if (r && r.mudou) postos.push('cidade'); }, function () {
+                  if (preencherSeVazio('cidade', titulo(d.municipio) + (d.bairro ? ', ' + titulo(d.bairro) : ''))) postos.push('cidade');
+                  checar('cidade'); salvar(); atualizar();
+                })
+              : Promise.resolve();
+
+            return depois.then(function () {
+              var inativa = d.descricao_situacao_cadastral && d.descricao_situacao_cadastral.toUpperCase() !== 'ATIVA';
+              if (!postos.length) {
+                aviso('cnpj-status', 'ok', 'Encontrado. Você já tinha preenchido tudo, então não mexi em nada.');
+              } else if (inativa) {
+                aviso('cnpj-status', 'aviso', 'Preenchi ' + postos.join(', ') + '. Atenção: a situação cadastral consta como ' + titulo(d.descricao_situacao_cadastral) + '.');
+              } else {
+                aviso('cnpj-status', 'ok', 'Preenchi ' + postos.join(', ') + '. Confira e corrija o que precisar.');
+              }
+            });
+          })
+          .catch(function (e) {
+            var m = e && e.message;
+            aviso('cnpj-status', 'err',
+              m === 'nao-achou' ? 'CNPJ não encontrado na base pública. Preencha à mão.'
+              : m === 'muitas' ? 'A base pública limitou as consultas. Tente daqui a pouco ou preencha à mão.'
+              : 'Não deu para consultar agora. Preencha à mão, funciona igual.');
+          })
+          .then(function () { botao.disabled = false; });
+      });
+
+      /* ---------- resumo, progresso e rascunho ---------- */
       function montarResumo() {
         var linhas = ['Solicitação de diagnóstico de presença local', ''];
         CAMPOS.forEach(function (c) {
-          var v = valor(c[0]);
-          if (v) { linhas.push(c[1] + ': ' + v); }
+          var v = val(c[0]);
+          if (v) linhas.push(c[1] + ': ' + v);
         });
         linhas.push('Origem: ' + origem);
-        linhas.push('Consentimento: ' + (document.getElementById('consent').checked ? 'autorizado pelo solicitante' : 'pendente'));
+        linhas.push('Consentimento: ' + (el('consent').checked ? 'autorizado pelo solicitante' : 'pendente'));
         return linhas.join('\n');
-      }
-
-      function atualizar() {
-        var texto = montarResumo();
-        preview.textContent = valor('negocio') ? texto : 'Preencha o formulário para ver o resumo.';
       }
 
       function faltando() {
         var falta = [];
-        ['negocio', 'cidade', 'segmento', 'nome', 'whatsapp', 'email', 'objetivo'].forEach(function (id) {
-          if (!valor(id)) {
+        OBRIGATORIOS.forEach(function (id) {
+          if (REGRAS[id](val(id))) {
             var lab = document.querySelector('label[for="' + id + '"]');
-            falta.push(lab ? lab.textContent.replace(/\(opcional.*/, '').trim() : id);
+            falta.push(lab ? lab.textContent.replace(/\(.*?\)/g, '').trim() : id);
           }
         });
-        if (!document.getElementById('consent').checked) { falta.push('a autorização'); }
+        if (!el('consent').checked) falta.push('a autorização');
         return falta;
       }
 
+      function atualizar() {
+        preview.textContent = val('negocio') ? montarResumo() : 'Preencha o formulário para ver o resumo.';
+        var total = OBRIGATORIOS.length + 1;
+        var falta = faltando().length;
+        var pct = Math.round(((total - falta) / total) * 100);
+        el('barra-fill').style.width = pct + '%';
+        el('barra').setAttribute('aria-valuenow', String(pct));
+        el('progresso-txt').textContent = falta === 0
+          ? 'Tudo preenchido. Pode enviar.'
+          : falta === 1 ? 'Falta 1 item para enviar.' : 'Faltam ' + falta + ' itens para enviar.';
+      }
+
+      // Rascunho fica só neste navegador. Consentimento nunca é guardado: tem de ser dado de novo.
+      function salvar() {
+        try {
+          var dados = {};
+          CAMPOS.forEach(function (c) { if (val(c[0])) dados[c[0]] = val(c[0]); });
+          if (val('cep')) dados.cep = val('cep');
+          if (Object.keys(dados).length) {
+            localStorage.setItem(CHAVE, JSON.stringify(dados));
+            el('rascunho').hidden = false;
+          }
+        } catch (_) {}
+      }
+      function restaurar() {
+        try {
+          var bruto = localStorage.getItem(CHAVE);
+          if (!bruto) return;
+          var dados = JSON.parse(bruto);
+          Object.keys(dados).forEach(function (k) {
+            var e = el(k);
+            if (e && !String(e.value || '').trim()) e.value = dados[k];
+          });
+          el('rascunho').hidden = false;
+          el('rascunho-txt').textContent = 'Recuperamos o rascunho guardado neste navegador.';
+        } catch (_) {}
+      }
+      function apagarRascunho() {
+        try { localStorage.removeItem(CHAVE); } catch (_) {}
+        el('rascunho').hidden = true;
+      }
+      el('limpar-rascunho').addEventListener('click', function () {
+        CAMPOS.forEach(function (c) { var e = el(c[0]); if (e) e.value = ''; });
+        el('cep').value = '';
+        el('consent').checked = false;
+        OBRIGATORIOS.concat(['cnpj', 'maps', 'site']).forEach(function (id) { marcar(id, ''); });
+        aviso('cnpj-status', '', ''); aviso('cep-status', '', '');
+        apagarRascunho();
+        status.className = 'status';
+        status.textContent = 'Rascunho apagado.';
+        atualizar();
+      });
+
+      /* ---------- envio ---------- */
       function validar() {
+        var primeiroRuim = null;
+        OBRIGATORIOS.concat(['cnpj', 'maps', 'site']).forEach(function (id) {
+          if (checar(id) && !primeiroRuim) primeiroRuim = id;
+        });
         var falta = faltando();
         if (falta.length) {
           status.className = 'status err';
           status.textContent = 'Falta preencher: ' + falta.join(', ') + '.';
-          var primeiro = form.querySelector('[required]:invalid, #consent:not(:checked)');
-          if (primeiro) { primeiro.focus(); }
+          var foco = primeiroRuim ? el(primeiroRuim) : (!el('consent').checked ? el('consent') : null);
+          if (foco) foco.focus();
           return false;
         }
-        var email = valor('email');
-        if (email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+        if (primeiroRuim) {
           status.className = 'status err';
-          status.textContent = 'O e-mail não parece válido.';
-          document.getElementById('email').focus();
+          status.textContent = 'Confira os campos marcados.';
+          el(primeiroRuim).focus();
           return false;
         }
         status.className = 'status';
@@ -320,38 +656,59 @@
         return true;
       }
 
-      form.addEventListener('input', atualizar);
-      form.addEventListener('change', atualizar);
-
-      document.getElementById('via-whatsapp').addEventListener('click', function () {
-        if (!validar()) { return; }
+      el('via-whatsapp').addEventListener('click', function () {
+        if (!validar()) return;
         status.className = 'status ok';
         status.textContent = 'Abrindo o WhatsApp com o resumo pronto. Confira e toque em enviar.';
+        apagarRascunho();
         window.open('https://wa.me/' + WHATS + '?text=' + encodeURIComponent(montarResumo()), '_blank', 'noopener');
       });
 
-      document.getElementById('via-email').addEventListener('click', function () {
-        if (!validar()) { return; }
+      el('via-email').addEventListener('click', function () {
+        if (!validar()) return;
         status.className = 'status ok';
         status.textContent = 'Abrindo o seu programa de e-mail com o resumo pronto.';
+        apagarRascunho();
         location.href = 'mailto:' + MAIL
-          + '?subject=' + encodeURIComponent('Diagnóstico de presença local: ' + valor('negocio'))
+          + '?subject=' + encodeURIComponent('Diagnóstico de presença local: ' + val('negocio'))
           + '&body=' + encodeURIComponent(montarResumo());
       });
 
-      document.getElementById('copiar').addEventListener('click', function () {
+      el('copiar').addEventListener('click', function () {
         var texto = montarResumo();
-        function avisar(ok) {
+        function avisarCopia(ok) {
           status.className = 'status ' + (ok ? 'ok' : 'err');
           status.textContent = ok ? 'Resumo copiado.' : 'Não foi possível copiar. Selecione o texto do resumo ao lado.';
         }
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(texto).then(function () { avisar(true); }, function () { avisar(false); });
+          navigator.clipboard.writeText(texto).then(function () { avisarCopia(true); }, function () { avisarCopia(false); });
         } else {
-          avisar(false);
+          avisarCopia(false);
         }
       });
 
+      /* ---------- ligacao ---------- */
+      ligarMascara('cnpj', mascaraCnpj);
+      ligarMascara('cep', mascaraCep);
+      ligarMascara('whatsapp', mascaraTel);
+
+      Object.keys(REGRAS).forEach(function (id) {
+        var e = el(id);
+        if (!e) return;
+        e.addEventListener('blur', function () { if (val(id)) checar(id); });
+        e.addEventListener('input', function () { if (el(id + '-erro') && el(id + '-erro').textContent) checar(id); });
+      });
+
+      form.addEventListener('input', function () { salvar(); atualizar(); });
+      form.addEventListener('change', function () { salvar(); atualizar(); });
+      el('cnpj').addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter') { ev.preventDefault(); el('buscar-cnpj').click(); }
+      });
+      el('cep').addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter') { ev.preventDefault(); el('buscar-cep').click(); }
+      });
+
+      restaurar();
       atualizar();
     })();
   </script>
