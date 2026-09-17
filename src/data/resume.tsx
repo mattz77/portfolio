@@ -5,6 +5,8 @@ import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Docker } from "@/components/ui/svgs/docker";
+import { MySQL } from "@/components/ui/svgs/mysql";
+import { Github } from "@/components/ui/svgs/github";
 import { Csharp } from "@/components/ui/svgs/csharp";
 import { DotNet } from "@/components/ui/svgs/dotnet";
 import { Azure } from "@/components/ui/svgs/azure";
@@ -41,6 +43,8 @@ export const DATA = {
     { name: "Supabase/Postgres", icon: Postgresql },
     { name: "TypeScript", icon: Typescript },
     { name: "Docker", icon: Docker },
+    { name: "MySQL", icon: MySQL },
+    { name: "GitHub", icon: Github },
     { name: "VBA / Microsoft 365", icons: [MicrosoftExcel, MicrosoftLogoMark] },
     { name: "IA em Desenvolvimento", icons: [ClaudeCode, CursorIde, GithubCopilot] },
   ] as SkillItem[],
@@ -49,7 +53,7 @@ export const DATA = {
     // Blog removido do dock temporariamente; rota /blog mantida
   ],
   contact: {
-    email: "",
+    email: "contato@nicebyte.ia.br",
     tel: "+55 11 91328-4876",
     whatsapp: "5511913284876",
     location: "São Paulo, SP - Brasil",
@@ -77,7 +81,7 @@ export const DATA = {
 
   work: [
     {
-      company: "CordenaAI",
+      company: "InMinds Technology",
       href: "#",
       badges: [],
       location: "Remoto",
@@ -103,6 +107,26 @@ export const DATA = {
   ],
 
   projects: [
+    {
+      slug: "llm-brain",
+      title: "LLM-Brain",
+      href: "#",
+      dates: "2026 - presente",
+      active: true,
+      description:
+        "Ecossistema de engenharia de agentes: memória compartilhada com handoff por checkpoint entre modelos (Claude e opencode), arquitetura hot/cold com busca exata e semântica (~12x mais barato iniciar sessão) e pipeline de cinco agentes (review, auditor cético, fix, verifier, CI-fix) com regra de evidência — achado sem prova é descartado. Auditoria de falha silenciosa com heartbeat, daemon 24/7 com self-deploy e agente no Telegram com tool-use.",
+      technologies: [
+        "Node.js",
+        "Agentes LLM",
+        "MCP",
+        "Claude",
+        "Busca semântica",
+        "CI/CD",
+      ],
+      links: [],
+      image: "",
+      video: "",
+    },
     {
       slug: "coordenaai",
       title: "CordenaAI",

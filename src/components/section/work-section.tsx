@@ -81,7 +81,7 @@ export default function WorkSection() {
             </div>
           </AccordionTrigger>
           <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
-            {companyKey === "CordenaAI" ? t("work.coordenaai.description") : companyKey === "TECNUN (Cliente: Banco Bradesco)" ? t("work.tecnun.description") : work.description}
+            {companyKey === "InMinds Technology" ? t("work.coordenaai.description") : companyKey === "TECNUN (Cliente: Banco Bradesco)" ? t("work.tecnun.description") : work.description}
           </AccordionContent>
         </AccordionItem>
         );
