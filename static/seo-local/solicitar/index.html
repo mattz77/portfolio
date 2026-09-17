@@ -330,6 +330,8 @@
 
       // Origem só para saber por onde a pessoa chegou. Sem dado pessoal na URL.
       var origem = (new URLSearchParams(location.search).get('o') || 'site').slice(0, 24);
+      // O termo de busca vai no formulário; o CNAE oficial viaja no resumo, para o analista.
+      var cnaeOficial = '';
 
       var CAMPOS = [
         ['negocio', 'Negócio'], ['cnpj', 'CNPJ'], ['cidade', 'Cidade e bairro'],
@@ -439,6 +441,165 @@
         return msg;
       }
 
+      /* ---------- CNAE para termo de busca ----------
+         O CNAE descreve a atividade para a Receita, não para quem procura no Maps. Ninguém digita
+         "atividades de atenção ambulatorial restrita a consultas": digita "clínica médica". Esta
+         tabela traduz as subclasses mais comuns em negócio de rua. Fora dela, cai na descrição
+         oficial, e o campo continua editável de qualquer jeito. Códigos conferidos contra as 1332
+         subclasses da API de CNAE do IBGE. */
+      var TERMO_CNAE = {
+        // beleza e bem-estar
+        '9602501': 'salão de beleza',
+        '9602502': 'clínica de estética',
+        '9609206': 'estúdio de tatuagem',
+        '9609205': 'sauna',
+        // pets
+        '4789004': 'pet shop',
+        '9609208': 'banho e tosa',
+        '9609207': 'hotel para pets',
+        '7500100': 'veterinário',
+        '4771704': 'farmácia veterinária',
+        // saude
+        '8630504': 'dentista',
+        '8630503': 'clínica médica',
+        '8630501': 'clínica médica',
+        '8630502': 'clínica médica',
+        '8630506': 'clínica de vacinação',
+        '8650004': 'fisioterapia',
+        '8650003': 'psicólogo',
+        '8650002': 'nutricionista',
+        '8650006': 'fonoaudiólogo',
+        '8650005': 'terapia ocupacional',
+        '8650001': 'enfermagem domiciliar',
+        '8690903': 'acupuntura',
+        '8690904': 'podologia',
+        '8640202': 'laboratório de exames',
+        '8610101': 'hospital',
+        '4771701': 'farmácia',
+        '4771702': 'farmácia de manipulação',
+        '4773300': 'loja de artigos ortopédicos',
+        '4774100': 'ótica',
+        // alimentacao
+        '5611201': 'restaurante',
+        '5611203': 'lanchonete',
+        '5611204': 'bar',
+        '5611205': 'bar',
+        '5620102': 'buffet para eventos',
+        '5620104': 'marmitaria',
+        '5612100': 'food truck',
+        '4721102': 'padaria',
+        '4721104': 'doceria',
+        '4722901': 'açougue',
+        '4722902': 'peixaria',
+        '4723700': 'adega',
+        '4724500': 'hortifruti',
+        '4712100': 'mercadinho',
+        '4711302': 'supermercado',
+        '4711301': 'hipermercado',
+        '4729602': 'loja de conveniência',
+        // veiculos
+        '4520001': 'oficina mecânica',
+        '4520002': 'funilaria e pintura',
+        '4520003': 'auto elétrica',
+        '4520004': 'alinhamento e balanceamento',
+        '4520005': 'lava rápido',
+        '4520006': 'borracharia',
+        '4520007': 'acessórios automotivos',
+        '4520008': 'capotaria',
+        '4530703': 'autopeças',
+        '4530705': 'loja de pneus',
+        '4543900': 'oficina de motos',
+        '4511102': 'revenda de carros usados',
+        '4731800': 'posto de gasolina',
+        '8599601': 'autoescola',
+        // casa e construcao
+        '4744099': 'material de construção',
+        '4744005': 'material de construção',
+        '4744001': 'loja de ferragens',
+        '4744003': 'material hidráulico',
+        '4741500': 'loja de tintas',
+        '4742300': 'material elétrico',
+        '4743100': 'vidraçaria',
+        '4754701': 'loja de móveis',
+        '4759801': 'cortinas e persianas',
+        '4754703': 'loja de iluminação',
+        // consertos e servicos
+        '9601701': 'lavanderia',
+        '9601702': 'tinturaria',
+        '9529102': 'chaveiro',
+        '9511800': 'assistência técnica de computador',
+        '9512600': 'assistência técnica de celular',
+        '9521500': 'conserto de eletrodomésticos',
+        '9529101': 'sapataria',
+        '9529103': 'conserto de relógios',
+        '9529104': 'bicicletaria',
+        '9603304': 'funerária',
+        // comercio
+        '4781400': 'loja de roupas',
+        '4782201': 'loja de calçados',
+        '4783101': 'joalheria',
+        '4783102': 'relojoaria',
+        '4772500': 'perfumaria',
+        '4761003': 'papelaria',
+        '4761001': 'livraria',
+        '4763601': 'loja de brinquedos',
+        '4763602': 'loja de artigos esportivos',
+        '4763603': 'bicicletaria',
+        '4789002': 'floricultura',
+        '4752100': 'loja de celulares',
+        '4751201': 'loja de informática',
+        '4753900': 'loja de eletrodomésticos',
+        '4713002': 'loja de variedades',
+        '4755503': 'loja de cama, mesa e banho',
+        '4756300': 'loja de instrumentos musicais',
+        '4784900': 'revenda de gás',
+        // profissionais
+        '6911701': 'advogado',
+        '6920601': 'contabilidade',
+        '6920602': 'contabilidade',
+        '6821801': 'imobiliária',
+        '6821802': 'imobiliária',
+        '6822600': 'administradora de imóveis',
+        // educacao, esporte e lazer
+        '9313100': 'academia',
+        '8591100': 'escola de esportes',
+        '8592901': 'escola de dança',
+        '8592903': 'escola de música',
+        '8593700': 'escola de idiomas',
+        '8511200': 'creche',
+        '8512100': 'escola de educação infantil',
+        '8513900': 'escola',
+        '8599603': 'curso de informática',
+        '8599605': 'curso preparatório',
+        '9312300': 'clube',
+        '9329801': 'casa noturna',
+        '9329803': 'sinuca',
+        // hospedagem
+        '5510801': 'hotel',
+        '5510802': 'apart hotel',
+        '5510803': 'motel',
+        '5590601': 'hostel',
+        '5590603': 'pousada',
+        '5590602': 'camping'
+      };
+
+      function termoDeBusca(d) {
+        var principal = String(d.cnae_fiscal || '');
+        if (TERMO_CNAE[principal]) return TERMO_CNAE[principal];
+        var sec = d.cnaes_secundarios || [];
+        for (var i = 0; i < sec.length; i++) {
+          var c = String(sec[i] && sec[i].codigo || '');
+          if (TERMO_CNAE[c]) return TERMO_CNAE[c];
+        }
+        return titulo(d.cnae_fiscal_descricao);
+      }
+
+      function cnaeFormatado(d) {
+        var c = String(d.cnae_fiscal || '').padStart ? String(d.cnae_fiscal || '').padStart(7, '0') : String(d.cnae_fiscal || '');
+        if (c.length !== 7) return '';
+        return c.slice(0, 4) + '-' + c.slice(4, 5) + '/' + c.slice(5) + ' ' + (d.cnae_fiscal_descricao || '');
+      }
+
       /* ---------- consulta CNPJ e CEP ---------- */
       function titulo(s) {
         var pequenas = ['de', 'da', 'do', 'das', 'dos', 'e'];
@@ -517,7 +678,8 @@
           .then(function (d) {
             var postos = [];
             if (preencherSeVazio('negocio', titulo(d.nome_fantasia || d.razao_social))) postos.push('nome');
-            if (preencherSeVazio('segmento', titulo(d.cnae_fiscal_descricao))) postos.push('segmento');
+            if (preencherSeVazio('segmento', termoDeBusca(d))) postos.push('segmento');
+            cnaeOficial = cnaeFormatado(d);
             var tel = digitos(d.ddd_telefone_1 || '');
             if (tel.length >= 10 && preencherSeVazio('whatsapp', mascaraTel(tel))) postos.push('telefone');
             if (d.cep && !val('cep')) el('cep').value = mascaraCep(d.cep);
@@ -561,6 +723,7 @@
           var v = val(c[0]);
           if (v) linhas.push(c[1] + ': ' + v);
         });
+        if (cnaeOficial) linhas.push('CNAE: ' + cnaeOficial);
         linhas.push('Origem: ' + origem);
         linhas.push('Consentimento: ' + (el('consent').checked ? 'autorizado pelo solicitante' : 'pendente'));
         return linhas.join('\n');
@@ -596,6 +759,7 @@
           var dados = {};
           CAMPOS.forEach(function (c) { if (val(c[0])) dados[c[0]] = val(c[0]); });
           if (val('cep')) dados.cep = val('cep');
+          if (cnaeOficial) dados.__cnae = cnaeOficial;
           if (Object.keys(dados).length) {
             localStorage.setItem(CHAVE, JSON.stringify(dados));
             el('rascunho').hidden = false;
@@ -607,6 +771,7 @@
           var bruto = localStorage.getItem(CHAVE);
           if (!bruto) return;
           var dados = JSON.parse(bruto);
+          if (dados.__cnae) { cnaeOficial = dados.__cnae; delete dados.__cnae; }
           Object.keys(dados).forEach(function (k) {
             var e = el(k);
             if (e && !String(e.value || '').trim()) e.value = dados[k];
@@ -625,6 +790,7 @@
         el('consent').checked = false;
         OBRIGATORIOS.concat(['cnpj', 'maps', 'site']).forEach(function (id) { marcar(id, ''); });
         aviso('cnpj-status', '', ''); aviso('cep-status', '', '');
+        cnaeOficial = '';
         apagarRascunho();
         status.className = 'status';
         status.textContent = 'Rascunho apagado.';
