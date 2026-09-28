@@ -21,6 +21,14 @@ const SRC = path.join(ROOT, "static");
 const OUT = process.env.OUT_DIR ? path.resolve(process.env.OUT_DIR) : path.join(ROOT, "dist-static");
 const SITE_URL = (process.env.SITE_URL || "https://nicebyte.ia.br").replace(/\/+$/, "");
 const AUTHOR = "Mateus Oliveira";
+const ORGANIZATION = {
+  "@type": "Organization",
+  "@id": SITE_URL + "/#organization",
+  name: "NiceByte",
+  url: SITE_URL + "/",
+  logo: SITE_URL + "/assets/nicebyte-official-exact.jpg",
+  email: "contato@nicebyte.ia.br",
+};
 
 /* ---------- browser shims: enough for render, not for effects ---------- */
 
@@ -205,10 +213,20 @@ const routes = [
   })),
 ];
 
+const STATIC_SITEMAP_PATHS = ["/seo-local/", "/seo-local/solicitar/", "/demo/estetica/", "/laudos/"];
+
 /* ---------- html assembly ---------- */
 
 const escapeAttr = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+function jsonLdWithOrganization(jsonLd) {
+  const { "@context": context, "@graph": graph, ...entity } = jsonLd;
+  return {
+    "@context": context,
+    "@graph": [ORGANIZATION, ...(graph || [entity])],
+  };
+}
 
 function headFor(route) {
   const canonical = SITE_URL + route.pathname;
@@ -228,20 +246,26 @@ function headFor(route) {
   ];
   if (route.date) tags.push(`<meta property="article:published_time" content="${route.date}" />`);
   tags.push(
-    `<script type="application/ld+json">${JSON.stringify(route.jsonLd).replace(/</g, "\\u003c")}</script>`
+    `<script type="application/ld+json">${JSON.stringify(jsonLdWithOrganization(route.jsonLd)).replace(/</g, "\\u003c")}</script>`
   );
   return tags.map((t) => "  " + t).join("\n");
+}
+
+function replaceRequired(html, pattern, replacement, label) {
+  const next = html.replace(pattern, replacement);
+  if (next === html) throw new Error(`Prerender template mismatch: ${label}`);
+  return next;
 }
 
 function buildPage(template, route, markup) {
   let html = template;
   // one <base> so relative asset paths still resolve on /post/<slug>/ pages
-  html = html.replace(/<head>/, '<head>\n  <base href="/" />');
+  html = replaceRequired(html, /<head>/, '<head>\n  <base href="/" />', "<head>");
   // drop the template's own title/description; per-route head replaces them
-  html = html.replace(/\s*<title>[\s\S]*?<\/title>/, "");
-  html = html.replace(/\s*<meta name="description"[^>]*\/>/, "");
-  html = html.replace(/<\/head>/, headFor(route) + "\n</head>");
-  html = html.replace('<div id="app"></div>', `<div id="app">${markup}</div>`);
+  html = replaceRequired(html, /\s*<title>[\s\S]*?<\/title>/, "", "template title");
+  html = replaceRequired(html, /\s*<meta name="description"[^>]*\/?\s*>/, "", "template description");
+  html = replaceRequired(html, /<\/head>/, headFor(route) + "\n</head>", "</head>");
+  html = replaceRequired(html, '<div id="app"></div>', `<div id="app">${markup}</div>`, "#app mount");
   return html;
 }
 
@@ -268,7 +292,7 @@ for (const route of routes) {
 
 const sitemap =
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-  routes
+  [...routes, ...STATIC_SITEMAP_PATHS.map((pathname) => ({ pathname }))]
     .map(
       (r) =>
         `  <url><loc>${SITE_URL}${r.pathname}</loc>` +
@@ -280,4 +304,4 @@ const sitemap =
   `\n</urlset>\n`;
 await writeFile(path.join(OUT, "sitemap.xml"), sitemap, "utf8");
 
-console.log(`\ndist-static/ ready — ${routes.length} pages + sitemap.xml`);
+console.log(`\ndist-static/ ready — ${routes.length + STATIC_SITEMAP_PATHS.length} indexed pages + sitemap.xml`);
