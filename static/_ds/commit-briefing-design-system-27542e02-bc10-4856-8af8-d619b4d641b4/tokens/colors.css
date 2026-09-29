@@ -1,0 +1,145 @@
+/* ============================================================
+   Commit Briefing — Color tokens
+   A warm, earthy "paper & espresso" palette. Cream paper
+   surfaces, walnut/caramel browns, and a permanently-dark
+   charcoal sidebar that anchors the product.
+   Base values first, then semantic aliases. Light + dark.
+   ============================================================ */
+
+:root {
+  /* ---- Base ramp: warm neutrals (paper → espresso) ---- */
+  --paper:        #f5f1e6;  /* page background — unbleached cream */
+  --paper-card:   #fffcf5;  /* raised card — warm white */
+  --espresso:     #4a3f35;  /* primary text — dark walnut */
+  --bark:         #5c4d3f;  /* secondary text on light */
+  --taupe:        #7d6b56;  /* muted text */
+  --oat:          #ece5d8;  /* muted surface */
+  --sand:         #e2d8c3;  /* secondary surface */
+  --wheat:        #d4c8aa;  /* accent surface */
+  --line:         #dbd0ba;  /* hairline border / input */
+
+  /* ---- Brand: caramel / walnut ---- */
+  --caramel:      #a67c52;  /* primary brand on light */
+  --caramel-700:  #9a6f42;  /* primary hover */
+  --walnut:       #8d6e4c;
+  --walnut-900:   #735a3a;
+  --almond:       #b3906f;
+  --latte:        #c0a080;
+  --copper:       #c4956a;  /* brand accent — glows on dark, used app-wide */
+
+  /* ---- Semantic status (warm-tuned signal colors) ---- */
+  --good:         #10b981;  /* emerald — healthy / on-track */
+  --good-fg:      #059669;
+  --warning:      #f59e0b;  /* amber — attention / high risk */
+  --critical:     #ef4444;  /* red — critical / blocked */
+  --critical-700: #b54a35;  /* terracotta — destructive actions */
+  --toil:         #f97316;  /* orange — toil alert */
+  --info:         #3b82f6;  /* blue — informational */
+
+  /* ============================================================
+     SEMANTIC ALIASES — reference these in product code
+     ============================================================ */
+  --background: var(--paper);
+  --foreground: var(--espresso);
+  --card: var(--paper-card);
+  --card-foreground: var(--espresso);
+  --popover: var(--paper-card);
+  --popover-foreground: var(--espresso);
+
+  --primary: var(--caramel);
+  --primary-hover: var(--caramel-700);
+  --primary-foreground: #ffffff;
+  --secondary: var(--sand);
+  --secondary-foreground: var(--bark);
+  --muted: var(--oat);
+  --muted-foreground: var(--taupe);
+  --accent: var(--wheat);
+  --accent-foreground: var(--espresso);
+
+  /* brand accent — the copper used for active states, avatars, unread dots */
+  --brand-accent: var(--copper);
+  --brand-accent-hover: var(--caramel-700);
+
+  --destructive: var(--critical-700);
+  --destructive-foreground: #ffffff;
+
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--caramel);
+
+  /* status semantics */
+  --status-good: var(--good);
+  --status-warning: var(--warning);
+  --status-critical: var(--critical);
+  --status-toil: var(--toil);
+  --status-info: var(--info);
+
+  /* data-viz ramp (effort / comparison charts) */
+  --chart-1: var(--caramel);
+  --chart-2: var(--walnut);
+  --chart-3: var(--walnut-900);
+  --chart-4: var(--almond);
+  --chart-5: var(--latte);
+
+  /* ---- Sidebar — always-dark warm charcoal ---- */
+  --sidebar: #1c1917;
+  --sidebar-foreground: #9e8b75;
+  --sidebar-primary: var(--copper);
+  --sidebar-primary-foreground: #1c1917;
+  --sidebar-accent: #242018;
+  --sidebar-accent-foreground: #f0e8d8;
+  --sidebar-border: #2d2720;
+  --sidebar-ring: var(--copper);
+
+  /* ---- Terminal surface (AgentSummary) ---- */
+  --terminal-top: #1c1712;
+  --terminal-bottom: #171310;
+  --terminal-glow: rgb(196 149 106 / 0.45);
+}
+
+/* ============================================================
+   DARK THEME — deepened walnut, lifted text
+   ============================================================ */
+.dark {
+  --background: #2d2621;
+  --foreground: #ece5d8;
+  --card: #3a322c;
+  --card-foreground: #ece5d8;
+  --popover: #3a322c;
+  --popover-foreground: #ece5d8;
+
+  --primary: var(--latte);
+  --primary-hover: var(--almond);
+  --primary-foreground: #2d2621;
+  --secondary: #4a4039;
+  --secondary-foreground: #ece5d8;
+  --muted: #3a322c;
+  --muted-foreground: #c5bcac;
+  --accent: #59493e;
+  --accent-foreground: #ece5d8;
+
+  --brand-accent: var(--latte);
+  --brand-accent-hover: var(--almond);
+
+  --destructive: var(--critical-700);
+  --destructive-foreground: #ffffff;
+
+  --border: #4a4039;
+  --input: #4a4039;
+  --ring: var(--latte);
+
+  --chart-1: var(--latte);
+  --chart-2: var(--almond);
+  --chart-3: var(--caramel);
+  --chart-4: var(--walnut);
+  --chart-5: var(--walnut-900);
+
+  --sidebar: #2d2621;
+  --sidebar-foreground: #ece5d8;
+  --sidebar-primary: var(--latte);
+  --sidebar-primary-foreground: #2d2621;
+  --sidebar-accent: #59493e;
+  --sidebar-accent-foreground: #ece5d8;
+  --sidebar-border: #4a4039;
+  --sidebar-ring: var(--latte);
+}

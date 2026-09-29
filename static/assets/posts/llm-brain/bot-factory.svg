@@ -1,0 +1,35 @@
+<svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arrbf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a8a93"/>
+    </marker>
+  </defs>
+  <!-- memoria -->
+  <rect x="250" y="20" width="260" height="52" rx="12" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="380" y="44" text-anchor="middle" font-size="14" font-weight="600" fill="#f59e0b">memória compartilhada</text>
+  <text x="380" y="62" text-anchor="middle" font-size="11" fill="#9d9da6">tarefas pendentes, decisões, checkpoints</text>
+  <line x1="380" y1="74" x2="380" y2="106" stroke="#8a8a93" stroke-width="2" marker-end="url(#arrbf)"/>
+  <text x="392" y="96" font-size="11" fill="#9d9da6">ponte</text>
+  <!-- quadro -->
+  <rect x="250" y="108" width="260" height="46" rx="12" fill="none" stroke="#10b981" stroke-width="2.5"/>
+  <text x="380" y="137" text-anchor="middle" font-size="14" font-weight="600" fill="#10b981">quadro de tarefas</text>
+  <!-- bots -->
+  <g font-size="11.5" fill="#9d9da6" text-anchor="middle">
+    <rect x="24" y="196" width="140" height="42" rx="10" fill="none" stroke="#8a8a93" stroke-width="1.8"/>
+    <text x="94" y="222">líder técnico</text>
+    <rect x="176" y="196" width="140" height="42" rx="10" fill="none" stroke="#8a8a93" stroke-width="1.8"/>
+    <text x="246" y="222">backend</text>
+    <rect x="328" y="196" width="140" height="42" rx="10" fill="none" stroke="#8a8a93" stroke-width="1.8"/>
+    <text x="398" y="222">qualidade</text>
+    <rect x="480" y="196" width="140" height="42" rx="10" fill="none" stroke="#8a8a93" stroke-width="1.8"/>
+    <text x="550" y="222">infraestrutura</text>
+    <rect x="632" y="196" width="104" height="42" rx="10" fill="none" stroke="#8a8a93" stroke-width="1.8"/>
+    <text x="684" y="222">segurança</text>
+    <rect x="176" y="252" width="140" height="42" rx="10" fill="none" stroke="#8a8a93" stroke-width="1.8"/>
+    <text x="246" y="278">marketing</text>
+    <rect x="328" y="252" width="140" height="42" rx="10" fill="none" stroke="#8a8a93" stroke-width="1.8"/>
+    <text x="398" y="278">finanças</text>
+  </g>
+  <line x1="380" y1="156" x2="380" y2="190" stroke="#8a8a93" stroke-width="2" marker-end="url(#arrbf)"/>
+  <text x="380" y="322" text-anchor="middle" font-size="12" fill="#9d9da6">cada bot com seu papel, seu modelo e suas permissões · o humano só aprova</text>
+</svg>

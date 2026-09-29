@@ -1,0 +1,26 @@
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a8a93"/>
+    </marker>
+  </defs>
+  <!-- phone -->
+  <rect x="90" y="40" width="150" height="220" rx="20" fill="none" stroke="#8a8a93" stroke-width="2.5"/>
+  <rect x="110" y="80" width="110" height="40" rx="10" fill="#3b82f6" opacity="0.9"/>
+  <text x="165" y="98" text-anchor="middle" font-size="10" fill="#ffffff">"how is</text>
+  <text x="165" y="112" text-anchor="middle" font-size="10" fill="#ffffff">project X doing?"</text>
+  <rect x="110" y="132" width="110" height="58" rx="10" fill="none" stroke="#10b981" stroke-width="1.5"/>
+  <text x="165" y="152" text-anchor="middle" font-size="9.5" fill="#9d9da6">2 open PRs,</text>
+  <text x="165" y="166" text-anchor="middle" font-size="9.5" fill="#9d9da6">review score 9.0,</text>
+  <text x="165" y="180" text-anchor="middle" font-size="9.5" fill="#9d9da6">3 pending tasks</text>
+  <!-- flow -->
+  <line x1="250" y1="150" x2="330" y2="150" stroke="#8a8a93" stroke-width="2" marker-end="url(#arr6)"/>
+  <rect x="338" y="118" width="160" height="64" rx="12" fill="none" stroke="#8a8a93" stroke-width="2"/>
+  <text x="418" y="144" text-anchor="middle" font-size="13" font-weight="600" fill="#9d9da6">the agent decides</text>
+  <text x="418" y="164" text-anchor="middle" font-size="11" fill="#9d9da6">which action to call</text>
+  <line x1="506" y1="150" x2="586" y2="150" stroke="#8a8a93" stroke-width="2" marker-end="url(#arr6)"/>
+  <rect x="594" y="118" width="120" height="64" rx="12" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+  <text x="654" y="144" text-anchor="middle" font-size="13" font-weight="600" fill="#3b82f6">live data</text>
+  <text x="654" y="164" text-anchor="middle" font-size="11" fill="#9d9da6">straight from the DB</text>
+  <text x="380" y="285" text-anchor="middle" font-size="13" fill="#9d9da6">the state of any project, from your pocket, in plain language</text>
+</svg>

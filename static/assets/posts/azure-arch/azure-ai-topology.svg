@@ -1,0 +1,39 @@
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a8a93"/>
+    </marker>
+  </defs>
+  <!-- App Service -->
+  <g>
+    <rect x="40" y="80" width="150" height="110" rx="12" fill="#18181b" stroke="#0078d4" stroke-width="2"/>
+    <text x="115" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#0078d4">App Service</text>
+    <text x="115" y="140" text-anchor="middle" font-size="12" fill="#f4f4f5">Gateway HTTP</text>
+    <text x="115" y="160" text-anchor="middle" font-size="11" fill="#9d9da6">Health checks reais</text>
+  </g>
+  <!-- Service Bus -->
+  <g>
+    <rect x="240" y="80" width="160" height="110" rx="12" fill="#18181b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="320" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#f59e0b">Service Bus</text>
+    <text x="320" y="140" text-anchor="middle" font-size="12" fill="#f4f4f5">Filas Assíncronas</text>
+    <text x="320" y="160" text-anchor="middle" font-size="11" fill="#9d9da6">Dead-Letter · Resiliência</text>
+  </g>
+  <!-- Background Workers -->
+  <g>
+    <rect x="450" y="80" width="150" height="110" rx="12" fill="#18181b" stroke="#10b981" stroke-width="2"/>
+    <text x="525" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#10b981">Worker Agents</text>
+    <text x="525" y="140" text-anchor="middle" font-size="12" fill="#f4f4f5">Execução Longa</text>
+    <text x="525" y="160" text-anchor="middle" font-size="11" fill="#9d9da6">Sem timeout HTTP</text>
+  </g>
+  <!-- Key Vault & AI -->
+  <g>
+    <rect x="640" y="80" width="90" height="110" rx="12" fill="#18181b" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="685" y="115" text-anchor="middle" font-size="13" font-weight="600" fill="#8b5cf6">Segurança</text>
+    <text x="685" y="140" text-anchor="middle" font-size="11" fill="#f4f4f5">Key Vault</text>
+    <text x="685" y="160" text-anchor="middle" font-size="11" fill="#9d9da6">Secrets</text>
+  </g>
+  <line x1="190" y1="135" x2="235" y2="135" stroke="#8a8a93" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="400" y1="135" x2="445" y2="135" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="600" y1="135" x2="635" y2="135" stroke="#10b981" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="380" y="250" text-anchor="middle" font-size="13" fill="#9d9da6">Desacoplamento por mensageria: agente de IA não trava a requisição do usuário</text>
+</svg>
