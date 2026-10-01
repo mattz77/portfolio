@@ -58,6 +58,12 @@ button:focus-visible {
   font: 38px/0.9 var(--display);
   text-decoration: none;
 }
+/* ® discreto, em sobrescrito, nunca do tamanho da marca. */
+.brand span {
+  font-size: 0.42em;
+  vertical-align: top;
+  margin-left: 0.06em;
+}
 .topbar nav {
   display: flex;
   gap: 24px;
@@ -112,7 +118,14 @@ button:focus-visible {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  align-items: center;
   margin-top: 24px;
+}
+/* Link de texto ao lado de botão: mesma altura de toque e centro do botão. */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
 }
 .button {
   display: inline-flex;
