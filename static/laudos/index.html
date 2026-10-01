@@ -28,8 +28,7 @@
         "@id": "https://nicebyte.ia.br/#organization",
         "name": "NiceByte",
         "url": "https://nicebyte.ia.br/",
-        "logo": "https://nicebyte.ia.br/assets/nicebyte-official-exact.jpg",
-        "email": "contato@nicebyte.ia.br"
+        "logo": "https://nicebyte.ia.br/assets/nicebyte-official-exact.jpg"
       },
       {
         "@type": "CollectionPage",
@@ -43,106 +42,68 @@
     ]
   }
   </script>
-  <style>
-    :root { --navy:#14243a; --deep:#0b1728; --ink:#17202d; --muted:#5c6877; --paper:#f7f8fa; --surface:#fff; --line:#dbe1e8; --bronze:#c8a979; --focus:#145da0; --max:900px; }
-    * { box-sizing:border-box; }
-    body { margin:0; background:var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.6; }
-    a { color:inherit; }
-    a:focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
-    .wrap { width:min(var(--max),calc(100% - 40px)); margin:0 auto; }
-    header { background:var(--deep); border-bottom:1px solid rgba(200,169,121,.35); }
-    .head { min-height:84px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
-    .logo img { display:block; width:132px; border:1px solid rgba(219,225,232,.5); }
-    .back { display: inline-flex; align-items: center; min-height: 44px; color:#dbe4ef; text-decoration:none; font-size:.9rem; }
-    main { padding:82px 0 100px; }
-    .eyebrow { color:#356f9c; font-size:.75rem; font-weight:800; letter-spacing:.15em; text-transform:uppercase; }
-    h1,h2,h3 { margin:0; line-height:1.12; letter-spacing:-.035em; color:var(--navy); }
-    h1 { max-width:760px; margin-top:16px; font-size:clamp(2.55rem,6vw,5rem); }
-    .intro { max-width:700px; margin:22px 0 0; color:var(--muted); font-size:1.12rem; }
-    .notice { display:grid; grid-template-columns:44px 1fr; gap:16px; margin-top:42px; padding:22px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--bronze); border-radius:14px; }
-    .notice-mark { width:36px; height:36px; display:grid; place-items:center; border:1px solid var(--bronze); border-radius:50%; color:#7d5f38; font-weight:800; }
-    .notice strong { color:var(--navy); }
-    .notice p { margin:6px 0 0; color:var(--muted); }
-    .hero-buttons { margin-top: 26px; }
-    .hero-buttons .secondary { border-color: var(--line); color: var(--navy); }
-    section { margin-top:64px; }
-    h2 { font-size:clamp(1.8rem,4vw,2.7rem); }
-    .sample { display:grid; grid-template-columns:minmax(0,230px) minmax(0,1fr); gap:38px; align-items:center; margin-top:32px; padding:28px; background:#fff; border:1px solid var(--line); border-radius:18px; }
-    .sheet { aspect-ratio:1/1.32; padding:18px; background:#fff; border:1px solid var(--line); border-radius:8px; box-shadow:0 14px 34px rgba(11,23,40,.12); }
-    .sheet .ln { height:6px; margin-bottom:7px; border-radius:3px; background:#e6ebf1; }
-    .sheet .ln.title { width:64%; height:11px; margin-bottom:13px; background:var(--navy); }
-    .sheet .ln.veiled { filter:blur(2px); background:#cdd6e0; }
-    .sheet .block { height:28px; margin:14px 0 10px; border-radius:5px; background:#eef2f6; }
-    .sheet .tag { display:inline-block; margin-top:10px; padding:4px 8px; border-radius:5px; background:#e9f4ee; color:#1c6b45; font-size:.54rem; font-weight:800; letter-spacing:.06em; }
-    .sample h3 { font-size:1.35rem; }
-    .sample p { margin:12px 0 0; color:var(--muted); }
-    .anatomy { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 32px; margin:26px 0 0; padding:0; }
-    .anatomy li { list-style:none; display:grid; grid-template-columns:34px minmax(0,1fr); gap:14px; padding:17px 0; border-top:1px solid var(--line); }
-    .anatomy .ico { width:34px; height:34px; display:grid; place-items:center; border-radius:9px; background:#eef2f6; color:#22577e; }
-    .anatomy strong { display:block; color:var(--navy); font-size:.97rem; }
-    .anatomy span { display:block; margin-top:3px; color:var(--muted); font-size:.89rem; }
-    .cta { margin-top:64px; padding:32px; background:var(--deep); border-radius:18px; color:#fff; }
-    .cta h2 { color:#fff; }
-    .cta p { color:#cad6e2; }
-    .buttons { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
-    .cta-grid { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:32px; align-items:center; }
-    .qr-tile { display:grid; justify-items:center; gap:8px; padding:12px 12px 10px; background:#fff; border-radius:12px; }
-    .qr-tile img { display:block; width:104px; height:104px; }
-    .qr-tile span { color:var(--navy); font-size:.68rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; }
-    .qr-note { max-width:180px; margin:10px 0 0; text-align:center; color:#b3c2d2; font-size:.8rem; }
-    .button { transition:background .18s ease, border-color .18s ease, transform .18s ease; min-height:48px; display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:8px; text-decoration:none; font-weight:750; }
-    .primary { background:var(--bronze); color:var(--deep); }
-    .primary:hover { background:#d8bd8f; }
-    .secondary:hover { border-color:#fff; background:rgba(255,255,255,.08); }
-    .hero-buttons .secondary:hover { border-color:var(--navy); background:#eef2f6; }
-    .button:active { transform:translateY(1px); }
-    .secondary { border:1px solid #8294a9; color:#fff; }
-    footer { padding:28px 0 38px; color:var(--muted); font-size:.84rem; border-top:1px solid var(--line); }
-    footer .foot { display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; }
-    footer a { display:inline-flex; align-items:center; min-height:44px; color:var(--navy); }
-    @media(max-width:720px){ .wrap{width:min(var(--max),calc(100% - 28px));} .head{min-height:70px;} .logo img{width:116px;} main{padding-top:44px;} .sample{grid-template-columns:1fr;gap:26px;}.anatomy{grid-template-columns:1fr;} .notice{grid-template-columns:1fr;} .buttons{flex-direction:column;}.cta-grid{grid-template-columns:1fr;gap:26px;}.qr-note{max-width:none;text-align:left;} .button{width:100%;} }
-    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;}}
-  </style>
+  <link rel="preload" href="/assets/v2/fonts/oswald-latin.woff2?v=20261001" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/v2/fonts/oswald-latin-ext.woff2?v=20261001" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/v2/fonts/dm-sans-latin.woff2?v=20261001" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/v2/fonts/dm-sans-latin-ext.woff2?v=20261001" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/v2/tokens.css?v=20261001">
+  <link rel="stylesheet" href="/assets/v2/base.css?v=20261001">
+  <link rel="stylesheet" href="/laudos/v2.css?v=20261001-qr">
 </head>
 <body>
-  <header><div class="wrap head"><a class="logo" href="/" aria-label="NiceByte, voltar ao início"><img src="/assets/nicebyte-official-exact.jpg" alt="NiceByte"></a><a class="back" href="/seo-local/">Conhecer SEO Local →</a></div></header>
-  <main>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar wrap">
+    <a class="brand" href="/" aria-label="NiceByte, início">NiceByte<span>®</span></a>
+    <nav aria-label="Navegação principal"><a href="/seo-local/">Conhecer SEO Local</a></nav>
+  </header>
+  <main id="conteudo">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Entrega individual · NiceByte</p>
+          <h1>Relatórios claros para decidir o próximo passo.</h1>
+          <p>Cada diagnóstico de presença local é preparado para um negócio específico, com as fontes consultadas, as limitações encontradas e as prioridades de ação. Este endereço não mantém um diretório público de clientes.</p>
+          <div class="actions"><a class="button" href="/seo-local/">Conhecer o método</a><a class="text-link" href="#contato">Falar com a NiceByte <span aria-hidden="true">↘</span></a></div>
+        </div>
+        <aside class="hero-card"><span class="sticker">Exemplo ilustrativo</span><p class="label">Um relatório, quatro partes</p><strong>Observar.<br>Conferir.<br>Decidir.</strong></aside>
+      </div>
+    </section>
     <div class="wrap">
-      <div class="eyebrow">Entrega individual • NiceByte</div>
-      <h1>Relatórios claros para decidir o próximo passo.</h1>
-      <p class="intro">Cada diagnóstico de presença local é preparado para um negócio específico, com as fontes consultadas, as limitações encontradas e as prioridades de ação. Este endereço não mantém um diretório público de clientes.</p>
-      <div class="buttons hero-buttons"><a class="button primary" href="/seo-local/solicitar/?o=laudos-topo">Solicitar diagnóstico</a><a class="button secondary" href="/seo-local/">Conhecer o método</a></div>
-      <div class="notice"><div class="notice-mark" aria-hidden="true">i</div><div><strong>Como funciona o acesso</strong><p>O link de um relatório é compartilhado diretamente com o negócio ou com a pessoa autorizada. Se você recebeu um convite da NiceByte, use o endereço individual informado na mensagem. Não tente adivinhar nomes de arquivo ou expor dados de terceiros.</p></div></div>
-      <section>
-        <h2>O que um relatório bem feito precisa mostrar.</h2>
-        <div class="sample">
-          <div class="sheet" role="img" aria-label="Amostra de uma página de relatório, com a identificação do cliente borrada e uma marcação de fonte conferida">
-            <div class="ln title"></div>
-            <div class="ln veiled" style="width:78%"></div>
-            <div class="ln veiled" style="width:52%"></div>
-            <div class="ln" style="width:94%;margin-top:16px"></div>
-            <div class="ln" style="width:88%"></div>
-            <div class="ln" style="width:71%"></div>
-            <div class="block"></div>
-            <div class="ln" style="width:90%"></div>
-            <div class="ln" style="width:66%"></div>
-            <span class="tag">FONTE CONFERIDA</span>
-          </div>
-          <div>
-            <h3>Uma página de amostra, com o cliente borrado.</h3>
-            <p>O formato é sempre o mesmo: a afirmação de um lado, a fonte que a sustenta do outro. O que muda de negócio para negócio é o conteúdo, nunca o rigor.</p>
-            <ul class="anatomy">
-        <li><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a4 4 0 006 .5l2.5-2.5a4 4 0 00-5.7-5.7L11.5 6.6"/><path d="M14 11a4 4 0 00-6-.5L5.5 13a4 4 0 005.7 5.7l1.2-1.2"/></svg></span><div><strong>Fontes observadas</strong><span>Links e horários de consulta para conferir a origem de cada afirmação.</span></div></li>
-        <li><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8.5 16v-3"/><path d="M13 16V9"/><path d="M17.5 16v-5.5"/></svg></span><div><strong>Prioridades</strong><span>O que corrigir primeiro, com esforço e impacto em linguagem simples.</span></div></li>
-        <li><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h12"/><path d="M13 7l5 5-5 5"/><path d="M20 4v16"/></svg></span><div><strong>Próxima ação</strong><span>Um caminho de contato e uma decisão clara, sem prometer posição.</span></div></li>
-        <li><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.4v.01"/></svg></span><div><strong>Limites declarados</strong><span>O que não foi possível verificar aparece escrito, não some.</span></div></li>
-            </ul>
-          </div>
+      <section class="access" aria-labelledby="access-title">
+        <p class="eyebrow">Acesso individual</p><h2 id="access-title">Como funciona o acesso</h2>
+        <p>O link de um relatório é compartilhado diretamente com o negócio ou com a pessoa autorizada. Se você recebeu um convite da NiceByte, use o endereço individual informado na mensagem. Não tente adivinhar nomes de arquivo ou expor dados de terceiros.</p>
+      </section>
+      <section class="section" aria-labelledby="report-title">
+        <div class="section-head"><p class="label">Dentro do relatório</p><h2 id="report-title">O que um relatório bem feito precisa mostrar.</h2><p>Você recebe observações verificáveis, contexto e próximos passos — não uma promessa de posição no Google.</p></div>
+        <div class="evidence-layout" data-cena="evidencia">
+          <article class="evidence-card" aria-label="Cartão de evidência ilustrativo">
+            <span class="sticker">Exemplo ilustrativo</span><p class="label">Ficha de evidência</p>
+            <dl>
+              <div class="evidence-piece" data-parte="observacao"><dt>Observação</dt><dd>Informação de contato diverge entre fontes consultadas.</dd></div>
+              <div class="evidence-piece" data-parte="fonte"><dt>Fonte</dt><dd>Diretório público — campo demonstrativo, sem consulta real.</dd></div>
+              <div class="evidence-piece" data-parte="data"><dt>Data da consulta</dt><dd>Data exemplificativa — nenhuma consulta real.</dd></div>
+              <div class="evidence-piece" data-parte="limite"><dt>Limite</dt><dd>Uma divergência não confirma qual informação está correta.</dd></div>
+              <div class="evidence-piece" data-parte="acao"><dt>Ação sugerida</dt><dd>Confirmar informação com responsável antes de atualizar canais.</dd></div>
+            </dl>
+          </article>
+          <ul class="anatomy">
+            <li><span class="num">01</span><div><strong>Fontes observadas</strong><span>Links e horários de consulta para conferir a origem de cada afirmação.</span></div></li>
+            <li><span class="num">02</span><div><strong>Prioridades</strong><span>O que corrigir primeiro, com esforço e impacto em linguagem simples.</span></div></li>
+            <li><span class="num">03</span><div><strong>Próxima ação</strong><span>Um caminho de contato e uma decisão clara, sem prometer posição.</span></div></li>
+            <li><span class="num">04</span><div><strong>Limites declarados</strong><span>O que não foi possível verificar aparece escrito, não some.</span></div></li>
+          </ul>
         </div>
       </section>
-      <section class="cta"><div class="cta-grid"><div><h2>Quer um diagnóstico da sua presença no Google?</h2><p>Envie o nome da empresa, cidade, segmento e objetivo. A NiceByte responde com o escopo e o próximo passo adequado.</p><div class="buttons"><a class="button primary" href="/seo-local/solicitar/?o=laudos">Preencher o formulário</a><a class="button secondary" href="https://wa.me/5511913284876?text=Quero%20solicitar%20um%20diagn%C3%B3stico%20de%20presen%C3%A7a%20local%20da%20NiceByte." target="_blank" rel="noopener noreferrer">Abrir conversa iniciada por mim</a></div></div><div><span class="qr-tile"><img src="/assets/qr-laudos.svg" width="104" height="104" alt="QR Code que abre o formulário de solicitação do diagnóstico"><span>Aponte a câmera</span></span><p class="qr-note">Leia pelo celular e preencha onde estiver.</p></div></div></section>
+      <section class="commitment" aria-label="Limite do serviço"><p class="label">Limites claros</p><strong>Nenhum trabalho de SEO garante posição no Google.</strong></section>
     </div>
+    <section class="cta" id="contato"><div class="wrap cta-inner">
+      <div><p class="label">Seu próximo passo</p><h2>Quer entender sua presença local?</h2><p>Conheça o método de SEO local ou fale com a NiceByte para entender escopo e próximos passos.</p>
+        <div class="actions"><a class="button" href="/seo-local/">Conhecer SEO Local</a><a class="button alt" id="whatsapp-link" href="/seo-local/#contato">Falar pelo WhatsApp</a></div>
+      </div>
+      <div class="contact-qr"><div id="qr-code" role="img" aria-label="QR Code para conversar com a NiceByte no WhatsApp"></div><a id="qr-link" href="/seo-local/#contato">Abrir contato</a></div>
+    </div></section>
   </main>
-  <footer><div class="wrap foot"><span>NiceByte • São Paulo, SP</span><span><a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a> • <a href="/">nicebyte.ia.br</a></span></div></footer>
+  <footer><div class="wrap foot"><span>NiceByte • São Paulo, SP</span><a href="/privacidade/">Privacidade</a></div></footer>
+  <script type="module" src="/assets/v2/js/contato.js?v=20261001"></script>
 </body>
 </html>

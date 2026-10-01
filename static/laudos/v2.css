@@ -1,0 +1,63 @@
+/* Página /laudos/: tokens e base vêm de /assets/v2/. */
+.hero { background: var(--paper); border-block: 0; padding-block: clamp(42px, 8vw, 100px); }
+.hero p, .access, .section-head p, .anatomy span:last-child, .cta p { color: var(--ink); }
+.evidence-card .evidence-piece dt,
+.evidence-card .evidence-piece dd { color: var(--ink) !important; }
+.hero-grid { grid-template-columns: 1.15fr .85fr; gap: clamp(24px, 6vw, 72px); }
+.hero h1, .section-head h2, .access h2, .cta h2 { font: clamp(42px, 7vw, 78px)/.96 var(--display); letter-spacing: -.025em; text-transform: uppercase; }
+.hero h1 { max-width: 11ch; }
+.hero-card, .evidence-card { border: 2px solid var(--ink); background: var(--lime); box-shadow: var(--shadow-offset); padding: clamp(20px, 3vw, 30px); }
+.hero-card { transform: rotate(1deg); }
+.hero-card strong { display: block; margin-top: 24px; font: clamp(36px, 6vw, 64px)/.9 var(--display); text-transform: uppercase; }
+.sticker { display: inline-flex; padding: 5px 9px; background: var(--badge-bg); color: var(--badge-fg); font-size: 11px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.text-link { display: inline-flex; align-items: center; min-height: 48px; font-weight: 800; }
+.access, .section { padding-block: clamp(42px, 7vw, 82px); border-top: 1px solid color-mix(in srgb, var(--ink) 28%, transparent); }
+.access { max-width: 780px; }
+.access h2 { margin: 12px 0; font-size: clamp(32px, 5vw, 52px); }
+.section-head { max-width: 820px; margin-bottom: 32px; }
+.section-head h2 { max-width: 14ch; font-size: clamp(40px, 6vw, 68px); margin-block: 12px; }
+.section-head p:last-child { max-width: 60ch; }
+.evidence-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 5vw, 54px); align-items: start; }
+.evidence-card { background: var(--lime); }
+.evidence-card .label { font: 30px/1 var(--display); text-transform: uppercase; margin-block: 18px; }
+.evidence-card dl { margin: 0; }
+.evidence-piece { padding: 13px 0; border-top: 1px solid var(--ink); }
+.evidence-piece dt { color: var(--ink); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.evidence-piece dd { margin: 5px 0 0; }
+.anatomy { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin: 0; padding: 0; }
+.anatomy li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 18px 0; border-top: 1px solid color-mix(in srgb, var(--ink) 28%, transparent); list-style: none; }
+.anatomy .num { font: 30px/1 var(--display); color: var(--tomato); }
+.anatomy strong, .anatomy span:last-child { display: block; }
+.commitment { margin-block: 0 clamp(42px, 7vw, 82px); padding: 24px 0; border-block: 1px solid var(--ink); }
+.commitment strong { display: block; font: clamp(28px, 4vw, 42px)/1.05 var(--display); text-transform: uppercase; }
+.cta { border-block: 2px solid var(--ink); background: var(--ink); color: var(--white); padding-block: clamp(42px, 7vw, 78px); }
+.cta-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
+.cta h2 { max-width: 12ch; font-size: clamp(38px, 6vw, 64px); margin-block: 12px; color: var(--white); }
+.cta .label { color: var(--lime); }
+.cta .button { background: var(--lime); color: var(--ink); }
+.cta .button.alt { background: transparent; color: var(--white); border-color: var(--white); }
+.contact-qr { display: grid; gap: 12px; justify-items: center; color: var(--white); }
+#qr-code { min-width: 120px; min-height: 120px; display: grid; place-items: center; background: var(--white); color: var(--ink); }
+#qr-code svg { display: block; width: 120px; height: auto; }
+footer { border-top: 1px solid var(--ink); }
+[data-cena="evidencia"] .evidence-piece { animation: assemble-evidence linear both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
+[data-cena="evidencia"] .evidence-piece:nth-child(2) { animation-range: entry 8% cover 36%; }
+[data-cena="evidencia"] .evidence-piece:nth-child(3) { animation-range: entry 16% cover 44%; }
+[data-cena="evidencia"] .evidence-piece:nth-child(4) { animation-range: entry 24% cover 52%; }
+[data-cena="evidencia"] .evidence-piece:nth-child(5) { animation-range: entry 32% cover 60%; }
+@keyframes assemble-evidence { from { opacity: 1; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@supports not (animation-timeline: view()) { [data-cena="evidencia"] .evidence-piece { animation: none; } }
+@media (max-width: 720px) {
+  .hero-grid, .evidence-layout, .cta-inner { grid-template-columns: 1fr; }
+  .hero-card { transform: none; }
+  .anatomy { grid-template-columns: 1fr; }
+  .contact-qr { justify-items: start; }
+  .actions { align-items: stretch; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-cena="evidencia"] .evidence-piece { animation: none !important; opacity: 1; transform: none; }
+  .hero-card { transform: none; }
+}
+/* Tech-lead: o SVG do QR vem com height fixo; sem height:auto a caixa branca esticava abaixo do código. */
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.foot a { display: inline-flex; align-items: center; min-height: 44px; }
