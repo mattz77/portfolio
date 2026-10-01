@@ -38,7 +38,7 @@
 .cta .button.alt { background: transparent; color: var(--white); border-color: var(--white); }
 .contact-qr { display: grid; gap: 12px; justify-items: center; color: var(--white); }
 #qr-code { min-width: 120px; min-height: 120px; display: grid; place-items: center; background: var(--white); color: var(--ink); }
-#qr-code svg { display: block; max-width: 120px; }
+#qr-code svg { display: block; width: 120px; height: auto; }
 footer { border-top: 1px solid var(--ink); }
 [data-cena="evidencia"] .evidence-piece { animation: assemble-evidence linear both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
 [data-cena="evidencia"] .evidence-piece:nth-child(2) { animation-range: entry 8% cover 36%; }
@@ -58,3 +58,6 @@ footer { border-top: 1px solid var(--ink); }
   [data-cena="evidencia"] .evidence-piece { animation: none !important; opacity: 1; transform: none; }
   .hero-card { transform: none; }
 }
+/* Tech-lead: o SVG do QR vem com height fixo; sem height:auto a caixa branca esticava abaixo do código. */
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.foot a { display: inline-flex; align-items: center; min-height: 44px; }
