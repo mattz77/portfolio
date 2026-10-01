@@ -125,11 +125,20 @@ button:focus-visible {
 .text-link {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   min-height: 48px;
+}
+/* Setas e estrela em SVG: caractere de seta vira emoji em alguns celulares. */
+.seta,
+.estrela {
+  flex: none;
+  display: inline-block;
+  vertical-align: -1px;
 }
 .button {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   min-height: 48px;
   background: var(--ink);
   color: var(--white);
@@ -319,8 +328,14 @@ footer {
   box-shadow: 0 3px 9px #17201622;
 }
 .map-search:before {
-  content: "⌕";
-  font-size: 22px;
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='10' r='6.5' fill='none' stroke='black' stroke-width='2.4'/%3E%3Cpath d='M15 15l6 6' stroke='black' stroke-width='2.4'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='10' r='6.5' fill='none' stroke='black' stroke-width='2.4'/%3E%3Cpath d='M15 15l6 6' stroke='black' stroke-width='2.4'/%3E%3C/svg%3E") center / contain no-repeat;
+  display: inline-block;
+  vertical-align: -3px;
   margin-right: 10px;
 }
 .map-pins {

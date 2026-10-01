@@ -67,10 +67,14 @@
   overflow-wrap: anywhere;
 }
 .mapa-b-search::before {
-  content: "⌕";
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='10' r='6.5' fill='none' stroke='black' stroke-width='2.4'/%3E%3Cpath d='M15 15l6 6' stroke='black' stroke-width='2.4'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='10' r='6.5' fill='none' stroke='black' stroke-width='2.4'/%3E%3Cpath d='M15 15l6 6' stroke='black' stroke-width='2.4'/%3E%3C/svg%3E") center / contain no-repeat;
   flex: none;
   margin-right: 10px;
-  font-size: 20px;
 }
 .mapa-b-chips {
   display: flex;
