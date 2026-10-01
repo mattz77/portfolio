@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+  <link rel="preload" href="/assets/v2/fonts/oswald-latin.woff2?v=20261001" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/v2/fonts/dm-sans-latin.woff2?v=20261001" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/v2/tokens.css?v=20261001">
+  <link rel="stylesheet" href="/assets/v2/base.css?v=20261001">
   <title>Solicitar diagnóstico de presença local | NiceByte</title>
   <meta name="description" content="Formulário de solicitação do diagnóstico de SEO Local da NiceByte. Entrada voluntária, com consentimento explícito e sem pedir senha de nenhuma conta.">
   <link rel="canonical" href="https://nicebyte.ia.br/seo-local/solicitar/">
@@ -29,8 +33,7 @@
         "@id": "https://nicebyte.ia.br/#organization",
         "name": "NiceByte",
         "url": "https://nicebyte.ia.br/",
-        "logo": "https://nicebyte.ia.br/assets/nicebyte-official-exact.jpg",
-        "email": "contato@nicebyte.ia.br"
+        "logo": "https://nicebyte.ia.br/assets/nicebyte-official-exact.jpg"
       },
       {
         "@type": "WebPage",
@@ -44,10 +47,11 @@
   </script>
   <style>
     :root {
-      --navy: #14243a; --navy-deep: #0b1728; --ink: #17202d; --muted: #5c6877;
-      --paper: #f7f8fa; --surface: #fff; --line: #dbe1e8;
-      --blue-dark: #22577e; --bronze-lt: #d8b985; --crit: #b8412f; --ok: #1c6b45;
-      --focus: #145da0; --max: 1060px; --radius: 16px;
+      --navy: #17251d; --navy-deep: #17251d; --ink: #17251d; --muted: #4f5d52;
+      --paper: #f6f5ed; --surface: #f6f5ed; --line: #a6aa9b;
+      --blue-dark: #22577e; --bronze-lt: #d8b985; --crit: #a33125; --ok: #285c37;
+      --focus: #17251d; --max: 1120px; --radius: 0px;
+      --lime: #d4f164;
     }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
@@ -56,11 +60,6 @@
     .skip { position: absolute; left: -9999px; top: 8px; z-index: 10; padding: 10px 14px; background: #fff; color: var(--navy); }
     .skip:focus { left: 8px; }
     .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-    .topbar { background: var(--navy-deep); color: #e8edf4; border-bottom: 1px solid rgba(174,185,199,.28); }
-    .topbar-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand img { display: block; width: 132px; border: 1px solid rgba(174,185,199,.45); }
-    .back { display: inline-flex; align-items: center; min-height: 44px; color: #d7e0eb; text-decoration: none; font-size: .9rem; }
-    .back:hover { color: #fff; }
 
     main { padding: 52px 0 84px; }
     h1, h2, h3 { margin: 0; line-height: 1.14; letter-spacing: -.03em; color: var(--navy); }
@@ -133,8 +132,7 @@
     .resumo { padding: 18px; background: var(--navy-deep); border-radius: 12px; }
     .resumo h3 { color: #fff; font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
     .resumo pre { margin: 12px 0 0; max-height: 260px; overflow: auto; color: #cbd7e5; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .74rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
-    footer { padding: 26px 0 38px; background: var(--navy-deep); color: #aebdce; font-size: .86rem; }
-    footer a { display: inline-flex; align-items: center; min-height: 44px; color: #e2e9f1; }
+    footer a { display: inline-flex; align-items: center; min-height: 44px; }
     .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 
     @media (max-width: 860px) {
@@ -155,23 +153,53 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
+    body { font-family: "DM Sans", sans-serif; }
+    h1, h2, h3, legend { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: -.015em; }
+    main { padding-top: 42px; }
+    h1 { max-width: 790px; font-size: clamp(2.65rem, 8vw, 5.5rem); line-height: .98; }
+    .intro { max-width: 610px; margin-top: 20px; font-size: 1rem; }
+    .cols { grid-template-columns: minmax(0, 1.3fr) minmax(250px, .7fr); gap: clamp(22px, 4vw, 56px); margin-top: 34px; }
+    form, .panel { padding: 22px 0; background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; }
+    form { border-top: 3px solid var(--ink); }
+    fieldset.atalho { padding: 18px; background: var(--lime); border: 1px solid var(--ink); border-radius: 0; box-shadow: 5px 5px 0 var(--ink); }
+    .atalho .pitch { color: var(--ink); }
+    input, select, textarea { background: #fffef8; border: 1px solid #777e70; border-radius: 0; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #527700; outline-offset: 3px; }
+    .busca, .button { border-radius: 0; }
+    .button-primary { background: var(--lime); color: var(--ink); border-color: var(--ink); box-shadow: 4px 4px 0 var(--ink); }
+    .button-primary:hover { background: #c1e34a; }
+    .button-ghost { background: transparent; border-color: var(--ink); }
+    .panel { padding: 18px 0; }
+    .panel h2 { font-size: 1.45rem; }
+    .safe { background: #e8ecd9; border: 1px solid var(--line); border-radius: 0; }
+    .consent { border-radius: 0; background: transparent; border-inline: 0; }
+    .resumo { border-radius: 0; border: 1px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); }
+    @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) {
+      .wrap { width: calc(100% - 32px); }
+      main { padding-top: 30px; }
+      .fields { grid-template-columns: 1fr; gap: 14px; }
+      form { padding: 18px 0; }
+      .atalho .linha { grid-template-columns: 1fr; }
+      .busca { width: 100%; }
+      .send { flex-direction: column; }
+      .send .button { width: 100%; }
+    }
   </style>
 </head>
 <body>
   <a class="skip" href="#form">Pular para o formulário</a>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="/" aria-label="NiceByte, voltar ao início"><img src="/assets/nicebyte-official-exact.jpg" alt="NiceByte"></a>
-      <a class="back" href="/seo-local/">Voltar para SEO Local</a>
-    </div>
-  </header>
+  <header class="topbar wrap"><a class="brand" href="/" aria-label="NiceByte, voltar ao início">NiceByte<span>®</span></a><nav aria-label="Navegação"><a href="/seo-local/">Voltar para SEO Local</a></nav></header>
 
   <main>
     <div class="wrap">
+      <section data-cena="introducao">
       <h1>Informe o CNPJ e o resto se preenche sozinho.</h1>
       <p class="intro">São os dados mínimos para localizar o estabelecimento sem ambiguidade e devolver o diagnóstico no canal que você escolher. Nada é enviado sozinho: você revisa o resumo e decide como mandar.</p>
+      <p class="intro"><strong>Nenhum trabalho de SEO garante posição no Google.</strong></p>
+      </section>
 
-      <div class="cols">
+      <div class="cols" data-cena="formulario">
         <form id="form" novalidate autocomplete="on">
           <fieldset class="atalho">
             <legend>Atalho</legend>
@@ -242,7 +270,7 @@
               </div>
               <div class="field">
                 <label for="whatsapp">WhatsApp com DDD</label>
-                <input id="whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" maxlength="16" aria-describedby="whatsapp-erro">
+                <input id="whatsapp" name="whatsapp" type="tel" required inputmode="numeric" autocomplete="tel" placeholder="(11) 90000-0000" maxlength="16" aria-describedby="whatsapp-erro">
                 <p class="erro" id="whatsapp-erro"></p>
               </div>
               <div class="field full">
@@ -285,10 +313,6 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12.3a8.2 8.2 0 01-11.9 7.3L4 21l1.5-4.4A8.2 8.2 0 1120.5 12.3z"/></svg>
               Enviar pelo WhatsApp
             </button>
-            <button class="button button-ghost" type="button" id="via-email">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>
-              Enviar por e-mail
-            </button>
             <button class="button button-ghost" type="button" id="copiar">Copiar resumo</button>
           </div>
           <p class="status" id="status" role="status" aria-live="polite"></p>
@@ -303,7 +327,7 @@
             <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 7.9-7.5 9.5-4.4-1.6-7.5-5.1-7.5-9.5V6z"/><path d="M9 12.2l2.2 2.2 4-4.4"/></svg></span>
             <div>
               <strong>Nada sai daqui sozinho</strong>
-              <span>O formulário não envia nada por conta própria. Ele monta o resumo e abre o seu WhatsApp ou o seu e-mail, com você no controle do envio.</span>
+              <span>O formulário não envia nada por conta própria. Ele monta o resumo e abre o seu WhatsApp, com você no controle do envio.</span>
             </div>
           </div>
 
@@ -321,7 +345,7 @@
           <div class="panel">
             <h2>Sobre as consultas de CNPJ e CEP</h2>
             <p class="note">As buscas só acontecem quando você clica em Buscar. Elas vão para a BrasilAPI, que lê a base pública da Receita Federal e a dos Correios. <b>Sai apenas o número consultado.</b> Seu nome, telefone e e-mail nunca saem desta página.</p>
-            <p class="note">Enquanto você digita, um rascunho fica guardado só no seu navegador, para você não perder o preenchimento. Ele some ao enviar ou ao clicar em limpar.</p>
+            <p class="note">Enquanto você digita, um rascunho fica guardado só no seu navegador, para você não perder o preenchimento. Ele some ao enviar, ao clicar em limpar ou depois de 7 dias.</p>
           </div>
 
           <div class="resumo">
@@ -336,15 +360,18 @@
   <footer>
     <div class="wrap foot">
       <span>NiceByte • São Paulo, SP</span>
-      <span><a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a> • <a href="/">nicebyte.ia.br</a></span>
+      <span><a href="/privacidade/">Privacidade</a> • <a href="/">nicebyte.ia.br</a></span>
     </div>
   </footer>
 
+  <script type="module">
+    import { WHATSAPP_NUMERO } from '/assets/v2/js/contato.js?v=20261001';
+    window.NB_WHATSAPP = WHATSAPP_NUMERO;
+  </script>
   <script>
     (function () {
-      var WHATS = '5511913284876';
-      var MAIL = 'contato@nicebyte.ia.br';
       var CHAVE = 'nicebyte:solicitar:rascunho';
+      var PRAZO_RASCUNHO = 7 * 24 * 60 * 60 * 1000; // dado pessoal não fica no navegador além de 7 dias
 
       var form = document.getElementById('form');
       var status = document.getElementById('status');
@@ -740,14 +767,23 @@
 
       /* ---------- resumo, progresso e rascunho ---------- */
       function montarResumo() {
-        var linhas = ['Solicitação de diagnóstico de presença local', ''];
+        var bairroCidade = val('cidade') || 'não informado';
+        var linhas = [
+          'Negócio: ' + (val('negocio') || 'não informado'),
+          'Bairro/cidade: ' + bairroCidade,
+          'Segmento: ' + (val('segmento') || 'não informado'),
+          'Google Maps: ' + (val('maps') || 'não informado'),
+          'Consentimento: ' + (el('consent').checked ? 'autorizado pelo solicitante' : 'pendente'),
+          '(ref SITE-FORM)',
+          '',
+          'Solicitação de diagnóstico de presença local'
+        ];
         CAMPOS.forEach(function (c) {
           var v = val(c[0]);
-          if (v) linhas.push(c[1] + ': ' + v);
+          if (v && ['negocio', 'cidade', 'segmento', 'maps'].indexOf(c[0]) < 0) linhas.push(c[1] + ': ' + v);
         });
         if (cnaeOficial) linhas.push('CNAE: ' + cnaeOficial);
         linhas.push('Origem: ' + origem);
-        linhas.push('Consentimento: ' + (el('consent').checked ? 'autorizado pelo solicitante' : 'pendente'));
         return linhas.join('\n');
       }
 
@@ -783,7 +819,7 @@
           if (val('cep')) dados.cep = val('cep');
           if (cnaeOficial) dados.__cnae = cnaeOficial;
           if (Object.keys(dados).length) {
-            localStorage.setItem(CHAVE, JSON.stringify(dados));
+            localStorage.setItem(CHAVE, JSON.stringify({ salvoEm: Date.now(), dados: dados }));
             el('rascunho').hidden = false;
           }
         } catch (_) {}
@@ -792,7 +828,12 @@
         try {
           var bruto = localStorage.getItem(CHAVE);
           if (!bruto) return;
-          var dados = JSON.parse(bruto);
+          var guardado = JSON.parse(bruto);
+          if (!guardado || typeof guardado.salvoEm !== 'number' || Date.now() - guardado.salvoEm > PRAZO_RASCUNHO) {
+            localStorage.removeItem(CHAVE);
+            return;
+          }
+          var dados = guardado.dados || {};
           if (dados.__cnae) { cnaeOficial = dados.__cnae; delete dados.__cnae; }
           Object.keys(dados).forEach(function (k) {
             var e = el(k);
@@ -846,20 +887,16 @@
 
       el('via-whatsapp').addEventListener('click', function () {
         if (!validar()) return;
+        var numeroWhatsApp = window.NB_WHATSAPP || '';
+        if (!/^\d{12,13}$/.test(numeroWhatsApp)) {
+          status.className = 'status err';
+          status.textContent = 'WhatsApp indisponível no momento. Copie o resumo e tente de novo mais tarde.';
+          return;
+        }
         status.className = 'status ok';
         status.textContent = 'Abrindo o WhatsApp com o resumo pronto. Confira e toque em enviar.';
         apagarRascunho();
-        window.open('https://wa.me/' + WHATS + '?text=' + encodeURIComponent(montarResumo()), '_blank', 'noopener');
-      });
-
-      el('via-email').addEventListener('click', function () {
-        if (!validar()) return;
-        status.className = 'status ok';
-        status.textContent = 'Abrindo o seu programa de e-mail com o resumo pronto.';
-        apagarRascunho();
-        location.href = 'mailto:' + MAIL
-          + '?subject=' + encodeURIComponent('Diagnóstico de presença local: ' + val('negocio'))
-          + '&body=' + encodeURIComponent(montarResumo());
+        window.open('https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(montarResumo()), '_blank', 'noopener');
       });
 
       el('copiar').addEventListener('click', function () {
