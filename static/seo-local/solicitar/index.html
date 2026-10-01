@@ -174,6 +174,11 @@
     .safe { background: #e8ecd9; border: 1px solid var(--line); border-radius: 0; }
     .consent { border-radius: 0; background: transparent; border-inline: 0; }
     .resumo { border-radius: 0; border: 1px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); }
+    .copiar-alt { margin: 6px 0 0; }
+    .link-copiar { min-height: 44px; padding: 0; font: inherit; font-size: .9rem; color: var(--ink); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+    .link-copiar:hover { text-decoration-thickness: 2px; }
+    .status-proximo { display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; font-weight: 400; color: var(--ink); }
+    .status-proximo a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
     @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
     @media (max-width: 620px) {
       .wrap { width: calc(100% - 32px); }
@@ -313,8 +318,8 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12.3a8.2 8.2 0 01-11.9 7.3L4 21l1.5-4.4A8.2 8.2 0 1120.5 12.3z"/></svg>
               Enviar pelo WhatsApp
             </button>
-            <button class="button button-ghost" type="button" id="copiar">Copiar resumo</button>
           </div>
+          <p class="copiar-alt"><button type="button" class="link-copiar" id="copiar">Prefere copiar o resumo?</button></p>
           <p class="status" id="status" role="status" aria-live="polite"></p>
           <p class="rascunho" id="rascunho" hidden>
             <span id="rascunho-txt">Rascunho guardado neste navegador.</span>
@@ -899,16 +904,43 @@
         window.open('https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(montarResumo()), '_blank', 'noopener');
       });
 
+      // Número legível a partir de contato.js (5511913284876 -> +55 11 91328-4876); nada de número no HTML.
+      function numeroLegivel(n) {
+        var m = /^(\d{2})(\d{2})(\d{4,5})(\d{4})$/.exec(n || '');
+        return m ? '+' + m[1] + ' ' + m[2] + ' ' + m[3] + '-' + m[4] : '';
+      }
+      // Depois de copiar, a pessoa precisa saber onde colar: link para a conversa e o número visível.
+      function proximoPasso(mensagem, copiou) {
+        var numero = window.NB_WHATSAPP || '';
+        status.className = copiou ? 'status ok' : 'status';
+        status.textContent = mensagem;
+        if (!/^\d{12,13}$/.test(numero)) return;
+        var linha = document.createElement('span');
+        linha.className = 'status-proximo';
+        var link = document.createElement('a');
+        link.href = 'https://wa.me/' + numero;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = 'Abrir WhatsApp';
+        linha.appendChild(link);
+        linha.appendChild(document.createTextNode(numeroLegivel(numero)));
+        status.appendChild(linha);
+      }
+
+      // Copiar passa pela mesma validação do envio e não apaga o rascunho (só o envio apaga).
       el('copiar').addEventListener('click', function () {
+        if (!validar()) return;
         var texto = montarResumo();
-        function avisarCopia(ok) {
-          status.className = 'status ' + (ok ? 'ok' : 'err');
-          status.textContent = ok ? 'Resumo copiado.' : 'Não foi possível copiar. Selecione o texto do resumo ao lado.';
+        function falhou() {
+          try { window.getSelection().selectAllChildren(el('preview')); } catch (_) {}
+          proximoPasso('Selecione o texto em “Resumo que será enviado”, copie e cole na conversa.', false);
         }
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(texto).then(function () { avisarCopia(true); }, function () { avisarCopia(false); });
+          navigator.clipboard.writeText(texto).then(function () {
+            proximoPasso('Resumo copiado. Agora abra a conversa com a NiceByte e cole o texto.', true);
+          }, falhou);
         } else {
-          avisarCopia(false);
+          falhou();
         }
       });
 
