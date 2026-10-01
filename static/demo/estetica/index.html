@@ -529,7 +529,23 @@
     .hero-visual {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      justify-content: center;
+      gap: 12px;
+      padding: clamp(24px, 5vw, 48px);
+      color: #FFFFFF;
+      background: var(--text-main);
+      border: 1px solid var(--border-accent);
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-visual .hero-badge-title {
+      color: #FFFFFF;
+      font-size: clamp(28px, 4vw, 40px);
+    }
+
+    .hero-visual p:last-child {
+      margin: 0;
+      color: #FFFFFF;
     }
 
     .hero-media-card {
@@ -1441,17 +1457,16 @@
         <div class="hero-content">
           <div class="hero-eyebrow">Estética · São Paulo</div>
           <h1>Casa Serena</h1>
-          <p class="hero-desc"></p>
+          <p class="hero-desc">Um espaço de estética facial na Vila Mariana, com informações e opções de atendimento para você conhecer com calma. Exemplo ilustrativo.</p>
           <div class="luxury-cta-block">
             <a href="/seo-local/#contato" id="whatsapp-link" class="btn-concierge">Conversar pelo WhatsApp</a>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="hero-media-card">
-            <p class="hero-placeholder">Imagem da clínica não fornecida.</p>
-            <div class="hero-media-badge"><div class="hero-badge-title">Casa Serena</div>Vila Mariana (exemplo ilustrativo) · São Paulo</div>
-          </div>
-        </div>
+        <aside class="hero-visual" aria-label="Região de atendimento fictícia">
+          <p class="loc-tag">REGIÃO · EXEMPLO ILUSTRATIVO</p>
+          <p class="hero-badge-title">Vila Mariana</p>
+          <p>São Paulo · atendimento estético facial</p>
+        </aside>
       </div>
     </section>
 
