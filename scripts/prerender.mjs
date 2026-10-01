@@ -213,7 +213,7 @@ const routes = [
   })),
 ];
 
-const STATIC_SITEMAP_PATHS = ["/seo-local/", "/seo-local/solicitar/", "/demo/estetica/", "/laudos/"];
+const STATIC_SITEMAP_PATHS = ["/seo-local/", "/seo-local/solicitar/", "/privacidade/", "/demo/estetica/", "/laudos/"];
 
 /* ---------- html assembly ---------- */
 
