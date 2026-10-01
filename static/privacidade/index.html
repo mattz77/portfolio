@@ -7,85 +7,142 @@
   <title>Política de privacidade | NiceByte</title>
   <meta name="description" content="Saiba como a NiceByte trata os dados enviados ao solicitar um diagnóstico de presença local.">
   <link rel="canonical" href="https://nicebyte.ia.br/privacidade/">
+  <link rel="stylesheet" href="/assets/v2/tokens.css?v=20261001">
+  <link rel="stylesheet" href="/assets/v2/base.css?v=20261001">
   <style>
-    :root {
-      --navy: #14243a; --navy-deep: #0b1728; --ink: #17202d; --muted: #5c6877;
-      --paper: #f7f8fa; --surface: #fff; --line: #dbe1e8; --focus: #145da0;
-      --max: 820px; --radius: 16px;
+    html { scroll-behavior: smooth; }
+    .privacy-header { border-bottom: 2px solid var(--ink); background: var(--lime); }
+    .privacy-head { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .privacy-brand { font: 38px/.9 var(--display); text-decoration: none; }
+    .privacy-back { min-height: 44px; display: inline-flex; align-items: center; font-weight: 700; }
+    main { padding: clamp(42px, 7vw, 84px) 0 90px; }
+    .privacy-title { max-width: 850px; margin: 0; font: clamp(44px, 8vw, 88px)/.98 var(--display); text-transform: uppercase; }
+    .privacy-intro { max-width: 720px; margin: 20px 0 0; font-size: 1.08rem; }
+    .privacy-layout { display: grid; grid-template-columns: minmax(200px, .33fr) minmax(0, 1fr); gap: clamp(28px, 6vw, 76px); align-items: start; margin-top: 48px; }
+    .privacy-index { position: sticky; top: 20px; border-top: 2px solid var(--ink); }
+    .privacy-index h2 { margin: 16px 0 10px; font: 24px/1 var(--display); text-transform: uppercase; }
+    .privacy-index ol { margin: 0; padding: 0; list-style: none; }
+    .privacy-index li { border-top: 1px solid var(--ink); }
+    .privacy-index a { display: block; padding: 9px 0; font-size: .9rem; font-weight: 650; }
+    .privacy-copy { min-width: 0; border-top: 2px solid var(--ink); }
+    .privacy-copy section { padding: 24px 0 28px; border-bottom: 1px solid var(--ink); scroll-margin-top: 18px; }
+    .privacy-copy h2 { margin: 0; font: clamp(27px, 4vw, 36px)/1.05 var(--display); text-transform: uppercase; }
+    .privacy-copy p, .privacy-copy ul { max-width: 72ch; margin: 12px 0 0; }
+    .privacy-copy ul { padding-left: 1.25rem; }
+    .privacy-copy li + li { margin-top: 6px; }
+    .privacy-callout { margin-top: 28px; padding: 20px; border: 2px solid var(--ink); background: var(--lime); box-shadow: var(--shadow-offset); }
+    .privacy-callout strong { font: 25px/1.1 var(--display); text-transform: uppercase; }
+    .privacy-footer { padding: 26px 0 38px; border-top: 2px solid var(--ink); background: var(--ink); color: var(--white); }
+    .privacy-footer a { min-height: 44px; display: inline-flex; align-items: center; }
+    .privacy-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    @media (max-width: 700px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      .privacy-layout { grid-template-columns: 1fr; gap: 32px; margin-top: 34px; }
+      .privacy-index { position: static; }
+      .privacy-index ol { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+      .privacy-copy section { padding: 22px 0 24px; }
     }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-    a { color: #22577e; }
-    a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-    header { background: var(--navy-deep); color: #e8edf4; border-bottom: 1px solid rgba(174,185,199,.28); }
-    .head { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { color: #fff; font-weight: 800; letter-spacing: .02em; text-decoration: none; }
-    .back { display: inline-flex; align-items: center; min-height: 44px; color: #d7e0eb; text-decoration: none; font-size: .9rem; }
-    main { padding: 52px 0 76px; }
-    h1, h2 { margin: 0; line-height: 1.18; letter-spacing: -.03em; color: var(--navy); }
-    h1 { font-size: clamp(2rem, 4.2vw, 2.8rem); }
-    .intro { margin: 16px 0 30px; color: var(--muted); font-size: 1.04rem; }
-    article { padding: clamp(22px, 5vw, 40px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
-    section + section { margin-top: 28px; }
-    h2 { font-size: 1.15rem; }
-    p, ul { margin: 10px 0 0; }
-    ul { padding-left: 1.3rem; }
-    li + li { margin-top: 4px; }
-    footer { padding: 26px 0 38px; background: var(--navy-deep); color: #aebdce; font-size: .86rem; }
-    .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-    footer a { display: inline-flex; align-items: center; min-height: 44px; color: #e2e9f1; }
-    @media (max-width: 620px) { .wrap { width: min(var(--max), calc(100% - 28px)); } main { padding: 34px 0 56px; } }
+    @media (max-width: 380px) { .privacy-index ol { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap head">
-      <a class="brand" href="/" aria-label="NiceByte, voltar ao início">NiceByte</a>
-      <a class="back" href="/seo-local/solicitar/">Voltar ao formulário</a>
+  <header class="privacy-header">
+    <div class="wrap privacy-head">
+      <a class="privacy-brand" href="/" aria-label="NiceByte, voltar ao início">NiceByte</a>
+      <a class="privacy-back" href="/seo-local/solicitar/">Voltar ao formulário</a>
     </div>
   </header>
   <main>
     <div class="wrap">
-      <h1>Política de privacidade</h1>
-      <p class="intro">Transparência sobre os dados informados ao solicitar diagnóstico de presença local.</p>
-      <article>
-        <section>
-          <h2>Controlador</h2>
-          <p>NICEBYTE SOLUCOES DIGITAIS LTDA, CNPJ 57.695.999/0001-58, com sede em São Paulo/SP. Para dúvidas ou solicitações: <a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a>.</p>
-        </section>
-        <section>
-          <h2>Dados coletados</h2>
-          <p>O formulário pode receber os campos abaixo; itens opcionais dependem do preenchimento:</p>
-          <ul>
-            <li>Nome do negócio e CNPJ (opcional);</li>
-            <li>Cidade e bairro, CEP (opcional), segmento;</li>
-            <li>Link do perfil no Google Maps (opcional) e site atual (opcional);</li>
-            <li>Seu nome, WhatsApp com DDD e e-mail;</li>
-            <li>Objetivo e contexto/observações (opcional);</li>
-            <li>Consentimento: registro da autorização para leitura de fontes públicas e resposta pelos canais informados.</li>
-          </ul>
-          <p>Consultas de CNPJ e CEP só ocorrem quando solicitadas, usando apenas o número consultado. O formulário mantém rascunho local no navegador até envio ou limpeza.</p>
-        </section>
-        <section>
-          <h2>Finalidade e base legal</h2>
-          <p>Usamos os dados para responder ao pedido de diagnóstico de presença local e entrar em contato pelo canal informado. A base legal é o consentimento do titular, conforme art. 7º, I, da LGPD.</p>
-        </section>
-        <section>
-          <h2>Retenção e compartilhamento</h2>
-          <p>Sem contratação, os dados são mantidos por até 12 meses e depois excluídos. Não compartilhamos os dados com terceiros, exceto provedores necessários de hospedagem e e-mail, que viabilizam a operação do serviço.</p>
-        </section>
-        <section>
-          <h2>Seus direitos</h2>
-          <p>Nos termos do art. 18 da LGPD, você pode solicitar confirmação e acesso aos dados, correção, anonimização, bloqueio ou eliminação, portabilidade, informação sobre compartilhamento, revogação do consentimento e demais direitos previstos em lei. Envie sua solicitação para <a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a>.</p>
-        </section>
-      </article>
+      <h1 class="privacy-title">Política de privacidade</h1>
+      <p class="privacy-intro">Como os dados circulam quando você solicita um diagnóstico de presença local. Esta página descreve o fluxo atual, inclusive o que fica no seu navegador e o que depende de você enviar.</p>
+      <div class="privacy-layout">
+        <nav class="privacy-index" aria-label="Índice da política">
+          <h2>Nesta página</h2>
+          <ol>
+            <li><a href="#controlador">01. Controlador</a></li>
+            <li><a href="#dados">02. Dados coletados</a></li>
+            <li><a href="#envio">03. Como funciona o envio</a></li>
+            <li><a href="#finalidade">04. Finalidade e base legal</a></li>
+            <li><a href="#compartilhamento">05. Compartilhamento</a></li>
+            <li><a href="#transferencia">06. Transferência internacional</a></li>
+            <li><a href="#retencao">07. Retenção</a></li>
+            <li><a href="#seguranca">08. Segurança</a></li>
+            <li><a href="#direitos">09. Seus direitos</a></li>
+            <li><a href="#armazenamento">10. Cookies e armazenamento</a></li>
+          </ol>
+        </nav>
+        <article class="privacy-copy">
+          <section id="controlador" data-cena="controlador">
+            <h2>01. Controlador</h2>
+            <p>NICEBYTE SOLUCOES DIGITAIS LTDA, CNPJ 57.695.999/0001-58, em São Paulo/SP, é responsável pelo tratamento descrito nesta política. Para exercer seus direitos, escreva para <a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a> ou use o WhatsApp publicado nesta página.</p>
+            <p>Como agente de tratamento de pequeno porte, a NiceByte não indicou encarregado (Resolução CD/ANPD nº 2/2022); o canal acima atende o titular.</p>
+          </section>
+          <section id="dados" data-cena="dados">
+            <h2>02. Dados coletados</h2>
+            <p>O formulário pode incluir, conforme preenchimento:</p>
+            <ul>
+              <li>Nome do negócio e CNPJ (opcional);</li>
+              <li>Cidade e bairro, CEP (opcional), segmento;</li>
+              <li>Link do perfil no Google Maps (opcional) e site atual (opcional);</li>
+              <li>Seu nome, WhatsApp com DDD e e-mail;</li>
+              <li>Objetivo e contexto/observações (opcional);</li>
+              <li>Consentimento: a autorização fica registrada na própria mensagem enviada por WhatsApp ou e-mail.</li>
+            </ul>
+            <p>Ao consultar CNPJ ou CEP, o número consultado e o IP da conexão são recebidos pela BrasilAPI. O site também passa pela Cloudflare, que recebe IP e dados técnicos da visita.</p>
+          </section>
+          <section id="envio" data-cena="envio">
+            <h2>03. Como funciona o envio</h2>
+            <p>O formulário não envia dados a um servidor. Ele monta um resumo com campos rotulados e a referência “(ref SITE-FORM)”, e abre o WhatsApp ou o cliente de e-mail da pessoa. Só chega à NiceByte o conteúdo que você decidir enviar. O rascunho permanece no armazenamento local do navegador até o envio ou a limpeza.</p>
+            <p>No WhatsApp, um assistente automático responde e pede dados do negócio. Em seguida, encaminha um resumo à equipe por um grupo interno de WhatsApp. Nesse grupo, o telefone aparece somente pelos quatro últimos dígitos. Os dados ficam no servidor da própria NiceByte.</p>
+          </section>
+          <section id="finalidade" data-cena="finalidade">
+            <h2>04. Finalidade e base legal</h2>
+            <p>Usamos os dados para responder ao pedido e preparar o diagnóstico do negócio, com base no consentimento (art. 7º, I, da LGPD) e em procedimentos preliminares relacionados a contrato, a pedido do titular (art. 7º, V). Para a segurança do site, a base legal é o legítimo interesse (art. 7º, IX).</p>
+          </section>
+          <section id="compartilhamento" data-cena="compartilhamento">
+            <h2>05. Com quem os dados passam</h2>
+            <ul>
+              <li>Meta/WhatsApp: mensagem, se você escolher WhatsApp;</li>
+              <li>Provedores de e-mail: mensagem, se você escolher e-mail;</li>
+              <li>BrasilAPI: número de CNPJ ou CEP consultado e IP, somente quando você solicita uma consulta;</li>
+              <li>Cloudflare: IP e dados técnicos de toda visita ao site.</li>
+            </ul>
+            <p>O diagnóstico usa dados públicos do negócio, como perfil no Google e site, e pode passar por ferramentas automatizadas, inclusive de inteligência artificial de terceiros. Nome, WhatsApp e e-mail da pessoa não são enviados a essas ferramentas.</p>
+          </section>
+          <section id="transferencia" data-cena="transferencia">
+            <h2>06. Transferência internacional</h2>
+            <p>Meta e Cloudflare podem tratar dados fora do Brasil, conforme os termos desses provedores (art. 33 da LGPD).</p>
+          </section>
+          <section id="retencao" data-cena="retencao">
+            <h2>07. Retenção</h2>
+            <p>Sem contratação, os dados são mantidos por até 12 meses e depois excluídos. Com contratação, são mantidos durante o contrato e por até 5 anos após seu fim, para obrigações legais e defesa em processo. O rascunho local fica no navegador até o envio ou a limpeza.</p>
+          </section>
+          <section id="seguranca" data-cena="seguranca">
+            <h2>08. Segurança</h2>
+            <p>O site usa conexão HTTPS. O acesso às mensagens recebidas é restrito à equipe da NiceByte.</p>
+          </section>
+          <section id="direitos" data-cena="direitos">
+            <h2>09. Seus direitos</h2>
+            <p>Nos termos do art. 18 da LGPD, você pode solicitar confirmação e acesso aos dados, correção, anonimização, bloqueio ou eliminação, portabilidade, informação sobre compartilhamento, revogação do consentimento e demais direitos previstos em lei. A confirmação da existência de tratamento e o acesso aos dados serão respondidos em até 15 dias (art. 19, II). Você também pode reclamar à <a href="https://www.gov.br/anpd">ANPD</a> (art. 18, §1º). Para solicitações, contate <a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a> ou o WhatsApp publicado nesta página.</p>
+          </section>
+          <section id="armazenamento" data-cena="armazenamento">
+            <h2>10. Cookies e armazenamento local</h2>
+            <p>Este site não usa cookie de rastreamento, analytics ou pixel. O formulário guarda somente um rascunho local no navegador; você pode limpar esse rascunho na própria página.</p>
+          </section>
+          <aside class="privacy-callout" aria-label="Limite do serviço">
+            <strong>Transparência sobre o fluxo</strong>
+            <p>Nenhum trabalho de SEO garante posição no Google.</p>
+          </aside>
+        </article>
+      </div>
     </div>
   </main>
-  <footer>
-    <div class="wrap foot">
+  <footer class="privacy-footer">
+    <div class="wrap privacy-foot">
       <span>NiceByte • São Paulo, SP</span>
-      <span>Versão v1 — 2026-09-29 • <a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a></span>
+      <span>Última atualização: 30/09/2026 • <a href="mailto:contato@nicebyte.ia.br">contato@nicebyte.ia.br</a></span>
     </div>
   </footer>
 </body>
