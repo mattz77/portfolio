@@ -1,10 +1,12 @@
 import { qrcode } from '/assets/v2/js/qrcode-generator.js?v=20261001';
 
 // O tech-lead troca placeholder depois de receber número confirmado do chip.
-export const WHATSAPP_NUMERO = '55XXXXXXXXXXX';
+export const WHATSAPP_NUMERO = '5511913284876';
 
 const criarLinkWhatsApp = (referencia) => {
-  const mensagem = `Olá! Vim pelo site da NiceByte e quero o diagnóstico de SEO local do meu negócio. (ref ${referencia})`;
+  const mensagem = referencia === 'SITE-DEMO'
+    ? 'Vim pela demo (ref SITE-DEMO)'
+    : `Olá! Vim pelo site da NiceByte e quero o diagnóstico de SEO local do meu negócio. (ref ${referencia})`;
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
 };
 
@@ -21,4 +23,11 @@ if (qr && linkQr && linkBotao) {
   codigo.addData(urlQr, 'Byte');
   codigo.make();
   qr.innerHTML = codigo.createSvgTag(6, 4, { text: 'QR Code de contato da NiceByte', id: 'qr-nicebyte-title' }, { text: 'Conversa de diagnóstico de SEO local no WhatsApp', id: 'qr-nicebyte-desc' });
+}
+
+if (window.location.pathname === '/demo/estetica/') {
+  const link = criarLinkWhatsApp('SITE-DEMO');
+  document.querySelectorAll('#whatsapp-link, [data-contato-demo]').forEach((element) => {
+    element.href = link;
+  });
 }
