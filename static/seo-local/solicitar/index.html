@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+  <link rel="preload" href="/assets/v2/fonts/oswald-latin.woff2?v=20261001" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/v2/fonts/dm-sans-latin.woff2?v=20261001" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/v2/tokens.css?v=20261001">
+  <link rel="stylesheet" href="/assets/v2/base.css?v=20261001">
   <title>Solicitar diagnóstico de presença local | NiceByte</title>
   <meta name="description" content="Formulário de solicitação do diagnóstico de SEO Local da NiceByte. Entrada voluntária, com consentimento explícito e sem pedir senha de nenhuma conta.">
   <link rel="canonical" href="https://nicebyte.ia.br/seo-local/solicitar/">
@@ -44,10 +48,11 @@
   </script>
   <style>
     :root {
-      --navy: #14243a; --navy-deep: #0b1728; --ink: #17202d; --muted: #5c6877;
-      --paper: #f7f8fa; --surface: #fff; --line: #dbe1e8;
-      --blue-dark: #22577e; --bronze-lt: #d8b985; --crit: #b8412f; --ok: #1c6b45;
-      --focus: #145da0; --max: 1060px; --radius: 16px;
+      --navy: #17251d; --navy-deep: #17251d; --ink: #17251d; --muted: #4f5d52;
+      --paper: #f6f5ed; --surface: #f6f5ed; --line: #a6aa9b;
+      --blue-dark: #22577e; --bronze-lt: #d8b985; --crit: #a33125; --ok: #285c37;
+      --focus: #17251d; --max: 1120px; --radius: 0px;
+      --lime: #d4f164;
     }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
@@ -155,6 +160,40 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
+    body { font-family: "DM Sans", sans-serif; }
+    h1, h2, h3, legend { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: -.015em; }
+    .topbar, footer { background: var(--navy-deep); }
+    .topbar-inner { min-height: 64px; }
+    main { padding-top: 42px; }
+    h1 { max-width: 790px; font-size: clamp(2.65rem, 8vw, 5.5rem); line-height: .98; }
+    .intro { max-width: 610px; margin-top: 20px; font-size: 1rem; }
+    .cols { grid-template-columns: minmax(0, 1.3fr) minmax(250px, .7fr); gap: clamp(22px, 4vw, 56px); margin-top: 34px; }
+    form, .panel { padding: 22px 0; background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; }
+    form { border-top: 3px solid var(--ink); }
+    fieldset.atalho { padding: 18px; background: var(--lime); border: 1px solid var(--ink); border-radius: 0; box-shadow: 5px 5px 0 var(--ink); }
+    .atalho .pitch { color: var(--ink); }
+    input, select, textarea { background: #fffef8; border: 1px solid #777e70; border-radius: 0; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #527700; outline-offset: 3px; }
+    .busca, .button { border-radius: 0; }
+    .button-primary { background: var(--lime); color: var(--ink); border-color: var(--ink); box-shadow: 4px 4px 0 var(--ink); }
+    .button-primary:hover { background: #c1e34a; }
+    .button-ghost { background: transparent; border-color: var(--ink); }
+    .panel { padding: 18px 0; }
+    .panel h2 { font-size: 1.45rem; }
+    .safe { background: #e8ecd9; border: 1px solid var(--line); border-radius: 0; }
+    .consent { border-radius: 0; background: transparent; border-inline: 0; }
+    .resumo { border-radius: 0; border: 1px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); }
+    @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) {
+      .wrap { width: calc(100% - 32px); }
+      main { padding-top: 30px; }
+      .fields { grid-template-columns: 1fr; gap: 14px; }
+      form { padding: 18px 0; }
+      .atalho .linha { grid-template-columns: 1fr; }
+      .busca { width: 100%; }
+      .send { flex-direction: column; }
+      .send .button { width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -168,10 +207,13 @@
 
   <main>
     <div class="wrap">
+      <section data-cena="introducao">
       <h1>Informe o CNPJ e o resto se preenche sozinho.</h1>
       <p class="intro">São os dados mínimos para localizar o estabelecimento sem ambiguidade e devolver o diagnóstico no canal que você escolher. Nada é enviado sozinho: você revisa o resumo e decide como mandar.</p>
+      <p class="intro"><strong>Nenhum trabalho de SEO garante posição no Google.</strong></p>
+      </section>
 
-      <div class="cols">
+      <div class="cols" data-cena="formulario">
         <form id="form" novalidate autocomplete="on">
           <fieldset class="atalho">
             <legend>Atalho</legend>
@@ -242,7 +284,7 @@
               </div>
               <div class="field">
                 <label for="whatsapp">WhatsApp com DDD</label>
-                <input id="whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" maxlength="16" aria-describedby="whatsapp-erro">
+                <input id="whatsapp" name="whatsapp" type="tel" required inputmode="numeric" autocomplete="tel" placeholder="(11) 90000-0000" maxlength="16" aria-describedby="whatsapp-erro">
                 <p class="erro" id="whatsapp-erro"></p>
               </div>
               <div class="field full">
@@ -340,9 +382,12 @@
     </div>
   </footer>
 
+  <script type="module">
+    import { WHATSAPP_NUMERO } from '/assets/v2/js/contato.js?v=20261001';
+    window.NB_WHATSAPP = WHATSAPP_NUMERO;
+  </script>
   <script>
     (function () {
-      var WHATS = '5511913284876';
       var MAIL = 'contato@nicebyte.ia.br';
       var CHAVE = 'nicebyte:solicitar:rascunho';
 
@@ -740,14 +785,23 @@
 
       /* ---------- resumo, progresso e rascunho ---------- */
       function montarResumo() {
-        var linhas = ['Solicitação de diagnóstico de presença local', ''];
+        var bairroCidade = val('cidade') || 'não informado';
+        var linhas = [
+          'Negócio: ' + (val('negocio') || 'não informado'),
+          'Bairro/cidade: ' + bairroCidade,
+          'Segmento: ' + (val('segmento') || 'não informado'),
+          'Google Maps: ' + (val('maps') || 'não informado'),
+          'Consentimento: ' + (el('consent').checked ? 'autorizado pelo solicitante' : 'pendente'),
+          '(ref SITE-FORM)',
+          '',
+          'Solicitação de diagnóstico de presença local'
+        ];
         CAMPOS.forEach(function (c) {
           var v = val(c[0]);
-          if (v) linhas.push(c[1] + ': ' + v);
+          if (v && ['negocio', 'cidade', 'segmento', 'maps'].indexOf(c[0]) < 0) linhas.push(c[1] + ': ' + v);
         });
         if (cnaeOficial) linhas.push('CNAE: ' + cnaeOficial);
         linhas.push('Origem: ' + origem);
-        linhas.push('Consentimento: ' + (el('consent').checked ? 'autorizado pelo solicitante' : 'pendente'));
         return linhas.join('\n');
       }
 
@@ -846,10 +900,16 @@
 
       el('via-whatsapp').addEventListener('click', function () {
         if (!validar()) return;
+        var numeroWhatsApp = window.NB_WHATSAPP || '';
+        if (!/^\d{12,13}$/.test(numeroWhatsApp)) {
+          status.className = 'status err';
+          status.textContent = 'WhatsApp indisponível no momento. Use o envio por e-mail.';
+          return;
+        }
         status.className = 'status ok';
         status.textContent = 'Abrindo o WhatsApp com o resumo pronto. Confira e toque em enviar.';
         apagarRascunho();
-        window.open('https://wa.me/' + WHATS + '?text=' + encodeURIComponent(montarResumo()), '_blank', 'noopener');
+        window.open('https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(montarResumo()), '_blank', 'noopener');
       });
 
       el('via-email').addEventListener('click', function () {
