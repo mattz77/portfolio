@@ -1,6 +1,6 @@
 import { qrcode } from '/assets/v2/js/qrcode-generator.js?v=20261001';
 
-// O tech-lead troca placeholder depois de receber número confirmado do chip.
+// Número provisório até o chip novo ser registrado (decisão de 2026-10-01). Trocar só aqui.
 export const WHATSAPP_NUMERO = '5511913284876';
 
 const criarLinkWhatsApp = (referencia) => {
