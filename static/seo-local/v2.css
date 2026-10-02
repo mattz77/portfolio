@@ -28,3 +28,12 @@ body{overflow-x:hidden}.topbar{position:relative;z-index:5}.scene{border:0;borde
 .faq{background:#fff8e9}.faq h2{max-width:14ch;font:700 clamp(2.6rem,7vw,5rem)/.95 var(--display);text-transform:uppercase}.faq-list{max-width:900px;margin:2rem auto 0}.faq details{border-top:1px solid #26332e66}.faq details:last-child{border-bottom:1px solid #26332e66}.faq summary{position:relative;display:flex;align-items:center;min-height:56px;padding:12px 48px 12px 0;font-weight:800;cursor:pointer;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::after,.faq summary::before{position:absolute;right:10px;top:50%;width:18px;height:2px;background:currentColor;content:"";transition:transform .2s ease}.faq summary::after{transform:rotate(90deg)}.faq details[open] summary::after{transform:rotate(0)}.faq summary:focus-visible{outline:3px solid #a45b42;outline-offset:2px}.faq details p{max-width:70ch;margin:0;padding:0 44px 1.25rem 0}.contact-copy h2{font:700 clamp(2.4rem,6vw,4.5rem)/.95 var(--display);text-transform:uppercase}.contact-copy>p{max-width:48ch}footer small{display:block;margin:.65rem 0;color:#526056;font-size:.75rem;line-height:1.5}
 @media(prefers-reduced-motion:reduce){.faq summary::before,.faq summary::after{transition:none}}
 @media(prefers-reduced-motion:reduce){.scene-copy{transition:none}}
+/* Nota do mapa fora do mapa: no celular é uma faixa embaixo dele; do tablet para cima, legenda embaixo do celular. Por cima, ela cobria o cartão da Casa Serena. */
+@media(min-width:701px){.map-note{position:static;max-width:390px;margin:10px auto 0;padding:0;border:0;background:transparent;text-align:center;font-size:.72rem}}
+@media(max-width:700px){#mapa-b.mapa-b{height:calc(100% - 24px)}.map-note{top:auto;left:0;right:0;bottom:0;max-width:none;height:24px;line-height:23px;padding:0 12px;border:0;border-top:1px solid #26332e;font-size:.64rem;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+/* Etiquetas do mapa: os problemas nas cenas de diagnóstico, a versão corrigida nas cenas de contato (07 e 08). */
+#mapa-b .mapa-b-nota-depois{display:none}
+#mapa-b.mapa-b[data-estado="contato"] .mapa-b-nota-antes{display:none}
+#mapa-b.mapa-b[data-estado="contato"] .mapa-b-nota-depois{display:grid}
+#mapa-b.mapa-b[data-estado="diagnostico"] .mapa-b-nota-antes span{border-color:#cf6c49}
+#mapa-b.mapa-b[data-estado="contato"] .mapa-b-nota-depois span{border-color:#347fc7}
