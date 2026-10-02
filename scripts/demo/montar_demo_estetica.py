@@ -2,6 +2,7 @@ import argparse
 import json
 import re
 import subprocess
+from html.parser import HTMLParser
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
@@ -14,6 +15,34 @@ def required_replace(text: str, pattern: str, replacement: str, label: str, *, c
     if matches != count:
         raise RuntimeError(f"{label}: esperado {count} ocorrência(s), encontrado {matches}")
     return updated
+
+
+class _Balanco(HTMLParser):
+    """Falha se uma tag de bloco fechar fora de ordem: regex na moldura já deixou </div> sobrando e quebrou o .container."""
+    BLOCOS = {"div", "section", "header", "footer", "main", "nav", "aside", "details", "ul", "ol", "li", "body", "html", "head"}
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.pilha: list[tuple[str, int]] = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.BLOCOS:
+            self.pilha.append((tag, self.getpos()[0]))
+
+    def handle_endtag(self, tag):
+        if tag not in self.BLOCOS:
+            return
+        if not self.pilha or self.pilha[-1][0] != tag:
+            aberto = self.pilha[-1] if self.pilha else ("nada", 0)
+            raise RuntimeError(f"HTML desbalanceado: </{tag}> na linha {self.getpos()[0]} com <{aberto[0]}> da linha {aberto[1]} aberto")
+        self.pilha.pop()
+
+
+def conferir_balanco(html: str) -> None:
+    verificador = _Balanco()
+    verificador.feed(html)
+    if verificador.pilha:
+        raise RuntimeError(f"HTML desbalanceado: tags sem fechamento {verificador.pilha[:5]}")
 
 
 def main() -> None:
@@ -116,7 +145,6 @@ def main() -> None:
     .demo-note ~ .container footer a { color: inherit; }
     @media (max-width: 767px) {
       .container > .authority-faq-section,
-      .container > .location-box,
       .container > footer { margin-inline: -20px; padding-inline: 20px; }
     }
     @media (max-width: 560px) {
@@ -134,9 +162,7 @@ def main() -> None:
     if container_start < 0 or hero_start < 0 or html[container_start:hero_start].count("<div") - html[container_start:hero_start].count("</div>") != 1:
         raise RuntimeError("Hero section precisa permanecer dentro do .container")
     html = required_replace(html, r'\s*<a href="[^"]*"[^>]*class="btn-procedure-consult">Ligar para Casa Serena</a>', "", "CTA telefônico do template")
-    if not fixture.get("foto_hero"):
-        html = required_replace(html, r'\s*<div class="hero-visual">.*?</div>\s*</div>', "", "coluna hero sem foto")
-        html = required_replace(html, r'(</div>\s*</div>\s*</div>\s*</section>)', r'</div>\n    </section>', "fechamentos da coluna hero ausente")
+    # Sem foto, o template já esconde a coluna .hero-visual (CSS :has) e o hero fica em uma coluna; não é preciso cortar HTML.
     html = html.replace("Abrir rota no Google Maps", "Consultar região de atendimento")
     html = required_replace(html, r"<footer>.*?</footer>", '''<footer>
       <p>Página demonstrativa criada pela NiceByte</p>
@@ -157,6 +183,7 @@ def main() -> None:
     if "Vim pela demo (ref SITE-DEMO)" not in html or "Demonstração de página para celular criada pela NiceByte" not in html:
         raise RuntimeError("Copy de demo/contato ausente")
     html = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
+    conferir_balanco(html)
     if html == generated_path.read_text(encoding="utf-8"):
         raise RuntimeError("Moldura não alterou o HTML gerado")
     TARGET.write_text(html, encoding="utf-8", newline="\n")
