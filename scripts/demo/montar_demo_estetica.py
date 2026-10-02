@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 import re
 import subprocess
 from html.parser import HTMLParser
@@ -55,12 +56,13 @@ def main() -> None:
         raise RuntimeError("Fixture Casa Serena inválido ou incompleto")
 
     generated_dir = REPO / ".qa-local/t_f8b94aed/generated"
+    # UTF-8 explícito: no Windows o text=True decodifica com a code page (cp1252) e o head saía com "clÃ­nica".
     result = subprocess.run([
         "python", str(build_lp), "--nicho", "estetica", "--entrada", str(FIXTURE), "--saida", str(generated_dir)
-    ], check=True, capture_output=True, text=True)
+    ], check=True, capture_output=True, text=True, encoding="utf-8", env={**os.environ, "PYTHONIOENCODING": "utf-8"})
     generated_path = Path(result.stdout.strip().splitlines()[-1]).resolve()
     html = generated_path.read_text(encoding="utf-8")
-    previous = subprocess.run(["git", "show", "cb6fd9c:static/demo/estetica/index.html"], cwd=REPO, check=True, capture_output=True, text=True).stdout
+    previous = subprocess.run(["git", "show", "cb6fd9c:static/demo/estetica/index.html"], cwd=REPO, check=True, capture_output=True, text=True, encoding="utf-8").stdout
     old_head_match = re.search(r"<head>(.*?)</head>", previous, re.S | re.I)
     new_head_match = re.search(r"<head>(.*?)</head>", html, re.S | re.I)
     if old_head_match is None or new_head_match is None:
@@ -176,7 +178,7 @@ def main() -> None:
     if replaced_contacts < 3:
         raise RuntimeError(f"Esperados pelo menos 3 links de contato, encontrados {replaced_contacts}")
     html = required_replace(html, r"</body>", '  <script type="module" src="/assets/v2/js/contato.js?v=20261001"></script>\n</body>', "script contato")
-    forbidden = [r"wa\.me", r"tel:", r"google\.com/maps", r"0000-0000", r"\{\{", r"mailto:", r"contato@", r"HealthAndBeautyBusiness"]
+    forbidden = [r"wa\.me", r"tel:", r"google\.com/maps", r"0000-0000", r"\{\{", r"mailto:", r"contato@", r"HealthAndBeautyBusiness", "[ÃÂ][\u0080-¿]"]  # o último pega mojibake UTF-8 lido como cp1252 ("Ã©", "Ã§"), não o "Ã" de "SÃO"
     for pattern in forbidden:
         if re.search(pattern, html, re.I):
             raise RuntimeError(f"Conteúdo proibido permaneceu: {pattern}")
