@@ -1,5 +1,6 @@
 {
   "nome": "Casa Serena",
+  "demo": true,
   "telefone": "(11) 0000-0000",
   "cidade": "São Paulo",
   "regiao": "SP",

@@ -114,9 +114,13 @@ def main() -> None:
     .demo-note ~ .container footer { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
     .demo-note ~ .container footer p { margin: 0; }
     .demo-note ~ .container footer a { color: inherit; }
+    @media (max-width: 767px) {
+      .container > .authority-faq-section,
+      .container > .location-box,
+      .container > footer { margin-inline: -20px; padding-inline: 20px; }
+    }
     @media (max-width: 560px) {
       .demo-note { padding-inline: 8px; font-size: .75rem; gap: 4px 10px; }
-      .procedures-section { padding: 32px 16px 38px; }
       .section-head { margin-bottom: 16px; }
       .section-title { font-size: clamp(20px, 6.4vw, 26px); line-height: 1.1; overflow-wrap: anywhere; }
       .procedures-grid { gap: 14px; }
@@ -124,10 +128,15 @@ def main() -> None:
     }
   </style>
 </head>''', "head close")
-    html = required_replace(html, r'<div class="brand-mark">.*?</div>\s*</div>', '<div class="brand-mark"><div class="brand-title-wrap"><div class="brand-title">Casa Serena</div><div class="brand-sub">Estética · Exemplo ilustrativo</div></div></div>', "wordmark")
+    html = required_replace(html, r'<div class="brand-sub">.*?</div>', '<div class="brand-sub">Estética · Exemplo ilustrativo</div>', "subtítulo da marca")
+    container_start = html.find('<div class="container">')
+    hero_start = html.find('<section class="hero-section"')
+    if container_start < 0 or hero_start < 0 or html[container_start:hero_start].count("<div") - html[container_start:hero_start].count("</div>") != 1:
+        raise RuntimeError("Hero section precisa permanecer dentro do .container")
     html = required_replace(html, r'\s*<a href="[^"]*"[^>]*class="btn-procedure-consult">Ligar para Casa Serena</a>', "", "CTA telefônico do template")
     if not fixture.get("foto_hero"):
         html = required_replace(html, r'\s*<div class="hero-visual">.*?</div>\s*</div>', "", "coluna hero sem foto")
+        html = required_replace(html, r'(</div>\s*</div>\s*</div>\s*</section>)', r'</div>\n    </section>', "fechamentos da coluna hero ausente")
     html = html.replace("Abrir rota no Google Maps", "Consultar região de atendimento")
     html = required_replace(html, r"<footer>.*?</footer>", '''<footer>
       <p>Página demonstrativa criada pela NiceByte</p>
