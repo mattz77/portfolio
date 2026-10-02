@@ -55,7 +55,7 @@ button:focus-visible {
   justify-content: space-between;
 }
 .brand {
-  font: 38px/0.9 var(--display);
+  font: 38px/1 var(--display);
   text-decoration: none;
 }
 /* ® discreto, em sobrescrito, nunca do tamanho da marca. */
@@ -106,7 +106,7 @@ button:focus-visible {
 .hero h1,
 .section-head h2,
 .scene h2 {
-  font: clamp(46px, 7vw, 86px)/0.98 var(--display);
+  font: clamp(46px, 7vw, 86px)/1.2 var(--display);
   letter-spacing: -0.025em;
   text-transform: uppercase;
   margin: 18px 0;
@@ -255,7 +255,7 @@ footer {
   padding: 54px 0 20px;
 }
 .story-intro h2 {
-  font: clamp(36px, 5vw, 62px)/1 var(--display);
+  font: clamp(36px, 5vw, 62px)/1.2 var(--display);
   text-transform: uppercase;
   margin: 8px 0;
 }
