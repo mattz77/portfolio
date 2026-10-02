@@ -8,21 +8,21 @@
   <link rel="preload" href="/assets/v2/fonts/dm-sans-latin.woff2?v=20261001" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/v2/tokens.css?v=20261001">
   <link rel="stylesheet" href="/assets/v2/base.css?v=20261001c">
-  <title>Solicitar diagnóstico de presença local | NiceByte</title>
-  <meta name="description" content="Formulário de solicitação do diagnóstico de SEO Local da NiceByte. Entrada voluntária, com consentimento explícito e sem pedir senha de nenhuma conta.">
+  <title>Peça seu diagnóstico gratuito | NiceByte</title>
+  <meta name="description" content="Conte qual é seu negócio e onde fica. Revise as informações antes de abrir o WhatsApp. Receba o diagnóstico em até 5 dias úteis.">
   <link rel="canonical" href="https://nicebyte.ia.br/seo-local/solicitar/">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nicebyte.ia.br/seo-local/solicitar/">
-  <meta property="og:title" content="Solicitar diagnóstico de presença local | NiceByte">
-  <meta property="og:description" content="Informe o CNPJ e o resto se preenche sozinho. O diagnóstico usa apenas evidências públicas.">
+  <meta property="og:title" content="Solicitar diagnóstico gratuito | NiceByte">
+  <meta property="og:description" content="Conte qual é seu negócio e onde fica. Revise as informações antes de abrir o WhatsApp. Receba o diagnóstico em até 5 dias úteis.">
   <meta property="og:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Solicitar diagnóstico de presença local | NiceByte">
-  <meta name="twitter:description" content="Informe o CNPJ e o resto se preenche sozinho.">
+  <meta name="twitter:title" content="Solicitar diagnóstico gratuito | NiceByte">
+  <meta name="twitter:description" content="Conte qual é seu negócio e onde fica. Revise as informações antes de abrir o WhatsApp. Receba o diagnóstico em até 5 dias úteis.">
   <meta name="twitter:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
   <script type="application/ld+json">
   {
@@ -199,16 +199,16 @@
   <main>
     <div class="wrap">
       <section data-cena="introducao">
-      <h1>Informe o CNPJ e o resto se preenche sozinho.</h1>
-      <p class="intro">São os dados mínimos para localizar o estabelecimento sem ambiguidade e devolver o diagnóstico no canal que você escolher. Nada é enviado sozinho: você revisa o resumo e decide como mandar.</p>
+      <h1>Peça seu diagnóstico gratuito</h1>
+      <p class="intro">Informe nome, bairro e atividade e revise o resumo antes de abrir o WhatsApp. Nada é enviado sem você tocar em enviar. O diagnóstico chega pelo WhatsApp em até 5 dias úteis.</p>
       <p class="intro"><strong>Nenhum trabalho de SEO garante posição no Google.</strong></p>
       </section>
 
       <div class="cols" data-cena="formulario">
         <form id="form" novalidate autocomplete="on">
           <fieldset class="atalho">
-            <legend>Atalho</legend>
-            <p class="pitch">Com o CNPJ a gente busca nome, ramo de atividade e endereço na base pública da Receita Federal e preenche o formulário. Você confere e corrige o que quiser.</p>
+            <legend>Quer preencher mais rápido? <span class="opt">(opcional)</span></legend>
+            <p class="pitch">Se informar o CNPJ, buscamos dados cadastrais públicos para preencher parte do formulário. Confira tudo antes de continuar.</p>
             <div class="linha">
               <div class="field">
                 <label for="cnpj">CNPJ <span class="opt">(opcional)</span></label>
@@ -217,44 +217,45 @@
               </div>
               <button class="busca" type="button" id="buscar-cnpj">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
-                Buscar
+                Buscar dados
               </button>
             </div>
             <p class="busca-status" id="cnpj-status" role="status" aria-live="polite"></p>
           </fieldset>
 
           <fieldset class="sep">
-            <legend>O estabelecimento</legend>
+            <legend>Sobre o negócio</legend>
             <div class="fields">
               <div class="field full">
-                <label for="negocio">Nome do negócio</label>
+                <label for="negocio">Nome do estabelecimento</label>
                 <input id="negocio" name="negocio" type="text" required autocomplete="organization" placeholder="Como aparece no Google" aria-describedby="negocio-erro">
-                <span class="hint">Escreva exatamente como está no perfil, inclusive a unidade.</span>
+                <span class="hint">Como aparece no Google, se souber. Inclua unidade ou endereço quando houver mais de uma.</span>
                 <p class="erro" id="negocio-erro"></p>
               </div>
               <div class="field">
-                <label for="cidade">Cidade e bairro</label>
+                <label for="cidade">Bairro e cidade</label>
                 <input id="cidade" name="cidade" type="text" required autocomplete="address-level2" placeholder="São Paulo, Vila Mariana" aria-describedby="cidade-erro">
                 <p class="erro" id="cidade-erro"></p>
               </div>
               <div class="field">
-                <label for="cep">CEP <span class="opt">(preenche a cidade)</span></label>
+                <label for="cep">CEP <span class="opt">(opcional)</span></label>
                 <div class="linha" style="margin-top:0">
                   <input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9">
-                  <button class="busca" type="button" id="buscar-cep" aria-label="Buscar endereço pelo CEP">Buscar</button>
+                  <button class="busca" type="button" id="buscar-cep" aria-label="Buscar endereço pelo CEP">Buscar CEP</button>
                 </div>
+                <span class="hint">Usado para completar a localização.</span>
                 <p class="busca-status" id="cep-status" role="status" aria-live="polite"></p>
               </div>
               <div class="field full">
-                <label for="segmento">Segmento</label>
+                <label for="segmento">O que o negócio faz?</label>
                 <input id="segmento" name="segmento" type="text" required placeholder="Barbearia, clínica, restaurante" aria-describedby="segmento-erro">
-                <span class="hint">É com esse termo que a busca local é reproduzida.</span>
+                <span class="hint">Ex.: clínica de estética, marmitaria, oficina.</span>
                 <p class="erro" id="segmento-erro"></p>
               </div>
               <div class="field full">
-                <label for="maps">Link do perfil no Google Maps <span class="opt">(opcional, mas encurta tudo)</span></label>
+                <label for="maps">Link do perfil no Google Maps (opcional)</label>
                 <input id="maps" name="maps" type="url" inputmode="url" placeholder="https://maps.app.goo.gl/..." aria-describedby="maps-erro">
-                <span class="hint">Sem o link, o perfil é procurado pelo nome mais a cidade. Com ele, não há chance de trocar de negócio.</span>
+                <span class="hint">Com o link, identificamos o perfil certo mais rápido.</span>
                 <p class="erro" id="maps-erro"></p>
               </div>
               <div class="field full">
@@ -266,7 +267,7 @@
           </fieldset>
 
           <fieldset class="sep">
-            <legend>Onde devolvemos</legend>
+            <legend>Como falar com você</legend>
             <div class="fields">
               <div class="field">
                 <label for="nome">Seu nome</label>
@@ -284,20 +285,20 @@
                 <p class="erro" id="email-erro"></p>
               </div>
               <div class="field full">
-                <label for="objetivo">O que você quer que melhore</label>
+                <label for="objetivo">O que você quer que melhore?</label>
                 <select id="objetivo" name="objetivo" required aria-describedby="objetivo-erro">
                   <option value="">Escolha uma opção</option>
-                  <option>Aparecer no Top 3 do “perto de mim”</option>
-                  <option>Receber mais ligações</option>
-                  <option>Receber mais agendamentos</option>
-                  <option>Levar mais gente até a loja</option>
-                  <option>Entender por que os concorrentes aparecem antes</option>
-                  <option>Outro, explico abaixo</option>
+                  <option id="SOL-GOAL-01" value="Receber mais ligações">Receber mais ligações</option>
+                  <option id="SOL-GOAL-02" value="Receber mais mensagens no WhatsApp">Receber mais mensagens no WhatsApp</option>
+                  <option id="SOL-GOAL-03" value="Ter mais agendamentos">Ter mais agendamentos</option>
+                  <option id="SOL-GOAL-04" value="Trazer mais clientes até a loja">Trazer mais clientes até a loja</option>
+                  <option id="SOL-GOAL-05" value="Entender por que outros aparecem e meu negócio não">Entender por que outros aparecem e meu negócio não</option>
+                  <option id="SOL-GOAL-06" value="Outro">Outro</option>
                 </select>
                 <p class="erro" id="objetivo-erro"></p>
               </div>
               <div class="field full">
-                <label for="contexto">Alguma coisa que a gente precisa saber <span class="opt">(opcional)</span></label>
+                <label for="contexto">Algum detalhe que ajude a entender o negócio? (opcional)</label>
                 <textarea id="contexto" name="contexto" placeholder="Mudou de endereço, tem duas unidades, o perfil está sem acesso, e por aí vai."></textarea>
               </div>
             </div>
@@ -322,8 +323,8 @@
           <p class="copiar-alt"><button type="button" class="link-copiar" id="copiar">Prefere copiar o resumo?</button></p>
           <p class="status" id="status" role="status" aria-live="polite"></p>
           <p class="rascunho" id="rascunho" hidden>
-            <span id="rascunho-txt">Rascunho guardado neste navegador.</span>
-            <button type="button" id="limpar-rascunho">Limpar rascunho</button>
+            <span id="rascunho-txt">Seu rascunho fica salvo neste navegador por até 7 dias.</span>
+            <button type="button" id="limpar-rascunho">Apagar rascunho</button>
           </p>
         </form>
 
@@ -332,19 +333,20 @@
             <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 7.9-7.5 9.5-4.4-1.6-7.5-5.1-7.5-9.5V6z"/><path d="M9 12.2l2.2 2.2 4-4.4"/></svg></span>
             <div>
               <strong>Nada sai daqui sozinho</strong>
-              <span>O formulário não envia nada por conta própria. Ele monta o resumo e abre o seu WhatsApp, com você no controle do envio.</span>
+              <span>O formulário monta o resumo e abre o WhatsApp; você confere e toca em enviar.</span>
             </div>
           </div>
 
           <div class="panel">
             <h2>O que acontece depois</h2>
             <ol>
-              <li>Localizamos o perfil pelas fontes públicas, com data e link registrados.</li>
-              <li>Comparamos com quem aparece no Top 3 da mesma busca.</li>
-              <li>Você recebe as notas, as prioridades e o que não foi possível verificar.</li>
-              <li>Se fizer sentido, a conversa segue com uma pessoa, não com o robô.</li>
+              <li>Conferimos as informações do perfil no Google e da página no celular.</li>
+              <li>Comparamos com os negócios que aparecem para a mesma busca no seu bairro e registramos a busca, o bairro e a data.</li>
+              <li>Organizamos as 3 prioridades: o que corrigir primeiro e por quê.</li>
+              <li>Enviamos seu diagnóstico pelo WhatsApp em até 5 dias úteis.</li>
+              <li>Fazemos até 5 diagnósticos por semana, cada um feito por uma pessoa. Se a semana estiver cheia, avisamos a nova data pelo WhatsApp. Depois, você decide: faz as correções ou pede um orçamento à NiceByte, sem compromisso.</li>
             </ol>
-            <p class="note">Nenhum acesso administrativo ao Google é pedido em momento algum desta etapa.</p>
+            <p class="note">Não pedimos senha nem acesso administrativo ao Google.</p>
           </div>
 
           <div class="panel">
@@ -881,7 +883,7 @@
         }
         if (primeiroRuim) {
           status.className = 'status err';
-          status.textContent = 'Confira os campos marcados.';
+          status.textContent = 'Confira os campos destacados.';
           el(primeiroRuim).focus();
           return false;
         }
@@ -899,7 +901,7 @@
           return;
         }
         status.className = 'status ok';
-        status.textContent = 'Abrindo o WhatsApp com o resumo pronto. Confira e toque em enviar.';
+        status.textContent = 'WhatsApp aberto. Confira a mensagem e toque em enviar para concluir.';
         apagarRascunho();
         window.open('https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(montarResumo()), '_blank', 'noopener');
       });
