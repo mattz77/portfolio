@@ -32,11 +32,25 @@ Carregar scripts como módulos deferidos (módulos já são deferidos): QR gener
 
 ## WhatsApp
 
-`js/contato.js` contém única constante `WHATSAPP_NUMERO`, placeholder `55XXXXXXXXXXX`. Nenhum outro arquivo v2 deve definir o número. Tech-lead substitui antes do deploy, após confirmação do número.
+`js/contato.js` contém a única constante `WHATSAPP_NUMERO`, hoje com o número provisório da NiceByte (decisão do usuário, 2026-10-01). Nenhum outro arquivo v2 define o número: HTML e outros scripts leem do módulo, e links sem JS caem em `/seo-local/#contato`. Quando o chip definitivo chegar, a troca é só nesse arquivo, com o `?v=` atualizado em todas as páginas.
+
+Sem e-mail no lançamento: nada de `mailto:` ou `contato@` em página, JSON-LD ou rodapé até o usuário liberar o canal.
 
 ## Cache
 
-Nginx serve CSS, SVG e WOFF2 com `Cache-Control: public, immutable`. Toda URL referenciada inclui `?v=20261001`, incluindo fontes, módulos e SVG. Em qualquer alteração futura de asset, atualizar versão em todas as referências/cache-busting URLs e neste documento antes de publicar.
+Nginx serve CSS, SVG e WOFF2 com `Cache-Control: public, immutable`. Toda URL referenciada leva `?v=`, incluindo fontes, módulos e SVG: `20261001` para os assets compartilhados e `20261001-copy` para o CSS e o JS da /seo-local/ com o copy final. Em qualquer alteração de asset, troque a versão em todas as referências antes de publicar. Versão que nunca foi ao ar pode ser reaproveitada.
+
+## Release e deploy (nicebyte.ia.br)
+
+O que vai ao ar sai da branch `release/seo-local-v2`, na worktree `.worktrees/v2-release`, e nunca do checkout principal. Cada tela aprovada entra por `merge --no-ff` da sua branch, com o QA citado na mensagem.
+
+1. `docker tag luma/portfolio:latest luma/portfolio:rollback-<AAAAMMDD-HHMM>`
+2. `docker build -q -t luma/portfolio:<nome>-<AAAAMMDD-HHMM> .`, na worktree da release. O Dockerfile, que é gitignored e foi copiado do checkout principal, roda `pnpm install` e `scripts/prerender.mjs` dentro da imagem. Em seguida, `docker tag <essa imagem> luma/portfolio:latest`.
+3. `docker compose -f C:\Users\olive\Documents\Luma-APP\infra\proxy\docker-compose.yml --profile portfolio up -d portfolio`. Só esse serviço.
+4. Smoke no ar: 200 em /seo-local/, /seo-local/solicitar/, /privacidade/, /laudos/, /demo/estetica/ e /healthz, mais um texto novo de cada página alterada; regressão do formulário (e-mail opcional e copiar resumo); Lighthouse mobile 3x contra a URL pública.
+5. Rollback: `docker tag luma/portfolio:rollback-<...> luma/portfolio:latest` e repetir o passo 3.
+
+O histórico de deploys e rollbacks fica na TASK 291 do LLM-Brain. As evidências ficam em `C:\pessoal\qa\nicebyte\`.
 
 ## Orçamento D2
 
