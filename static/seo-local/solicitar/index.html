@@ -279,8 +279,8 @@
                 <p class="erro" id="whatsapp-erro"></p>
               </div>
               <div class="field full">
-                <label for="email">E-mail</label>
-                <input id="email" name="email" type="email" required autocomplete="email" placeholder="voce@empresa.com.br" aria-describedby="email-erro">
+                <label for="email">E-mail <span class="opt">(opcional)</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br" aria-describedby="email-erro">
                 <p class="erro" id="email-erro"></p>
               </div>
               <div class="field full">
@@ -305,7 +305,7 @@
 
           <label class="consent" for="consent">
             <input id="consent" name="consent" type="checkbox" required>
-            <span><b>Autorizo a NiceByte a ler as fontes públicas deste negócio e a me responder</b> no WhatsApp e no e-mail informados. Posso encerrar a qualquer momento respondendo SAIR. Nenhuma senha ou acesso administrativo é solicitado.</span>
+            <span><b>Autorizo a NiceByte a ler as fontes públicas deste negócio e a me responder</b> no WhatsApp informado e, se eu preencher, no e-mail. Posso encerrar a qualquer momento respondendo SAIR. Nenhuma senha ou acesso administrativo é solicitado.</span>
           </label>
 
           <div class="progresso">
@@ -393,7 +393,7 @@
         ['nome', 'Contato'], ['whatsapp', 'WhatsApp'], ['email', 'E-mail'],
         ['objetivo', 'Objetivo'], ['contexto', 'Observações']
       ];
-      var OBRIGATORIOS = ['negocio', 'cidade', 'segmento', 'nome', 'whatsapp', 'email', 'objetivo'];
+      var OBRIGATORIOS = ['negocio', 'cidade', 'segmento', 'nome', 'whatsapp', 'objetivo'];
 
       function el(id) { return document.getElementById(id); }
       function val(id) { var e = el(id); return e ? String(e.value || '').trim() : ''; }
@@ -468,7 +468,7 @@
           return telValido(v) ? '' : 'O número precisa de DDD e 8 ou 9 dígitos.';
         },
         email: function (v) {
-          if (!v) return 'Informe o e-mail.';
+          if (!v) return ''; // opcional: só valida o formato quando preenchido
           return emailValido(v) ? '' : 'Esse e-mail não parece válido.';
         },
         cnpj: function (v) {
@@ -856,7 +856,7 @@
         CAMPOS.forEach(function (c) { var e = el(c[0]); if (e) e.value = ''; });
         el('cep').value = '';
         el('consent').checked = false;
-        OBRIGATORIOS.concat(['cnpj', 'maps', 'site']).forEach(function (id) { marcar(id, ''); });
+        OBRIGATORIOS.concat(['email', 'cnpj', 'maps', 'site']).forEach(function (id) { marcar(id, ''); });
         aviso('cnpj-status', '', ''); aviso('cep-status', '', '');
         cnaeOficial = '';
         apagarRascunho();
@@ -868,7 +868,7 @@
       /* ---------- envio ---------- */
       function validar() {
         var primeiroRuim = null;
-        OBRIGATORIOS.concat(['cnpj', 'maps', 'site']).forEach(function (id) {
+        OBRIGATORIOS.concat(['email', 'cnpj', 'maps', 'site']).forEach(function (id) {
           if (checar(id) && !primeiroRuim) primeiroRuim = id;
         });
         var falta = faltando();
