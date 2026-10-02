@@ -1360,7 +1360,45 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="/assets/v2/tokens.css?v=20261001">
+<title>Modelo de landing para clínica de estética | Demo NiceByte</title>
+<meta name="description" content="Demonstração interativa de uma landing page mobile para clínicas de estética, criada pela NiceByte para conectar presença local e contato direto.">
+<link rel="canonical" href="https://nicebyte.ia.br/demo/estetica/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nicebyte.ia.br/demo/estetica/">
+<meta property="og:title" content="Modelo de landing para clínica de estética | Demo NiceByte">
+<meta property="og:description" content="Veja como uma página mobile pode organizar serviços, confiança e contato direto. Esta é uma demonstração, não uma clínica real.">
+<meta property="og:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Modelo de landing para clínica de estética | Demo NiceByte">
+<meta name="twitter:description" content="Demonstração de uma página mobile para presença local e contato direto.">
+<meta name="twitter:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nicebyte.ia.br/#organization",
+        "name": "NiceByte",
+        "url": "https://nicebyte.ia.br/",
+        "logo": "https://nicebyte.ia.br/assets/nicebyte-official-exact.jpg"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://nicebyte.ia.br/demo/estetica/#webpage",
+        "name": "Modelo de landing para clínica de estética",
+        "description": "Demonstração de uma página mobile para presença local e contato direto.",
+        "url": "https://nicebyte.ia.br/demo/estetica/",
+        "isPartOf": { "@type": "WebSite", "name": "NiceByte", "url": "https://nicebyte.ia.br/" },
+        "publisher": { "@id": "https://nicebyte.ia.br/#organization" }
+      }
+    ]
+  }
+  </script>  <link rel="stylesheet" href="/assets/v2/tokens.css?v=20261001">
   <link rel="stylesheet" href="/assets/v2/base.css?v=20261001">
   <style>
     .demo-note { position: sticky; top: 0; z-index: 1300; padding: 8px 14px; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 24px; background: var(--ink); color: var(--white); text-align: center; font-size: .875rem; line-height: 1.4; }
@@ -1369,7 +1407,11 @@
     .demo-note ~ .container footer { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
     .demo-note ~ .container footer p { margin: 0; }
     .demo-note ~ .container footer a { color: inherit; }
-    @media (max-width: 560px) { .demo-note { padding-inline: 8px; font-size: .75rem; gap: 4px 10px; } }
+    @media (max-width: 560px) {
+      .demo-note { padding-inline: 8px; font-size: .75rem; gap: 4px 10px; }
+      .section-title { font-size: clamp(20px, 7vw, 30px); overflow-wrap: anywhere; }
+      .btn-concierge { width: calc(100% - 24px); margin-inline: auto; }
+    }
   </style>
 </head>
 <body>

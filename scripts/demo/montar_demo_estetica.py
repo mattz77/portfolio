@@ -67,11 +67,37 @@ def main() -> None:
     head = required_replace(head, r"<title>.*?</title>", "", "title gerado")
     head = required_replace(head, r'<meta name="description"[^>]*>', "", "description gerada")
     head = required_replace(head, r'<link rel="icon"[^>]*>', "", "favicon gerado")
-    head = head.replace("</head>", "\n" + "\n".join(preserved) + "\n" + org_graph_match.group(0) + "\n</head>", 1)
+    head = head.rstrip() + "\n" + "\n".join(preserved) + "\n" + org_graph_match.group(0)
     if '"HealthAndBeautyBusiness"' in head or "HealthAndBeautyBusiness" in head:
         raise RuntimeError("JSON-LD fictício permaneceu no head")
 
-    html = html.replace("<head>" + new_head_match.group(1) + "</head>", "<head>" + head + "</head>", 1)
+    html, replaced_head = re.subn(
+        r"<head>.*?</head>", lambda _: "<head>" + head + "</head>", html, count=1, flags=re.S | re.I
+    )
+    if replaced_head != 1:
+        raise RuntimeError("Não foi possível montar head final")
+    final_head_match = re.search(r"<head>(.*?)</head>", html, re.S | re.I)
+    if final_head_match is None:
+        raise RuntimeError("Head final ausente")
+    final_head = final_head_match.group(1)
+    required_head = [
+        (r"<title>.*?</title>", "title"),
+        (r'<meta name="description"[^>]*>', "description"),
+        (r'<link rel="canonical"[^>]*>', "canonical"),
+        (r'<meta property="og:[^"]+"[^>]*>', "Open Graph"),
+        (r'<meta name="twitter:[^"]+"[^>]*>', "Twitter"),
+        (r'<link rel="icon"[^>]*>', "favicon"),
+        (r'<script type="application/ld\+json">.*?</script>', "JSON-LD NiceByte"),
+    ]
+    for pattern, label in required_head:
+        if re.search(pattern, final_head, re.S | re.I) is None:
+            raise RuntimeError(f"Head final sem {label}")
+    final_json_match = re.search(r'<script type="application/ld\+json">(.*?)</script>', final_head, re.S | re.I)
+    if final_json_match is None or json.loads(final_json_match.group(1)) != org_graph:
+        raise RuntimeError("JSON-LD final não corresponde ao Organization + WebPage NiceByte")
+    if "HealthAndBeautyBusiness" in final_head:
+        raise RuntimeError("JSON-LD de negócio fictício permaneceu no head")
+
     band = '''  <aside class="demo-note" aria-label="Aviso de demonstração">
     <span>Demonstração de página para celular criada pela NiceByte</span>
     <a href="/seo-local/">Conhecer SEO Local</a>
@@ -88,7 +114,11 @@ def main() -> None:
     .demo-note ~ .container footer { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
     .demo-note ~ .container footer p { margin: 0; }
     .demo-note ~ .container footer a { color: inherit; }
-    @media (max-width: 560px) { .demo-note { padding-inline: 8px; font-size: .75rem; gap: 4px 10px; } }
+    @media (max-width: 560px) {
+      .demo-note { padding-inline: 8px; font-size: .75rem; gap: 4px 10px; }
+      .section-title { font-size: clamp(20px, 7vw, 30px); overflow-wrap: anywhere; }
+      .btn-concierge { width: calc(100% - 24px); margin-inline: auto; }
+    }
   </style>
 </head>''', "head close")
     html = required_replace(html, r'<div class="brand-mark">.*?</div>\s*</div>', '<div class="brand-mark"><div class="brand-title-wrap"><div class="brand-title">Casa Serena</div><div class="brand-sub">Estética · Exemplo ilustrativo</div></div></div>', "wordmark")
