@@ -1,66 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
-  <title>Modelo de landing para clínica de estética | Demo NiceByte</title>
-  <meta name="description" content="Demonstração interativa de uma landing page mobile para clínicas de estética, criada pela NiceByte para conectar presença local e contato direto.">
-  <link rel="canonical" href="https://nicebyte.ia.br/demo/estetica/">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://nicebyte.ia.br/demo/estetica/">
-  <meta property="og:title" content="Modelo de landing para clínica de estética | Demo NiceByte">
-  <meta property="og:description" content="Veja como uma página mobile pode organizar serviços, confiança e contato direto. Esta é uma demonstração, não uma clínica real.">
-  <meta property="og:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="pt_BR">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Modelo de landing para clínica de estética | Demo NiceByte">
-  <meta name="twitter:description" content="Demonstração de uma página mobile para presença local e contato direto.">
-  <meta name="twitter:image" content="https://nicebyte.ia.br/assets/og-banner.jpg">
-  <link rel="stylesheet" href="/assets/v2/tokens.css?v=20261001">
-  <link rel="stylesheet" href="/assets/v2/base.css?v=20261001">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://nicebyte.ia.br/#organization",
-        "name": "NiceByte",
-        "url": "https://nicebyte.ia.br/",
-        "logo": "https://nicebyte.ia.br/assets/nicebyte-official-exact.jpg"
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://nicebyte.ia.br/demo/estetica/#webpage",
-        "name": "Modelo de landing para clínica de estética",
-        "description": "Demonstração de uma página mobile para presença local e contato direto.",
-        "url": "https://nicebyte.ia.br/demo/estetica/",
-        "isPartOf": { "@type": "WebSite", "name": "NiceByte", "url": "https://nicebyte.ia.br/" },
-        "publisher": { "@id": "https://nicebyte.ia.br/#organization" }
-      }
-    ]
-  }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+
+
+
   <style>
     /* DESIGN TOKENS HAUTE LUXURY RESPONSIVE */
     :root {
-      --bg: var(--paper);
-      --text-main: var(--ink);
-      --text-muted: var(--muted);
-      --bronze-light: var(--lime);
-      --bronze: var(--ink);
-      --bronze-dark: var(--ink);
-      --surface: var(--white);
-      --surface-subtle: var(--paper);
-      --border: var(--ink);
-      --text-light: var(--muted);
-      --bronze-soft: var(--paper);
-      --border-accent: var(--ink);
-      --wa-dark-1: var(--ink);
-      --wa-dark-2: var(--ink);
+      --bg: #F8F6F2;
+      --surface: #FFFDF8;
+      --surface-subtle: #EEF0E8;
+      --text-main: #20251C;
+      --text-muted: #555B50;
+      --text-light: #555B50;
+      --bronze: #34462D;
+      --bronze-dark: #25351F;
+      --bronze-light: #D7C8AE;
+      --bronze-soft: #EEF0E8;
+      --border: #CDD1C5;
+      --border-accent: #9CA594;
+      --wa-dark-1: #20251C;
+      --wa-dark-2: #20251C;
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
@@ -79,7 +49,7 @@
     body {
       background-color: var(--bg);
       color: var(--text-main);
-      font-family: var(--body);
+      font-family: 'DM Sans', -apple-system, sans-serif;
       line-height: 1.55;
       padding-bottom: 120px;
       overflow-x: hidden;
@@ -320,6 +290,10 @@
       align-items: center;
     }
 
+    .hero-grid:not(:has(.hero-media-card img)) .hero-visual {
+      display: none;
+    }
+
     @media (min-width: 1024px) {
       .hero-section {
         padding: 56px 0 64px;
@@ -327,6 +301,9 @@
       .hero-grid {
         grid-template-columns: 1.15fr 0.85fr;
         gap: 56px;
+      }
+      .hero-grid:not(:has(.hero-media-card img)) {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -402,6 +379,17 @@
       margin-bottom: 4px;
     }
 
+    .seta {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     .proof-lbl {
       font-size: 9.5px;
       color: var(--text-light);
@@ -412,14 +400,30 @@
 
     /* Master CTA Button */
     .luxury-cta-block {
+      width: 100%;
       max-width: 500px;
+      min-width: 0;
       margin-bottom: 12px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .luxury-cta-block > a {
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      min-height: 48px;
+      overflow-wrap: anywhere;
+    }
+
+    .luxury-cta-block .btn-procedure-consult {
+      justify-content: center;
+      box-shadow: none;
     }
 
     .btn-concierge {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: block;
+      text-align: center;
       background: linear-gradient(135deg, var(--wa-dark-1) 0%, var(--wa-dark-2) 100%);
       color: #FFFFFF;
       text-decoration: none;
@@ -428,7 +432,6 @@
       border: 1px solid #2B3832;
       box-shadow: var(--shadow-float), inset 0 1px 0 rgba(255, 255, 255, 0.12);
       position: relative;
-      overflow: hidden;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
@@ -437,24 +440,6 @@
       transform: translateY(-2px);
       box-shadow: 0 16px 36px rgba(15, 23, 20, 0.32);
       outline: 2px solid var(--bronze-light);
-    }
-
-    .btn-concierge::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212, 186, 148, 0.15), transparent);
-      transform: skewX(-25deg);
-      animation: shimmer 4.5s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { left: -100%; }
-      25% { left: 200%; }
-      100% { left: 200%; }
     }
 
     .concierge-left {
@@ -529,23 +514,7 @@
     .hero-visual {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 12px;
-      padding: clamp(24px, 5vw, 48px);
-      color: #FFFFFF;
-      background: var(--text-main);
-      border: 1px solid var(--border-accent);
-      box-shadow: var(--shadow-md);
-    }
-
-    .hero-visual .hero-badge-title {
-      color: #FFFFFF;
-      font-size: clamp(28px, 4vw, 40px);
-    }
-
-    .hero-visual p:last-child {
-      margin: 0;
-      color: #FFFFFF;
+      gap: 16px;
     }
 
     .hero-media-card {
@@ -1207,6 +1176,7 @@
       border-radius: var(--radius-md);
       padding: 24px 28px;
       margin: 32px 0 20px;
+      box-shadow: 6px 6px 0 var(--bronze);
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -1244,11 +1214,6 @@
       color: var(--bronze-dark);
       text-decoration: underline;
       white-space: nowrap;
-    }
-
-    .nicebyte-credit {
-      font-family: var(--display);
-      font-size: 1.4rem;
     }
 
     footer {
@@ -1394,106 +1359,85 @@
         transition-duration: 0.01ms !important;
       }
     }
-    .hero-section h1, .section-title, .brand-title, .hero-eyebrow { font-family: var(--display); }
-    .demo-note {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 1300;
-      padding: 8px 14px;
-      background: var(--ink);
-      color: var(--white);
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 4px 24px;
-      text-align: center;
-      font-size: 0.875rem;
-      line-height: 1.4;
-    }
+  </style>
+  <link rel="stylesheet" href="/assets/v2/tokens.css?v=20261001">
+  <link rel="stylesheet" href="/assets/v2/base.css?v=20261001">
+  <style>
+    .demo-note { position: sticky; top: 0; z-index: 1300; padding: 8px 14px; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 24px; background: var(--ink); color: var(--white); text-align: center; font-size: .875rem; line-height: 1.4; }
     .demo-note a { color: var(--lime); }
-    body { padding-top: 44px; padding-bottom: 24px; }
-    .btn-concierge { width: 100%; justify-content: center; text-align: center; white-space: normal; }
-    .btn-concierge::before { animation: none; }
-    @media (max-width: 560px) {
-      .demo-note { padding-inline: 8px; font-size: 0.75rem; }
-      body { padding-top: 54px; }
-      .container { width: 100%; max-width: 100%; padding-inline: 14px; }
-      .luxury-cta-block, .btn-concierge { width: 100%; max-width: 100%; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-    }
+    .demo-note + .container { padding-top: 0; }
+    .demo-note ~ .container footer { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
+    .demo-note ~ .container footer p { margin: 0; }
+    .demo-note ~ .container footer a { color: inherit; }
+    @media (max-width: 560px) { .demo-note { padding-inline: 8px; font-size: .75rem; gap: 4px 10px; } }
   </style>
 </head>
 <body>
-  <div class="demo-note"><span>Demonstração · negócio fictício · <a href="/seo-local/">Exemplo ilustrativo</a></span><span>Nenhum trabalho de SEO garante posição no Google.</span></div>
+  <aside class="demo-note" aria-label="Aviso de demonstração">
+    <span>Demonstração de página para celular criada pela NiceByte</span>
+    <a href="/seo-local/">Conhecer SEO Local</a>
+    <span>Nenhum trabalho de SEO garante posição no Google.</span>
+  </aside>
+
   <div class="container">
 
     <!-- TOP HEADER -->
     <header>
-      <div class="brand-mark">
-
-        <div class="brand-title-wrap">
-          <div class="brand-title">Casa Serena</div>
-          <div class="brand-sub">Estética facial (exemplo ilustrativo)</div>
-        </div>
+      <div class="brand-mark"><div class="brand-title-wrap"><div class="brand-title">Casa Serena</div><div class="brand-sub">Estética · Exemplo ilustrativo</div></div></div>
       </div>
       <div class="header-right">
         <nav class="header-nav" aria-label="Navegação rápida">
           <a href="#procedimentos">Procedimentos</a>
           <a href="#duvidas">Dúvidas</a>
         </nav>
-        <div class="status-badge">
-          <span class="status-dot"></span>
-          <span>Exemplo ilustrativo</span>
-        </div>
       </div>
     </header>
 
     <!-- 2. HERO SPLIT-SCREEN RESPONSIVO -->
-    <section class="hero-section" data-cena="hero" aria-label="Apresentação do negócio">
+    <section class="hero-section" aria-label="Apresentação do negócio">
       <div class="hero-grid">
         <div class="hero-content">
           <div class="hero-eyebrow">Estética · São Paulo</div>
           <h1>Casa Serena</h1>
-          <p class="hero-desc">Um espaço de estética facial na Vila Mariana, com informações e opções de atendimento para você conhecer com calma. Exemplo ilustrativo.</p>
+          <p class="hero-desc">Estética facial e corporal na Vila Mariana, com horário marcado de segunda a sábado, até as 20h. Negócio fictício, criado para esta demonstração.</p>
           <div class="luxury-cta-block">
-            <a href="/seo-local/#contato" id="whatsapp-link" class="btn-concierge">Conversar pelo WhatsApp</a>
+            <a href="/seo-local/#contato" data-contato-demo data-contato-texto="Vim pela demo (ref SITE-DEMO)" class="btn-concierge">Conversar pelo WhatsApp</a>
           </div>
         </div>
-        <aside class="hero-visual" aria-label="Região de atendimento fictícia">
-          <p class="loc-tag">REGIÃO · EXEMPLO ILUSTRATIVO</p>
-          <p class="hero-badge-title">Vila Mariana</p>
-          <p>São Paulo · atendimento estético facial</p>
-        </aside>
+        </div>
       </div>
     </section>
 
     <!-- 3. GRID DE PROCEDIMENTOS RESPONSIVO -->
-    <section class="procedures-section" data-cena="procedimentos" id="procedimentos" aria-label="Serviços">
+    <section class="procedures-section" id="procedimentos" aria-label="Serviços">
       <div class="section-head"><h2 class="section-title">Opções de atendimento</h2></div>
-      <div class="procedures-grid"><article class="menu-card"><div class="menu-content"><h3>Consulta estética (exemplo ilustrativo)</h3><div class="menu-desc">Conversa inicial sobre opções de atendimento.</div><a href="/seo-local/#contato" data-contato-demo class="btn-procedure-consult">Consultar pelo WhatsApp</a></div></article></div>
+      <div class="procedures-grid"><article class="menu-card"><div class="menu-content"><h3>Limpeza de pele</h3><div class="menu-desc">Avaliação da pele e limpeza com extração, com horário marcado.</div><a href="/seo-local/#contato" data-contato-demo data-contato-texto="Vim pela demo (ref SITE-DEMO)" class="btn-procedure-consult">Consultar pelo WhatsApp</a></div></article><article class="menu-card"><div class="menu-content"><h3>Drenagem linfática</h3><div class="menu-desc">Massagem manual, com o número de sessões combinado na primeira visita.</div><a href="/seo-local/#contato" data-contato-demo data-contato-texto="Vim pela demo (ref SITE-DEMO)" class="btn-procedure-consult">Consultar pelo WhatsApp</a></div></article><article class="menu-card"><div class="menu-content"><h3>Design de sobrancelhas</h3><div class="menu-desc">Desenho e manutenção, com encaixe no mesmo dia quando houver horário.</div><a href="/seo-local/#contato" data-contato-demo data-contato-texto="Vim pela demo (ref SITE-DEMO)" class="btn-procedure-consult">Consultar pelo WhatsApp</a></div></article></div>
       <div class="authority-pillars"></div>
 
     </section>
-    <section class="authority-faq-section" data-cena="duvidas" id="duvidas">
+    <section class="authority-faq-section" id="duvidas">
 
       <div class="faq-stack"><details><summary>Como saber mais sobre os serviços?</summary><p>Converse com a equipe para conhecer os serviços informados e avaliar suas dúvidas antes de agendar.</p></details><details><summary>Como agendar?</summary><p>Entre em contato pelo WhatsApp ou telefone para consultar disponibilidade.</p></details></div>
     </section>
 
 
     <!-- 7. LOCALIZAÇÃO -->
-    <section class="location-box" data-cena="localizacao" aria-label="Região fictícia de atendimento">
+    <div class="location-box">
       <div>
-        <div class="loc-tag">REGIÃO · EXEMPLO ILUSTRATIVO</div>
-        <div class="loc-addr">Vila Mariana · São Paulo</div>
+        <div class="loc-tag">LOCALIZAÇÃO & ATENDIMENTO</div>
+        <div class="loc-addr"></div>
       </div>
-    </section>
+      <a href="/seo-local/#contato" data-contato-demo data-contato-texto="Vim pela demo (ref SITE-DEMO)" target="_blank" rel="noopener" class="loc-btn">
+        <span>Consultar região de atendimento</span>
+        <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
 
     <!-- FOOTER -->
     <footer>
-      <p class="nicebyte-credit">NiceByte<span aria-label="marca registrada">®</span> · São Paulo, SP</p>
+      <p>Página demonstrativa criada pela NiceByte</p>
+      <p>Atendimento online a partir de São Paulo</p>
+      <a href="/seo-local/">Conhecer SEO Local</a>
       <a href="/privacidade/">Privacidade</a>
     </footer>
 
