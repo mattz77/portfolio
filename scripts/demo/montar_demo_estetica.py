@@ -116,7 +116,10 @@ def main() -> None:
     .demo-note ~ .container footer a { color: inherit; }
     @media (max-width: 560px) {
       .demo-note { padding-inline: 8px; font-size: .75rem; gap: 4px 10px; }
-      .section-title { font-size: clamp(20px, 7vw, 30px); overflow-wrap: anywhere; }
+      .procedures-section { padding: 32px 16px 38px; }
+      .section-head { margin-bottom: 16px; }
+      .section-title { font-size: clamp(20px, 6.4vw, 26px); line-height: 1.1; overflow-wrap: anywhere; }
+      .procedures-grid { gap: 14px; }
       .btn-concierge { width: calc(100% - 24px); margin-inline: auto; }
     }
   </style>
