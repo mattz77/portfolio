@@ -9,6 +9,8 @@ PHOTOS = {
     "barbearia": 6007503,
     "salao": 5568409,
     "cliente": 15434266,
+    "bairro-01": 2775272,
+    "bairro-02": 2076930,
 }
 for name, photo_id in PHOTOS.items():
     url = f"https://images.pexels.com/photos/{photo_id}/pexels-photo-{photo_id}.jpeg?w=1800"
