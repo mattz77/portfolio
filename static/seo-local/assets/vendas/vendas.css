@@ -1,0 +1,26 @@
+/* Vendas: composição fotográfica e cartões de leitura curta, sem tocar no mapa ou calculadora. */
+.vendas-hero{padding:3rem 0 4rem;overflow:hidden}
+.vendas-hero .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,.85fr);align-items:center;gap:clamp(2rem,5vw,6rem)}
+.vendas-hero-copy{min-width:0}
+.vendas-hero h1{max-width:11ch;margin:.7rem 0 1.5rem;font:700 clamp(3.3rem,5.6vw,6.5rem)/1.04 var(--display);text-transform:uppercase;overflow-wrap:normal}
+.vendas-hero-copy>p:not(.eyebrow){max-width:42ch;font-size:clamp(1rem,1.5vw,1.25rem);line-height:1.55}
+.vendas-hero .actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;margin-top:1.8rem}
+.vendas-hero-image{margin:0;min-width:0;position:relative}
+.vendas-hero-image img{display:block;width:100%;height:auto;aspect-ratio:4/4.5;object-fit:cover;object-position:47% 50%;border:2px solid var(--ink)}
+.vendas-hero-image figcaption{position:absolute;left:-2rem;bottom:1.5rem;max-width:17ch;padding:.7rem 1rem;background:var(--lime);border:2px solid var(--ink);font:700 clamp(1.3rem,2vw,2rem)/1.15 var(--display);text-transform:uppercase;box-shadow:5px 5px 0 var(--ink)}
+.vendas-strip{padding:2.5rem 0;background:var(--ink);color:var(--paper)}
+.vendas-strip-grid{display:grid;grid-template-columns:1fr .8fr .8fr;align-items:center;gap:clamp(1rem,3vw,3rem)}
+.vendas-strip figure{margin:0;min-width:0}
+.vendas-strip img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+.vendas-strip figcaption{margin:.6rem 0 0;font:700 1.3rem var(--display);text-transform:uppercase}
+.vendas-strip p{max-width:15ch;font:700 clamp(1.6rem,3vw,2.8rem)/1.16 var(--display);text-transform:uppercase}
+.vendas-beneficios{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1rem;padding:0!important;counter-reset:beneficio}
+.vendas-beneficios li{counter-increment:beneficio;grid-column:span 2;min-width:0;margin:0!important;padding:1.5rem;background:var(--white);border:1.5px solid var(--ink);line-height:1.5;box-shadow:4px 4px 0 var(--ink)}
+.vendas-beneficios li:nth-child(4),.vendas-beneficios li:nth-child(5){grid-column:span 3;background:var(--lime)}
+.vendas-beneficios li::before{content:counter(beneficio,decimal-leading-zero);display:block;margin-bottom:1.25rem;color:#65471a;font:700 2.6rem var(--display)}
+.vendas-beneficios li a,.vendas-hero a:focus-visible,.vendas-strip a:focus-visible{outline-offset:3px}
+.vendas-hero .eyebrow{max-width:100%}
+@media(max-width:899px){.vendas-hero{padding:1.5rem 0 2.5rem}.vendas-hero .hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:2rem}.vendas-hero h1{font-size:clamp(3rem,12vw,5rem);max-width:12ch;line-height:1.06}.vendas-hero-image{margin:0 .7rem}.vendas-hero-image img{aspect-ratio:4/2.6}.vendas-hero-image figcaption{left:-.7rem;bottom:-.75rem;font-size:1.25rem}.vendas-strip-grid{grid-template-columns:1fr 1fr}.vendas-strip-grid p{grid-column:1/-1;max-width:24ch}.vendas-beneficios li{grid-column:span 3}.vendas-beneficios li:nth-child(4),.vendas-beneficios li:nth-child(5){grid-column:span 3}}
+@media(max-width:600px){.vendas-hero h1{font-size:clamp(2.9rem,12.3vw,4.2rem);line-height:1.08}.vendas-hero .actions{gap:.8rem}.vendas-hero-image img{aspect-ratio:4/3.5}.vendas-strip{padding:1.8rem 0}.vendas-strip-grid{gap:.75rem}.vendas-strip p{font-size:1.8rem}.vendas-beneficios{display:block}.vendas-beneficios li{margin:0 0 1rem!important}.vendas-beneficios li::before{margin-bottom:.5rem}}
+@media(prefers-reduced-motion:no-preference){.vendas-strip img{transition:transform .4s ease}.vendas-strip figure:hover img{transform:scale(1.025)}}
+@media(prefers-reduced-motion:reduce){.vendas-hero-copy,.vendas-hero-image{opacity:1;transform:none;animation:none}.vendas-strip img{transition:none}}
