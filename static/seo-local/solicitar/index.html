@@ -151,7 +151,7 @@
       .send .button { width: 100%; }
     }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-timeline: auto !important; opacity: 1 !important; transform: none !important; }
     }
     body { font-family: "DM Sans", sans-serif; }
     h1, h2, h3, legend { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: -.015em; }
@@ -179,8 +179,67 @@
     .link-copiar:hover { text-decoration-thickness: 2px; }
     .status-proximo { display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; font-weight: 400; color: var(--ink); }
     .status-proximo a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
-    @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
+    /* A foto situa o formulário num negócio real; a ficha permanece legível sem script. */
+    .solicitar-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .88fr); min-height: 440px; border-block: 2px solid var(--ink); background: var(--lime); }
+    .solicitar-hero-copy { align-self: center; padding: clamp(32px, 5vw, 76px) max(24px, calc((100vw - 1120px) / 2)); padding-right: clamp(24px, 4vw, 64px); }
+    .solicitar-hero h1 { font-size: clamp(3.3rem, 5.4vw, 5.6rem); line-height: 1.05; max-width: 700px; overflow-wrap: normal; }
+    .solicitar-hero-cta { margin-top: 24px; }
+    .solicitar-hero .intro { color: var(--ink); max-width: 470px; font-size: clamp(1rem, 1.4vw, 1.22rem); line-height: 1.45; }
+    .solicitar-photo { margin: 0; position: relative; min-width: 0; overflow: hidden; background: #6a6658; }
+    .solicitar-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .solicitar-photo figcaption { position: absolute; bottom: 0; left: 0; padding: 7px 14px; background: var(--paper); font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .solicitar-steps { padding: 64px 0 50px; }
+    .solicitar-section-kicker { margin: 0 0 9px; font-size: .73rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .solicitar-steps h2, .solicitar-form-head h2 { font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.03; }
+    .solicitar-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 29px; border-top: 2px solid var(--ink); }
+    .solicitar-step { min-width: 0; padding: 20px 25px 12px 0; }
+    .solicitar-step + .solicitar-step { padding-left: 25px; border-left: 1px solid var(--line); }
+    .solicitar-step b { display: block; font: 3.5rem/1 Oswald, sans-serif; color: #37642b; }
+    .solicitar-step h3 { margin-top: 10px; font-size: 1.35rem; }
+    .solicitar-step p { max-width: 28ch; color: var(--muted); font-size: .88rem; line-height: 1.45; }
+    .solicitar-form-head { margin: 0 0 4px; padding-top: 28px; border-top: 2px solid var(--ink); }
+    .solicitar-form-head p { max-width: 55ch; color: var(--muted); }
+    .solicitar-promise { margin: 20px 0 0; display: grid; grid-template-columns: minmax(0, 1fr) 100px; align-items: center; gap: 16px; border: 1px solid var(--ink); background: #e8ecd9; padding: 16px; }
+    .solicitar-promise strong { display: block; font: 1.35rem/1.2 Oswald, sans-serif; text-transform: uppercase; }
+    .solicitar-promise p { margin: 8px 0 0; font-size: .85rem; }
+    .solicitar-promise .solicitar-number { font: 3.8rem/1 Oswald, sans-serif; text-align: center; }
+    .solicitar-promise .solicitar-number small { display: block; font: 700 .7rem DM Sans, sans-serif; text-transform: uppercase; }
+    .solicitar-sidebar-photo { margin: 0; }
+    .solicitar-sidebar-photo img { display: block; width: 100%; height: auto; aspect-ratio: 10 / 7; object-fit: cover; }
+    .solicitar-sidebar-photo figcaption { font-size: .75rem; color: var(--muted); margin-top: 6px; }
+    .solicitar-facts { display: grid; gap: 10px; margin: 16px 0; }
+    .solicitar-fact { padding: 14px 0; border-top: 1px solid var(--line); }
+    .solicitar-fact strong { display: block; font: 1.22rem/1.15 Oswald, sans-serif; text-transform: uppercase; }
+    .solicitar-fact span { display: block; margin-top: 5px; font-size: .85rem; color: var(--muted); }
+    .solicitar-disclaimer { margin: 0; font-size: .8rem; color: var(--muted); }
+    .solicitar-hero-copy, .solicitar-photo img { animation: solicitar-entrar .8s both ease-out; }
+    .solicitar-photo img { animation-delay: .12s; }
+    @keyframes solicitar-entrar { from { opacity: .4; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    @supports (animation-timeline: view()) { .solicitar-step { animation: solicitar-passo linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; } }
+    @keyframes solicitar-passo { from { opacity: .55; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } .solicitar-hero { grid-template-columns: 1fr 42%; min-height: 380px; } .solicitar-hero-copy { padding-left: 24px; } }
     @media (max-width: 620px) {
+      .solicitar-hero { grid-template-columns: 1fr; }
+      .solicitar-hero-copy { padding: 35px 16px 30px; }
+      .solicitar-hero h1 { font-size: clamp(3.5rem, 16vw, 5.3rem); }
+      .solicitar-hero .intro { margin-top: 14px; }
+      .solicitar-photo { height: 205px; }
+      .solicitar-steps { padding: 45px 0 28px; }
+      .solicitar-track { grid-template-columns: 1fr; }
+      .solicitar-step, .solicitar-step + .solicitar-step { padding: 12px 0 18px 18px; border-left: 2px solid var(--ink); }
+      .solicitar-step + .solicitar-step { border-top: 1px solid var(--line); }
+      .solicitar-step b { font-size: 2.5rem; }
+      .solicitar-step h3 { margin-top: 3px; }
+      .solicitar-step p { margin: 7px 0 0; }
+      .solicitar-promise { grid-template-columns: minmax(0, 1fr) 72px; }
+      .solicitar-promise .solicitar-number { font-size: 2.8rem; }
+      .topbar { gap: 12px; }
+      .topbar nav { text-align: right; }
+      .topbar nav a { font-size: .76rem; }
+      .brand { font-size: 30px; }
+      .resumo pre { overflow-wrap: anywhere; }
+      .atalho legend { max-width: 100%; }
+
       .wrap { width: calc(100% - 32px); }
       main { padding-top: 30px; }
       .fields { grid-template-columns: 1fr; gap: 14px; }
@@ -197,13 +256,32 @@
   <header class="topbar wrap"><a class="brand" href="/" aria-label="NiceByte, voltar ao início">NiceByte<span>®</span></a><nav aria-label="Navegação"><a href="/seo-local/">Voltar para a página inicial</a></nav></header>
 
   <main>
+    <section class="solicitar-hero" data-cena="introducao" aria-labelledby="titulo">
+      <div class="solicitar-hero-copy">
+        <h1 id="titulo">Seu negócio visto de perto.</h1>
+        <p class="intro">Peça um raio-x gratuito de uma página sobre como seu negócio aparece para quem busca perto.</p>
+        <a class="button button-primary solicitar-hero-cta" href="#form">Pedir meu raio-x</a>
+      </div>
+      <figure class="solicitar-photo">
+        <picture><source media="(max-width: 620px)" srcset="../assets/solicitar/campinas-feira-800.webp"><img src="../assets/solicitar/campinas-feira-1600.webp" width="1600" height="1120" alt="Trabalhadores preparando comida em uma feira de Campinas" fetchpriority="high"></picture>
+        <figcaption>Comércio de rua / Campinas, SP</figcaption>
+      </figure>
+    </section>
     <div class="wrap">
-      <section data-cena="introducao">
-      <h1>Peça seu raio-x gratuito</h1>
-      <p class="intro">Informe nome, bairro e atividade e revise o resumo antes de abrir o WhatsApp. Nada é enviado sem você tocar em enviar. O diagnóstico chega pelo WhatsApp em até 5 dias úteis.</p>
-      <p class="intro"><strong>Ninguém pode garantir o primeiro lugar no Google.</strong></p>
+      <section class="solicitar-steps" data-cena="etapas" aria-labelledby="etapas-titulo">
+        <p class="solicitar-section-kicker">Da sua mensagem à análise</p>
+        <h2 id="etapas-titulo">Três passos. Sem adivinhação.</h2>
+        <div class="solicitar-track">
+          <article class="solicitar-step"><b aria-hidden="true">01</b><h3>Você conta</h3><p>Nome, bairro e atividade. Revise o resumo antes de abrir o WhatsApp; só você confirma o envio.</p></article>
+          <article class="solicitar-step"><b aria-hidden="true">02</b><h3>A gente confere</h3><p>Perfil no Google e página no celular, comparados com negócios vistos na mesma busca no bairro.</p></article>
+          <article class="solicitar-step"><b aria-hidden="true">03</b><h3>Você recebe</h3><p>Raio-x de uma página pelo WhatsApp em até 5 dias úteis. Busca, bairro e data registrados.</p></article>
+        </div>
       </section>
-
+      <section class="solicitar-form-head" data-cena="pedido" aria-labelledby="pedido-titulo">
+        <p class="solicitar-section-kicker">Pedido / raio-x gratuito</p>
+        <h2 id="pedido-titulo">Comece pelo seu negócio.</h2>
+        <p>Você não precisa saber seu link do Maps. Nome, bairro e atividade bastam para começar.</p>
+      </section>
       <div class="cols" data-cena="formulario">
         <form id="form" novalidate autocomplete="on">
           <fieldset class="atalho">
@@ -329,6 +407,7 @@
         </form>
 
         <aside>
+          <figure class="solicitar-sidebar-photo"><picture><source media="(max-width: 860px)" srcset="../assets/solicitar/cafe-proprietaria-800.webp"><img src="../assets/solicitar/cafe-proprietaria-1600.webp" width="1600" height="1120" alt="Proprietária de café na entrada de seu estabelecimento" loading="lazy" decoding="async"></picture><figcaption>Retrato ilustrativo / comércio independente</figcaption></figure>
           <div class="safe">
             <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 7.9-7.5 9.5-4.4-1.6-7.5-5.1-7.5-9.5V6z"/><path d="M9 12.2l2.2 2.2 4-4.4"/></svg></span>
             <div>
@@ -337,16 +416,15 @@
             </div>
           </div>
 
-          <div class="panel">
-            <h2>O que acontece depois</h2>
-            <ol>
-              <li>Conferimos as informações do perfil no Google e da página no celular.</li>
-              <li>Comparamos com os negócios que aparecem para a mesma busca no seu bairro e registramos a busca, o bairro e a data.</li>
-              <li>Mostramos quanto isso custa por mês para o seu negócio.</li>
-              <li>Enviamos seu diagnóstico pelo WhatsApp em até 5 dias úteis.</li>
-              <li>Se quiser o passo a passo, o diagnóstico completo custa R$ 149 e sai de graça se você fechar a otimização com a NiceByte em até 15 dias.</li>
-            </ol>
-            <p class="note">Não pedimos senha nem acesso administrativo ao Google.</p>
+          <div class="panel" data-cena="entrega">
+            <h2>O que entra no raio-x</h2>
+            <div class="solicitar-facts">
+              <div class="solicitar-fact"><strong>Perfil e página</strong><span>Conferimos como o negócio aparece no Google e no celular.</span></div>
+              <div class="solicitar-fact"><strong>Busca do bairro</strong><span>Comparamos negócios da mesma busca e registramos termo, bairro e data.</span></div>
+              <div class="solicitar-fact"><strong>Custo mensal</strong><span>Mostramos o custo estimado do problema para o seu negócio.</span></div>
+            </div>
+            <div class="solicitar-promise"><div><strong>Quer o diagnóstico completo?</strong><p>R$ 149; gratuito se fechar a otimização com a NiceByte em até 15 dias.</p></div><div class="solicitar-number" aria-hidden="true">149<small>reais</small></div></div>
+            <p class="note">Não pedimos senha nem acesso administrativo. Ninguém pode garantir o primeiro lugar no Google.</p>
           </div>
 
           <div class="panel">
