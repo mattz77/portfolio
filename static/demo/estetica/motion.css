@@ -1,0 +1,31 @@
+.hero h1{overflow-wrap:anywhere}
+.hero-media:has(.hero-monograma){background:var(--olive)}
+.hero-monograma{height:100%;display:grid;place-items:center;font:400 clamp(14rem,45vw,42rem)/1 var(--serif);color:#ffffff28}
+.hero:has(.hero-monograma) .hero-media:after{background:linear-gradient(90deg,#15181099,transparent)}
+.hero-media img[src$="limpeza-de-pele-1600.webp"]{object-position:57% 45%}
+.service-no-photo{min-height:350px;background:var(--olive);display:grid;place-items:center}
+.service-initial{font:400 clamp(12rem,24vw,24rem)/1 var(--serif);color:#ffffff72}
+.service:nth-child(1) img{object-position:57% center}
+.service:nth-child(2) img{object-position:45% center}
+.service:nth-child(3) img{object-position:65% center}
+.service:nth-child(4) img{object-position:50% center}
+.service:nth-child(5) img{object-position:60% center}
+.service:nth-child(6) img{object-position:50% center}
+.gallery-strip{margin-top:110px;display:flex;overflow-x:auto;gap:20px;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;padding-bottom:20px}
+.gallery-strip img{width:min(38vw,420px);aspect-ratio:4/5;object-fit:cover;flex:none;scroll-snap-align:start}
+.visit:not(:has(.visit-photo)){min-height:0}
+.visit:not(:has(.visit-photo)) .visit-content{grid-column:1/-1;max-width:980px;margin:auto}
+.location-grid:not(:has(.location-image)){grid-template-columns:1fr}
+.location-grid:not(:has(.location-image)) .location-info{max-width:850px}
+.preco{white-space:nowrap}
+@media(max-width:700px){
+  .hero-media img[src$="limpeza-de-pele-1600.webp"]{object-position:57% 45%}
+  .service-no-photo{min-height:300px}
+  .gallery-strip{margin-top:75px;margin-right:-24px;scroll-padding-left:24px}
+  .gallery-strip img{width:72vw}
+  .motion-on .service-image,.motion-on .visit-photo,.motion-on .location-image{clip-path:inset(0 0 0 14%);transition:clip-path 1.1s cubic-bezier(.22,1,.36,1)}
+  .motion-on .service-image.in-view,.motion-on .visit-photo.in-view,.motion-on .location-image.in-view{clip-path:inset(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .motion-on .service-image,.motion-on .visit-photo,.motion-on .location-image{clip-path:none}
+}
