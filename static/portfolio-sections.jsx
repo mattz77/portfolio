@@ -430,6 +430,7 @@ function Contact() {
             <a className="contact-btn primary" href={"mailto:" + id.email}><I.mail /> {t("contact.email")}</a>
             <a className="contact-btn" href={id.linkedin} target="_blank" rel="noreferrer"><I.linkedin /> {t("contact.linkedin")}</a>
             <a className="contact-btn" href={id.github} target="_blank" rel="noreferrer"><I.github /> {t("contact.github")}</a>
+            <a className="contact-btn" href="/seo-local/">SEO local para negócios de bairro</a>
           </div>
         </div>
       </div>
