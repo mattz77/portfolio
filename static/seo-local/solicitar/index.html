@@ -107,6 +107,9 @@
     .barra { height: 6px; border-radius: 99px; background: #e4e9ef; overflow: hidden; }
     .barra i { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--ok); transition: width .3s ease; }
     .progresso span { font-size: .82rem; color: var(--muted); }
+    .confirmacao-whatsapp { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px; border: 1px solid var(--line); background: var(--surface); }
+    .confirmacao-whatsapp[hidden] { display: none; }
+    .confirmacao-whatsapp a { font-weight: 700; text-underline-offset: 3px; }
 
     .send { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
     .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 17px; font: inherit; font-weight: 700; border-radius: 9px; border: 1px solid transparent; text-decoration: none; cursor: pointer; transition: background .18s ease, border-color .18s ease, transform .18s ease; }
@@ -392,7 +395,9 @@
 
           <div class="progresso">
             <div class="barra" role="progressbar" aria-labelledby="progresso-txt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barra"><i id="barra-fill"></i></div>
-            <span id="progresso-txt">Faltam 8 itens para enviar.</span>
+            <span id="progresso-txt">0 de 7 obrigatórios preenchidos.</span>
+          <p class="note">CNPJ, perfil no Google Maps, site, e-mail e observações são opcionais.</p>
+          <div class="confirmacao-whatsapp" id="confirmacao-whatsapp" hidden role="status" aria-live="polite"><strong>Falta um passo: aperte enviar no WhatsApp para o pedido chegar.</strong><a id="reabrir-whatsapp" href="#">Reabrir WhatsApp</a></div>
           </div>
 
           <div class="send">
@@ -426,7 +431,7 @@
               <div class="solicitar-fact"><strong>Busca do bairro</strong><span>Comparamos negócios da mesma busca e registramos termo, bairro e data.</span></div>
               <div class="solicitar-fact"><strong>Custo mensal</strong><span>Mostramos o custo estimado do problema para o seu negócio.</span></div>
             </div>
-            <div class="solicitar-promise"><div><strong>Quer o diagnóstico completo?</strong><p>R$ 149. Contratando a otimização com a NiceByte em até 15 dias, esse valor vira desconto nela.</p><p><a href="/laudos/">Ver exemplo de diagnóstico</a> · <a href="/demo/estetica/">Ver uma página de exemplo</a></p></div><div class="solicitar-number" aria-hidden="true">149<small>reais</small></div></div>
+            <div class="solicitar-promise"><div><strong>Quer o diagnóstico completo?</strong><p>Contratando a otimização em até 15 dias depois de receber o diagnóstico, os R$ 149 viram desconto nela.</p><p><a href="/laudos/">Ver exemplo de diagnóstico</a> · <a href="/demo/estetica/">Ver uma página de exemplo</a></p></div><div class="solicitar-number" aria-hidden="true">149<small>reais</small></div></div>
             <p class="note">Não pedimos senha nem acesso administrativo. Ninguém pode garantir o primeiro lugar no Google.</p>
           </div>
 
@@ -890,13 +895,11 @@
       function atualizar() {
         preview.textContent = val('negocio') ? montarResumo() : 'Preencha o formulário para ver o resumo.';
         var total = OBRIGATORIOS.length + 1;
-        var falta = faltando().length;
-        var pct = Math.round(((total - falta) / total) * 100);
+        var preenchidos = total - faltando().length;
+        var pct = Math.round((preenchidos / total) * 100);
         el('barra-fill').style.width = pct + '%';
         el('barra').setAttribute('aria-valuenow', String(pct));
-        el('progresso-txt').textContent = falta === 0
-          ? 'Tudo preenchido. Pode enviar.'
-          : falta === 1 ? 'Falta 1 item para enviar.' : 'Faltam ' + falta + ' itens para enviar.';
+        el('progresso-txt').textContent = preenchidos + ' de ' + total + ' obrigatórios preenchidos.';
       }
 
       // Rascunho fica só neste navegador. Consentimento nunca é guardado: tem de ser dado de novo.
@@ -981,10 +984,14 @@
           status.textContent = 'WhatsApp indisponível no momento. Copie o resumo e tente de novo mais tarde.';
           return;
         }
+        var urlWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(montarResumo());
+        var confirmacao = el('confirmacao-whatsapp');
+        confirmacao.hidden = false;
+        el('reabrir-whatsapp').href = urlWhatsApp;
         status.className = 'status ok';
-        status.textContent = 'WhatsApp aberto. Confira a mensagem e toque em enviar para concluir.';
+        status.textContent = 'Falta um passo: aperte enviar no WhatsApp para o pedido chegar.';
         apagarRascunho();
-        window.open('https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(montarResumo()), '_blank', 'noopener');
+        window.open(urlWhatsApp, '_blank', 'noopener');
       });
 
       // Número legível a partir de contato.js (5511913284876 -> +55 11 91328-4876); nada de número no HTML.
