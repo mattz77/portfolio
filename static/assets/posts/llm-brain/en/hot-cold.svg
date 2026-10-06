@@ -1,0 +1,24 @@
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a8a93"/>
+    </marker>
+  </defs>
+  <!-- HOT -->
+  <rect x="70" y="60" width="240" height="150" rx="14" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="190" y="92" text-anchor="middle" font-size="15" font-weight="600" fill="#f59e0b">HOT · working desk</text>
+  <text x="190" y="120" text-anchor="middle" font-size="12" fill="#9d9da6">only what is recent and pending</text>
+  <text x="190" y="140" text-anchor="middle" font-size="12" fill="#9d9da6">small on purpose</text>
+  <text x="190" y="168" text-anchor="middle" font-size="13" font-weight="600" fill="#10b981">read: ~8k tokens</text>
+  <!-- arrow -->
+  <line x1="318" y1="135" x2="432" y2="135" stroke="#8a8a93" stroke-width="2" marker-end="url(#arr3)"/>
+  <text x="375" y="122" text-anchor="middle" font-size="12" fill="#9d9da6">rotation</text>
+  <!-- COLD -->
+  <rect x="440" y="60" width="240" height="150" rx="14" fill="none" stroke="#8a8a93" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <text x="560" y="92" text-anchor="middle" font-size="15" font-weight="600" fill="#9d9da6">COLD · archive</text>
+  <text x="560" y="120" text-anchor="middle" font-size="12" fill="#9d9da6">the whole history, by month</text>
+  <text x="560" y="140" text-anchor="middle" font-size="12" fill="#9d9da6">consulted only on demand</text>
+  <text x="560" y="168" text-anchor="middle" font-size="12" fill="#9d9da6">keyword or semantic search</text>
+  <!-- before/after -->
+  <text x="380" y="255" text-anchor="middle" font-size="13" fill="#9d9da6">before: every session started by reading ~95k tokens · after: ~8k</text>
+</svg>

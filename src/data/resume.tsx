@@ -53,7 +53,7 @@ export const DATA = {
     // Blog removido do dock temporariamente; rota /blog mantida
   ],
   contact: {
-    email: "contato@nicebyte.ia.br",
+    email: "matthewlds@icloud.com",
     tel: "+55 11 91328-4876",
     whatsapp: "5511913284876",
     location: "São Paulo, SP - Brasil",

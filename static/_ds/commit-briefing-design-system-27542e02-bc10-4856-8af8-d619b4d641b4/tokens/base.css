@@ -1,0 +1,92 @@
+/* ============================================================
+   Commit Briefing — Base layer & signature surfaces
+   Applied globally on top of the tokens. Mirrors the product's
+   real @layer base (warm scrollbars, OT features) and the two
+   signature surfaces: the premium card and the warm terminal.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font: var(--type-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: var(--font-features-ui);
+}
+
+/* Tabular, slashed-zero numerals everywhere mono is used */
+.font-mono,
+[class*='font-mono'] {
+  font-family: var(--font-mono);
+  font-feature-settings: var(--font-features-mono);
+}
+
+/* ---- Warm scrollbars ---- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgb(166 124 82 / 0.20);
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(166 124 82 / 0.35);
+  background-clip: padding-box;
+}
+
+/* ---- Signature: premium card surface ---- */
+.card-premium {
+  background: var(--card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--duration-base) ease, transform var(--duration-base) ease;
+}
+.card-premium:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
+}
+
+/* ---- Signature: warm terminal surface (AgentSummary) ---- */
+.terminal-warm {
+  background: linear-gradient(160deg, var(--terminal-top) 0%, var(--terminal-bottom) 100%);
+  position: relative;
+  border-radius: var(--radius-xl);
+}
+.terminal-warm::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--terminal-glow) 0%, rgb(196 149 106 / 0.10) 40%, transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ---- Animations ---- */
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.cursor-blink { animation: blink 1.1s step-end infinite; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up var(--duration-slow) var(--ease-out) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blink, .animate-fade-up { animation: none !important; }
+}

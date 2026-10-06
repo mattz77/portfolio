@@ -3,12 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mateus Oliveira — Backend .NET Developer</title>
-  <meta name="description" content="Desenvolvedor Backend .NET — APIs, integrações e automação com IA. Portfólio de Mateus Oliveira." />
+  <title>Mateus Oliveira — AI Engineer & Multi-Agent Systems</title>
+  <meta name="description" content="AI Engineer — Fábricas de agentes de IA com supervisão humana, orquestração n8n e MCP. Portfólio de Mateus Oliveira.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nicebyte.ia.br/" />
+  <meta property="og:title" content="Mateus Oliveira — AI Engineer & Multi-Agent Systems" />
+  <meta property="og:description" content="Projeto e opero fábricas de agentes de IA com supervisão rigorosa e prova de entrega. LLMs, n8n, MCP, infraestrtura self-hosted." />
+  <meta property="og:image" content="https://nicebyte.ia.br/assets/og-banner.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="nicebyte.ia.br" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://nicebyte.ia.br/assets/og-banner.jpg" />
+  <meta name="twitter:title" content="Mateus Oliveira — AI Engineer & Multi-Agent Systems" />
+  <meta name="twitter:description" content="Fábricas de agentes de IA com supervisão humana e prova de entrega. LLMs, n8n, MCP." />
+
+  <!-- Canonical gerenciado via prerender.mjs por rota -->
+
+  <!-- JSON-LD Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mateus Oliveira",
+    "url": "https://nicebyte.ia.br",
+    "jobTitle": "AI Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "InMinds Technology"
+    },
+    "sameAs": [
+      "https://github.com/mattz77",
+      "https://www.linkedin.com/in/mateusoliveira-dev"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    }
+  }
+  </script>
 
   <!-- Favicon — static terminal mark -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2" />
-  <link rel="apple-touch-icon" href="favicon.svg?v=2" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="apple-touch-icon" href="/favicon.svg?v=3" />
   <meta name="theme-color" content="#09090b" />
 
   <!-- Design system tokens + base -->
@@ -67,7 +112,8 @@
     [data-density="comfy"]   { --block-gap: 172px; }
     @media (max-width: 720px) { :root { --shell-pad: 22px; --block-gap: 86px; } }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
+    section[id], header[id] { scroll-margin-top: 90px; }
     body {
       margin: 0;
       background: var(--background);
@@ -597,11 +643,68 @@
       display: block; width: 100%; height: auto;
       background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl);
       padding: 14px 10px; box-sizing: border-box;
+      cursor: zoom-in;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .post-figure img:hover {
+      border-color: var(--brand-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.25);
     }
     .post-figure figcaption {
       margin-top: 10px; text-align: center; font-size: 13px; color: var(--muted-foreground);
       font-family: var(--font-mono);
     }
+
+    /* Lightbox Modal */
+    .lightbox-overlay {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; box-sizing: border-box;
+      cursor: zoom-out;
+      animation: lbFadeIn .2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .lightbox-content {
+      position: relative; max-width: 92vw; max-height: 90vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      cursor: default;
+      animation: lbZoomIn .25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .lightbox-img {
+      max-width: 100%; max-height: 82vh; width: auto; height: auto;
+      border-radius: var(--radius-lg, 12px);
+      border: 1px solid var(--border);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      background: var(--card);
+      padding: 16px;
+      box-sizing: border-box;
+      object-fit: contain;
+      cursor: zoom-out;
+    }
+    .lightbox-caption {
+      margin-top: 14px; color: #e4e4e7; font-family: var(--font-mono);
+      font-size: 13.5px; text-align: center; max-width: 680px;
+      line-height: 1.5; text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+    .lightbox-close {
+      position: absolute; top: -14px; right: -14px;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: #27272a; color: #f4f4f5;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: transform .15s ease, background-color .15s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .lightbox-close:hover {
+      background: var(--brand-accent, #3b82f6);
+      transform: scale(1.08);
+      color: #fff;
+    }
+    @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes lbZoomIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
     .post-nav { max-width: 720px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .post-nav-btn {
       display: flex; flex-direction: column; gap: 6px; text-align: left; cursor: pointer;
@@ -632,13 +735,13 @@
   <script src="_ds/commit-briefing-design-system-27542e02-bc10-4856-8af8-d619b4d641b4/_ds_bundle.js"></script>
 
   <!-- Data (plain JS) -->
-  <script src="portfolio-data.js?v=31"></script>
+  <script src="portfolio-data.js?v=38"></script>
 
   <!-- Babel-transpiled app -->
-  <script type="text/babel" src="portfolio-icons.jsx?v=31"></script>
-  <script type="text/babel" src="tweaks-panel.jsx?v=31"></script>
-  <script type="text/babel" src="portfolio-sections.jsx?v=31"></script>
-  <script type="text/babel" src="portfolio-app.jsx?v=31" data-presets="react"></script>
+  <script type="text/babel" src="portfolio-icons.jsx?v=37"></script>
+  <script type="text/babel" src="tweaks-panel.jsx?v=37"></script>
+  <script type="text/babel" src="portfolio-sections.jsx?v=37"></script>
+  <script type="text/babel" src="portfolio-app.jsx?v=37" data-presets="react"></script>
   <script>
     window.addEventListener("load", () => setTimeout(() => { const b = document.getElementById("boot"); if (b) { b.classList.add("gone"); setTimeout(() => b.remove(), 500); } }, 350));
   </script>

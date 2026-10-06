@@ -50,13 +50,12 @@ function Nav() {
     ["writing", "nav.writing"],
   ];
   const handleNav = (anchor) => {
-    setOpen(false);
-    if (onHome) {
-      const el = document.getElementById(anchor);
-      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 84, behavior: "smooth" });
-    } else {
-      goTo({ name: "home" }, anchor);
+    const el = document.getElementById(anchor);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+    if (open) setOpen(false);
+    if (!onHome) goTo({ name: "home" });
   };
   return (
     <div className="nav-wrap">
@@ -429,9 +428,9 @@ function Contact() {
           <p className="contact-sub">{t("contact.subtitle")}</p>
           <div className="contact-actions">
             <a className="contact-btn primary" href={"mailto:" + id.email}><I.mail /> {t("contact.email")}</a>
-            <a className="contact-btn" href={"https://wa.me/" + id.whatsapp} target="_blank" rel="noreferrer"><I.whatsapp /> {t("contact.whatsapp")}</a>
             <a className="contact-btn" href={id.linkedin} target="_blank" rel="noreferrer"><I.linkedin /> {t("contact.linkedin")}</a>
             <a className="contact-btn" href={id.github} target="_blank" rel="noreferrer"><I.github /> {t("contact.github")}</a>
+            <a className="contact-btn" href="/seo-local/">SEO local para negócios de bairro</a>
           </div>
         </div>
       </div>
@@ -473,6 +472,24 @@ function BlogView() {
 
 function PostView({ slug }) {
   const { t, lang, P, goTo } = useApp();
+  const [lightbox, setLightbox] = React.useState(null);
+
+  React.useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === "Escape") setLightbox(null);
+    }
+    if (lightbox) {
+      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox]);
+
   const idx = P.posts.findIndex((p) => p.slug === slug);
   const post = P.posts[idx];
   if (!post) {
@@ -506,13 +523,41 @@ function PostView({ slug }) {
           if (b.t === "quote") return <blockquote key={i}>{b.v}</blockquote>;
           if (b.t === "img") return (
             <figure key={i} className="post-figure">
-              <img src={b.v} alt={b.alt || ""} loading="lazy" />
+              <img
+                src={b.v}
+                alt={b.alt || ""}
+                loading="lazy"
+                title={lang === "pt" ? "Clique para ampliar" : "Click to expand"}
+                onClick={() => setLightbox({ src: b.v, alt: b.alt || "", cap: b.cap })}
+              />
               {b.cap ? <figcaption>{b.cap}</figcaption> : null}
             </figure>
           );
           return <p key={i}>{b.v}</p>;
         })}
       </div>
+
+      {lightbox ? (
+        <div className="lightbox-overlay" onClick={() => setLightbox(null)}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="lightbox-close"
+              aria-label="Fechar"
+              onClick={() => setLightbox(null)}
+            >
+              <I.x />
+            </button>
+            <img
+              src={lightbox.src}
+              alt={lightbox.alt}
+              className="lightbox-img"
+              onClick={() => setLightbox(null)}
+            />
+            {lightbox.cap ? <div className="lightbox-caption">{lightbox.cap}</div> : null}
+          </div>
+        </div>
+      ) : null}
+
       <div className="post-nav">
         {prev ? (
           <button className="post-nav-btn" onClick={() => goTo({ name: "post", slug: prev.slug })}>

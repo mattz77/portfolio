@@ -1,0 +1,42 @@
+<svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a8a93"/>
+    </marker>
+  </defs>
+  <!-- Forge Input -->
+  <g>
+    <rect x="30" y="80" width="130" height="120" rx="12" fill="#18181b" stroke="#8a8a93" stroke-width="2"/>
+    <text x="95" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#f4f4f5">Git Forges</text>
+    <text x="95" y="145" text-anchor="middle" font-size="12" fill="#9d9da6">GitHub</text>
+    <text x="95" y="165" text-anchor="middle" font-size="12" fill="#9d9da6">Azure DevOps</text>
+    <text x="95" y="185" text-anchor="middle" font-size="11" fill="#71717a">commits · PRs · reviews</text>
+  </g>
+  <!-- Adapter Layer -->
+  <g>
+    <rect x="205" y="90" width="130" height="100" rx="12" fill="#18181b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="270" y="125" text-anchor="middle" font-size="14" font-weight="600" fill="#3b82f6">Normalizer</text>
+    <text x="270" y="148" text-anchor="middle" font-size="12" fill="#9d9da6">Modelo Único</text>
+    <text x="270" y="168" text-anchor="middle" font-size="11" fill="#71717a">Forge-agnóstico</text>
+  </g>
+  <!-- Deterministic Engine -->
+  <g>
+    <rect x="380" y="80" width="160" height="120" rx="12" fill="#18181b" stroke="#10b981" stroke-width="2.5"/>
+    <text x="460" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#10b981">Motor DORA</text>
+    <text x="460" y="140" text-anchor="middle" font-size="12" fill="#f4f4f5">Cálculo em Código</text>
+    <text x="460" y="160" text-anchor="middle" font-size="11" fill="#9d9da6">Cycle Time · Deploy Freq</text>
+    <text x="460" y="180" text-anchor="middle" font-size="11" fill="#10b981">Zero alucinação</text>
+  </g>
+  <!-- LLM Briefing -->
+  <g>
+    <rect x="585" y="90" width="145" height="100" rx="12" fill="#18181b" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="657" y="125" text-anchor="middle" font-size="14" font-weight="600" fill="#8b5cf6">Agente LLM</text>
+    <text x="657" y="148" text-anchor="middle" font-size="12" fill="#f4f4f5">Resumo Executivo</text>
+    <text x="657" y="168" text-anchor="middle" font-size="11" fill="#9d9da6">Apenas narra o dado</text>
+  </g>
+  <!-- Connections -->
+  <line x1="160" y1="140" x2="200" y2="140" stroke="#8a8a93" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="335" y1="140" x2="375" y2="140" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="540" y1="140" x2="580" y2="140" stroke="#10b981" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="380" y="270" text-anchor="middle" font-size="13" fill="#9d9da6">Engenharia de dados determinística na base · IA apenas como camada de redação</text>
+</svg>

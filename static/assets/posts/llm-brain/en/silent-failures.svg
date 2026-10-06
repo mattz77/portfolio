@@ -1,0 +1,25 @@
+<svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <!-- before card -->
+  <g>
+    <rect x="70" y="50" width="280" height="190" rx="14" fill="none" stroke="#8a8a93" stroke-width="2"/>
+    <text x="210" y="82" text-anchor="middle" font-size="14" font-weight="600" fill="#9d9da6">before</text>
+    <circle cx="130" cy="120" r="14" fill="none" stroke="#10b981" stroke-width="2.5"/>
+    <path d="M123 120 l5 5 l9 -10" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="160" y="125" font-size="13" fill="#9d9da6">"build ok"</text>
+    <text x="160" y="145" font-size="12" fill="#ef4444">…but it built nothing</text>
+    <circle cx="130" cy="185" r="14" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+    <path d="M130 177 v8 l6 4" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="160" y="183" font-size="13" fill="#9d9da6">"running…"</text>
+    <text x="160" y="203" font-size="12" fill="#ef4444">…process dead for 30 min</text>
+  </g>
+  <!-- after card -->
+  <g>
+    <rect x="410" y="50" width="280" height="190" rx="14" fill="none" stroke="#10b981" stroke-width="2.5"/>
+    <text x="550" y="82" text-anchor="middle" font-size="14" font-weight="600" fill="#10b981">after</text>
+    <text x="440" y="120" font-size="13" fill="#9d9da6">✓ checks there is something to build</text>
+    <text x="440" y="148" font-size="13" fill="#9d9da6">✓ spots a dead process in seconds</text>
+    <text x="440" y="176" font-size="13" fill="#9d9da6">✓ continuous diagnosis per project</text>
+    <text x="440" y="204" font-size="13" fill="#9d9da6">✓ the error shows up on screen</text>
+  </g>
+  <text x="380" y="285" text-anchor="middle" font-size="13" fill="#9d9da6">the rule: the system may not say "it worked" without proof</text>
+</svg>

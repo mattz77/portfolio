@@ -1,0 +1,72 @@
+/* ============================================================
+   Commit Briefing — Spacing, radius & elevation
+   4px base grid. Tight radii (the product reads sharp, not soft).
+   Soft warm shadows tinted with espresso, plus a signature
+   "premium card" hairline-ring shadow.
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (4px grid) ---- */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-1: 0.25rem;   /* 4 */
+  --space-1-5: 0.375rem;/* 6 */
+  --space-2: 0.5rem;    /* 8 */
+  --space-2-5: 0.625rem;/* 10 */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-5: 1.25rem;   /* 20 */
+  --space-6: 1.5rem;    /* 24 — default card padding / stack gap */
+  --space-8: 2rem;      /* 32 */
+  --space-10: 2.5rem;   /* 40 */
+  --space-12: 3rem;     /* 48 */
+  --space-16: 4rem;     /* 64 */
+
+  /* common rhythm aliases */
+  --gap-tight: var(--space-2);
+  --gap-default: var(--space-4);
+  --gap-section: var(--space-6);
+  --pad-card: var(--space-6);
+
+  /* ---- Radius (base 0.25rem = 4px; sharp system) ---- */
+  --radius: 0.25rem;
+  --radius-sm: calc(var(--radius) - 4px);  /* 0px  — flush */
+  --radius-md: calc(var(--radius) - 2px);  /* 2px  — inputs, badges */
+  --radius-lg: var(--radius);              /* 4px  — buttons */
+  --radius-xl: calc(var(--radius) + 4px);  /* 8px  — cards, panels */
+  --radius-2xl: calc(var(--radius) + 8px); /* 12px — modals */
+  --radius-full: 9999px;                   /* pills, avatars, dots */
+
+  /* ---- Elevation: warm espresso-tinted shadows ---- */
+  --shadow-color: 74 63 53;   /* espresso, as r g b */
+  --shadow-2xs: 0 1px 2px 0 rgb(var(--shadow-color) / 0.05);
+  --shadow-xs:  0 2px 8px 0 rgb(var(--shadow-color) / 0.07);
+  --shadow-sm:  0 2px 12px 0 rgb(var(--shadow-color) / 0.07);
+  --shadow-md:  0 4px 16px -2px rgb(var(--shadow-color) / 0.08);
+  --shadow-lg:  0 8px 32px -6px rgb(var(--shadow-color) / 0.10);
+  --shadow-xl:  0 16px 48px -8px rgb(var(--shadow-color) / 0.12);
+  --shadow-2xl: 0 24px 64px -12px rgb(var(--shadow-color) / 0.20);
+
+  /* ---- Signature premium card: layered shadow + hairline ring ---- */
+  --shadow-card:
+    0 1px 3px -1px rgb(74 63 53 / 0.10),
+    0 4px 12px -4px rgb(74 63 53 / 0.08),
+    0 0 0 1px rgb(219 208 186 / 0.60);
+  --shadow-card-hover:
+    0 4px 8px -2px rgb(74 63 53 / 0.14),
+    0 16px 32px -8px rgb(166 124 82 / 0.20),
+    0 0 0 1px rgb(166 124 82 / 0.25);
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --duration-fast: 0.15s; /* @kind other */
+  --duration-base: 0.22s; /* @kind other */
+  --duration-slow: 0.4s; /* @kind other */
+
+  /* ---- Layout constants ---- */
+  --sidebar-width: 16rem;        /* 256px */
+  --sidebar-width-collapsed: 3rem;
+  --header-height: 3.5rem;       /* 56px */
+  --content-max: 80rem;          /* dashboard content cap */
+  --reading-max: 42rem;          /* settings / forms column */
+}

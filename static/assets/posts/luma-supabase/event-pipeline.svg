@@ -1,0 +1,35 @@
+<svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a8a93"/>
+    </marker>
+  </defs>
+  <g>
+    <rect x="30" y="80" width="130" height="90" rx="10" fill="#18181b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="95" y="115" text-anchor="middle" font-size="13" font-weight="600" fill="#3b82f6">PostgreSQL</text>
+    <text x="95" y="135" text-anchor="middle" font-size="11" fill="#9d9da6">INSERT / UPDATE</text>
+    <text x="95" y="152" text-anchor="middle" font-size="10" fill="#71717a">Database Trigger</text>
+  </g>
+  <g>
+    <rect x="220" y="80" width="140" height="90" rx="10" fill="#18181b" stroke="#ea580c" stroke-width="2"/>
+    <text x="290" y="115" text-anchor="middle" font-size="13" font-weight="600" fill="#ea580c">n8n Workflow</text>
+    <text x="290" y="135" text-anchor="middle" font-size="11" fill="#9d9da6">Webhook Receiver</text>
+    <text x="290" y="152" text-anchor="middle" font-size="10" fill="#71717a">Deduplicação</text>
+  </g>
+  <g>
+    <rect x="420" y="80" width="140" height="90" rx="10" fill="#18181b" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="490" y="115" text-anchor="middle" font-size="13" font-weight="600" fill="#8b5cf6">Agente LLM</text>
+    <text x="490" y="135" text-anchor="middle" font-size="11" fill="#9d9da6">Resumo / Decisão</text>
+    <text x="490" y="152" text-anchor="middle" font-size="10" fill="#71717a">Ação Doméstica</text>
+  </g>
+  <g>
+    <rect x="610" y="80" width="120" height="90" rx="10" fill="#18181b" stroke="#10b981" stroke-width="2"/>
+    <text x="670" y="115" text-anchor="middle" font-size="13" font-weight="600" fill="#10b981">Notificação</text>
+    <text x="670" y="135" text-anchor="middle" font-size="11" fill="#9d9da6">Mobile / Web</text>
+    <text x="670" y="152" text-anchor="middle" font-size="10" fill="#71717a">Push Real-time</text>
+  </g>
+  <line x1="160" y1="125" x2="215" y2="125" stroke="#8a8a93" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="360" y1="125" x2="415" y2="125" stroke="#ea580c" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="560" y1="125" x2="605" y2="125" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="380" y="240" text-anchor="middle" font-size="13" fill="#9d9da6">Event-driven de ponta a ponta: do trigger no Supabase ao aviso em tempo real</text>
+</svg>

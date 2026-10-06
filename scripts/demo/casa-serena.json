@@ -1,0 +1,27 @@
+{
+  "nome": "Casa Serena",
+  "demo": true,
+  "telefone": "(11) 0000-0000",
+  "cidade": "São Paulo",
+  "regiao": "SP",
+  "pais": "BR",
+  "especialidade": "Estética facial e corporal",
+  "bairro": "Vila Mariana",
+  "descricao": "Estética facial e corporal na Vila Mariana, com horário marcado de segunda a sábado, até as 20h. Negócio fictício, criado para esta demonstração.",
+  "servicos": [
+    {
+      "nome": "Limpeza de pele",
+      "descricao": "Avaliação da pele e limpeza com extração, com horário marcado."
+    },
+    {
+      "nome": "Drenagem linfática",
+      "descricao": "Massagem manual, com o número de sessões combinado na primeira visita."
+    },
+    {
+      "nome": "Design de sobrancelhas",
+      "descricao": "Desenho e manutenção, com encaixe no mesmo dia quando houver horário."
+    }
+  ],
+  "fotos": [],
+  "selos": []
+}

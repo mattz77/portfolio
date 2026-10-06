@@ -21,6 +21,14 @@ const SRC = path.join(ROOT, "static");
 const OUT = process.env.OUT_DIR ? path.resolve(process.env.OUT_DIR) : path.join(ROOT, "dist-static");
 const SITE_URL = (process.env.SITE_URL || "https://nicebyte.ia.br").replace(/\/+$/, "");
 const AUTHOR = "Mateus Oliveira";
+const ORGANIZATION = {
+  "@type": "Organization",
+  "@id": SITE_URL + "/#organization",
+  name: "NiceByte",
+  url: SITE_URL + "/",
+  logo: SITE_URL + "/assets/nicebyte-official-exact.jpg",
+  email: "contato@nicebyte.ia.br",
+};
 
 /* ---------- browser shims: enough for render, not for effects ---------- */
 
@@ -205,12 +213,20 @@ const routes = [
   })),
 ];
 
-const STATIC_SITEMAP_PATHS = ["/seo-local/", "/seo-local/solicitar/", "/demo/estetica/", "/laudos/"];
+const STATIC_SITEMAP_PATHS = ["/seo-local/", "/seo-local/solicitar/", "/privacidade/", "/demo/estetica/", "/laudos/"];
 
 /* ---------- html assembly ---------- */
 
 const escapeAttr = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+function jsonLdWithOrganization(jsonLd) {
+  const { "@context": context, "@graph": graph, ...entity } = jsonLd;
+  return {
+    "@context": context,
+    "@graph": [ORGANIZATION, ...(graph || [entity])],
+  };
+}
 
 function headFor(route) {
   const canonical = SITE_URL + route.pathname;
@@ -230,7 +246,7 @@ function headFor(route) {
   ];
   if (route.date) tags.push(`<meta property="article:published_time" content="${route.date}" />`);
   tags.push(
-    `<script type="application/ld+json">${JSON.stringify(route.jsonLd).replace(/</g, "\\u003c")}</script>`
+    `<script type="application/ld+json">${JSON.stringify(jsonLdWithOrganization(route.jsonLd)).replace(/</g, "\\u003c")}</script>`
   );
   return tags.map((t) => "  " + t).join("\n");
 }
