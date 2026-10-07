@@ -29,7 +29,7 @@
 .anatomy .num { font: 30px/1 var(--display); color: var(--tomato); }
 .anatomy strong, .anatomy span:last-child { display: block; }
 .commitment { margin-block: 0 clamp(42px, 7vw, 82px); padding: 24px 0; border-block: 1px solid var(--ink); }
-.commitment strong { display: block; font: clamp(28px, 4vw, 42px)/1.05 var(--display); text-transform: uppercase; }
+.commitment strong { display: block; font: clamp(28px, 4vw, 42px)/1.16 var(--display); text-transform: uppercase; }
 .cta { border-block: 2px solid var(--ink); background: var(--ink); color: var(--white); padding-block: clamp(42px, 7vw, 78px); }
 .cta-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
 .cta h2 { max-width: 12ch; font-size: clamp(38px, 6vw, 64px); margin-block: 12px; color: var(--white); }
