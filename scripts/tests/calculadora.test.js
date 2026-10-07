@@ -46,7 +46,7 @@ function calculator() {
   };
   elements.set('result', mk()); elements.set('premissas', mk()); elements.set('busca', mk());
   const document = { querySelector: selector => selector === '#calculadora' ? root : null, createElement: () => mk() };
-  vm.runInNewContext(fs.readFileSync(__dirname + '/calculadora.js', 'utf8'), {document, Intl, Number, Math, String, Object});
+  vm.runInNewContext(fs.readFileSync(__dirname + '/../../static/seo-local/calculadora.js', 'utf8'), {document, Intl, Number, Math, String, Object});
   function select(segmento) {
     const btn = buttons.find(b => b.dataset.segmento === segmento);
     btn.listeners.click();
