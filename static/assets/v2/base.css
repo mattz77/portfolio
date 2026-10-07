@@ -55,14 +55,19 @@ button:focus-visible {
   justify-content: space-between;
 }
 .brand {
-  font: 38px/1 var(--display);
-  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
 }
-/* ® discreto, em sobrescrito, nunca do tamanho da marca. */
-.brand span {
-  font-size: 0.42em;
-  vertical-align: top;
-  margin-left: 0.06em;
+.brand img,
+.privacy-brand img {
+  display: block;
+  width: 128px;
+  height: auto;
+}
+@media (max-width: 700px) {
+  .brand img,
+  .privacy-brand img { width: 112px; }
 }
 .topbar nav {
   display: flex;

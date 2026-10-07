@@ -14,8 +14,9 @@
     html { scroll-behavior: smooth; }
     .privacy-header { border-bottom: 2px solid var(--ink); background: var(--lime); }
     .privacy-head { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .privacy-brand { font: 38px/1 var(--display); text-decoration: none; }
-    .privacy-brand span { font-size: .42em; vertical-align: top; margin-left: .06em; }
+    .privacy-brand { display: inline-flex; align-items: center; flex: 0 0 auto; text-decoration: none; }
+    .privacy-brand img { display: block; width: 128px; height: auto; }
+    @media (max-width: 700px) { .privacy-brand img { width: 112px; } }
     .privacy-back { min-height: 44px; display: inline-flex; align-items: center; font-weight: 700; }
     main { padding: clamp(42px, 7vw, 84px) 0 90px; }
     .privacy-title { max-width: 850px; margin: 0; font: clamp(44px, 8vw, 88px)/1.2 var(--display); text-transform: uppercase; }
@@ -51,7 +52,7 @@
 <body>
   <header class="privacy-header">
     <div class="wrap privacy-head">
-      <a class="privacy-brand" href="/" aria-label="NiceByte, voltar ao início">NiceByte<span>®</span></a>
+      <a class="privacy-brand" href="/" aria-label="NiceByte, voltar ao início"><img src="/assets/brand/wordmark-escuro.svg" alt="NiceByte" width="128" height="32"></a>
       <a class="privacy-back" href="/seo-local/solicitar/">Voltar ao formulário</a>
     </div>
   </header>
